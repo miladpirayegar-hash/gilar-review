@@ -1,0 +1,14 @@
+node_modules
+dist
+.playwright-mcp
+*.tsbuildinfo
+.env
+.env.*
+!.env.example
+.gilar-preview-state.json
+CURRENT_PREVIEW_URL.txt
+qa/preview/
+qa/
+artifacts/
+test-results/
+tools/cloudflared.exe
