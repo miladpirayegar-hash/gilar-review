@@ -171,6 +171,7 @@ h1, h2, h3, strong, .logo, .button { font-family: 'Manrope', sans-serif; }
 
 /* Customer path: Today → Fixes → Results ----------------------------------- */
 :root { --font-display: var(--font-ui); }
+html, body { overflow-x: hidden; }
 .app-shell { font-family: var(--font-ui); }
 .app-shell h1, .app-shell h2, .app-shell h3, .app-shell strong, .app-shell .button, .app-shell .logo { font-family: var(--font-ui); }
 .app-shell p, .app-shell small, .app-shell label, .app-shell button, .app-shell input, .app-shell select, .app-shell .eyebrow, .app-shell .text-button, .app-shell .status-pill { font-size: 13px; }
