@@ -1,6 +1,6 @@
 import { cloneElement, isValidElement, useEffect, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { Activity, BarChart3, Bell, BookOpen, Bot, BriefcaseBusiness, ChevronDown, CircleHelp, Command, Database, FileText, Home, LayoutGrid, Menu, PanelLeftClose, PanelLeftOpen, Settings, Sparkles, Users, X, Zap } from 'lucide-react'
+import { Bell, ChevronDown, CircleHelp, Home, LayoutGrid, LineChart, Menu, PanelLeftClose, PanelLeftOpen, Settings, Wrench } from 'lucide-react'
 import { workspaceService } from '../services/demoService'
 import { syntheticApi, type SyntheticSimulationSnapshot } from '../services/syntheticService'
 
@@ -17,16 +17,12 @@ export function IconButton({ label, children, onClick, className = '' }: { label
 }
 
 const primaryNav = [
-  { label: 'Home', to: '/app/home', icon: Home },
-  { label: 'Opportunities', to: '/app/opportunities', icon: Zap },
-  { label: 'Agents', to: '/app/agents', icon: Bot },
-  { label: 'Insights', to: '/app/insights', icon: BarChart3 },
-  { label: 'Documents', to: '/app/brief', icon: FileText },
-  { label: 'Team', to: '/app/team', icon: Users },
+  { label: 'Today', to: '/app/home', icon: Home },
+  { label: 'Fixes', to: '/app/opportunities', icon: Wrench },
+  { label: 'Results', to: '/app/insights', icon: LineChart },
 ]
 const pilotMode = import.meta.env.VITE_GILAR_MODE === 'pilot'
-const dataExplorerEnabled = import.meta.env.VITE_GILAR_ENABLE_DATA_EXPLORER !== 'false'
-const secondaryNav = [{ label: 'Data Explorer', to: '/app/data-explorer', icon: Database }, { label: 'Settings', to: '/app/settings', icon: Settings }].filter((item) => (dataExplorerEnabled || item.label !== 'Data Explorer') && (!pilotMode || item.label !== 'Data Explorer'))
+const secondaryNav = [{ label: 'Settings', to: '/app/settings', icon: Settings }]
 
 function SyntheticDemoBanner() {
   const [simulation, setSimulation] = useState<SyntheticSimulationSnapshot>()
@@ -39,27 +35,30 @@ function SyntheticDemoBanner() {
   }, [])
   if (!simulation || pilotMode) return null
   const act = async (operation: () => Promise<unknown>) => { setBusy(true); try { await operation(); window.location.reload() } finally { setBusy(false) } }
-  return <div className="synthetic-demo-banner"><span className="synthetic-demo-label">SYNTHETIC / DEMO</span><span><strong>Northstar Distribution Co.</strong> · deterministic 12-month workspace</span><span className="synthetic-demo-state">Simulation: {simulation.status}{simulation.status !== 'baseline' && ` · ${simulation.elapsedDays}/${simulation.targetDays} days`}</span><button onClick={() => void act(() => syntheticApi.advance(30))} disabled={busy || simulation.status === 'baseline' || simulation.status === 'completed'}>Advance 30 days</button><button onClick={() => void act(() => syntheticApi.reset())} disabled={busy}>Reset demo company</button></div>
+  return <div className="synthetic-demo-banner"><span className="synthetic-demo-label">SYNTHETIC / DEMO</span><span><strong>Northstar Distribution Co.</strong> · deterministic 12-month business history</span><span className="synthetic-demo-state">Simulation: {simulation.status}{simulation.status !== 'baseline' && ` · ${simulation.elapsedDays}/${simulation.targetDays} days`}</span><button onClick={() => void act(() => syntheticApi.advance(30))} disabled={busy || simulation.status === 'baseline' || simulation.status === 'completed'}>Advance 30 days</button><button onClick={() => void act(() => syntheticApi.reset())} disabled={busy}>Reset demo company</button></div>
 }
 
 export function Sidebar({ collapsed, onToggle, onNavigate }: { collapsed: boolean; onToggle: () => void; onNavigate?: () => void }) {
   const location = useLocation()
   const workspace = workspaceService.getCurrent()
+  const workspaceName = ['synthetic', 'pilot', 'review'].includes(import.meta.env.VITE_GILAR_MODE) ? 'Northstar Distribution Co.' : workspace.name
   return <aside className={`sidebar ${collapsed ? 'sidebar-collapsed' : ''}`}>
     <div className="sidebar-top"><Logo dark /> <IconButton label="Collapse navigation" onClick={onToggle} className="sidebar-toggle">{collapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}</IconButton></div>
-    <button className="workspace-switch"><span className="workspace-avatar">N</span><span className="workspace-copy"><strong>{workspace.name}</strong><small>Workspace</small></span><ChevronDown size={15} /></button>
-    <div className="nav-label">Command center</div>
-    <nav className="main-nav">{primaryNav.map(({ label, to, icon: Icon }) => <NavLink key={to} to={to} onClick={onNavigate} className={({ isActive }) => `nav-item ${isActive || (label === 'Opportunities' && location.pathname.includes('opportunities')) ? 'active' : ''}`}><Icon size={17} /><span>{label}</span>{label === 'Opportunities' && <span className="nav-count">5</span>}</NavLink>)}</nav>
+    <button className="workspace-switch"><span className="workspace-avatar">N</span><span className="workspace-copy"><strong>{workspaceName}</strong><small>Business</small></span><ChevronDown size={15} /></button>
+    <div className="nav-label">Your day</div>
+    <nav className="main-nav">{primaryNav.map(({ label, to, icon: Icon }) => <NavLink key={to} to={to} onClick={onNavigate} className={({ isActive }) => `nav-item ${isActive || (label === 'Fixes' && location.pathname.includes('opportunities')) ? 'active' : ''}`}><Icon size={17} /><span>{label}</span>{label === 'Fixes' && <span className="nav-count">5</span>}</NavLink>)}</nav>
     <div className="nav-spacer" />
-    <div className="nav-label">Workspace</div>
+    <div className="nav-label">Account</div>
     <nav className="main-nav">{secondaryNav.map(({ label, to, icon: Icon }) => <NavLink key={to} to={to} onClick={onNavigate} className="nav-item"><Icon size={17} /><span>{label}</span></NavLink>)}</nav>
-    <div className="sidebar-bottom"><button className="help-card"><CircleHelp size={17} /><span><strong>Need a hand?</strong><small>Visit the help center</small></span></button><button className="user-switch"><span className="avatar">{workspace.initials}</span><span className="workspace-copy"><strong>{workspace.owner} Pira</strong><small>Owner</small></span><ChevronDown size={15} /></button></div>
+    <div className="sidebar-bottom"><button className="help-card"><CircleHelp size={17} /><span><strong>Need help?</strong><small>Open the help center</small></span></button><button className="user-switch"><span className="avatar">{workspace.initials}</span><span className="workspace-copy"><strong>{workspace.owner} Pira</strong><small>Owner</small></span><ChevronDown size={15} /></button></div>
   </aside>
 }
 
 export function Header({ onMenu }: { onMenu: () => void }) {
   const navigate = useNavigate()
-  return <header className="topbar"><div className="mobile-header"><IconButton label="Open navigation" onClick={onMenu}><Menu size={20} /></IconButton><Logo /></div><div className="breadcrumb"><span>Workspace</span><span>/</span><strong>Northstar Studio</strong></div><div className="topbar-actions"><button className="sync-status"><span className="live-dot" /> All systems synced</button><IconButton label="Open notifications" onClick={() => navigate('/app/notifications')}><Bell size={18} /><span className="notification-dot" /></IconButton><button className="top-avatar" onClick={() => navigate('/app/settings')}>MP</button></div></header>
+  const location = useLocation()
+  const pageLabel = location.pathname.includes('/opportunities') ? 'Fixes' : location.pathname.includes('/insights') ? 'Results' : location.pathname.includes('/settings') ? 'Settings' : location.pathname.includes('/team') ? 'Team' : location.pathname.includes('/brief') ? 'Daily brief' : 'Today'
+  return <header className="topbar"><div className="mobile-header"><IconButton label="Open navigation" onClick={onMenu}><Menu size={20} /></IconButton><Logo /></div><div className="breadcrumb"><span>Northstar Distribution</span><span>/</span><strong>{pageLabel}</strong></div><div className="topbar-actions"><button className="sync-status"><span className="live-dot" /> Synthetic data synced</button><IconButton label="Open notifications" onClick={() => navigate('/app/notifications')}><Bell size={18} /><span className="notification-dot" /></IconButton><button className="top-avatar" onClick={() => navigate('/app/settings')}>MP</button></div></header>
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {

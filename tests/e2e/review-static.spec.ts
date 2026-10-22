@@ -8,29 +8,29 @@ test.beforeEach(async ({ page }) => {
 })
 
 test('static review build completes the Northstar synthetic journey', async ({ page }) => {
-  await page.goto(reviewPath('/app/executive'))
-  await expect(page.getByRole('heading', { name: 'Business health overview' })).toBeVisible()
-  await expect(page.getByText('How Business Health is calculated')).toBeVisible()
+  await page.goto(reviewPath('/app/home'))
+  await expect(page.getByRole('heading', { name: 'Here’s what needs your attention.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'What needs your attention', exact: true })).toBeVisible()
 
   await page.goto(reviewPath('/app/opportunities'))
-  await expect(page.getByRole('heading', { name: 'Your opportunity map' })).toBeVisible()
-  await page.getByRole('button', { name: 'Explore top opportunity' }).click()
-  await expect(page.getByRole('heading', { name: 'Sales conversion decline' })).toBeVisible()
-  await page.getByRole('button', { name: 'Review recommendation' }).click()
+  await expect(page.getByRole('heading', { name: 'What I would fix first.' })).toBeVisible()
+  await page.getByRole('button', { name: 'Investigate' }).first().click()
+  await expect(page.getByRole('heading', { name: 'Why this is happening' })).toBeVisible()
+  await page.getByRole('button', { name: 'See the fix' }).click()
 
-  await expect(page.getByRole('heading', { name: 'Proposal Intelligence workflow' })).toBeVisible()
-  await page.getByRole('button', { name: /start approval/i }).click()
+  await expect(page.getByRole('heading', { name: 'The fix' })).toBeVisible()
+  await page.getByRole('button', { name: /Review & start/i }).click()
   await page.getByRole('button', { name: 'Propose deployment' }).click()
   await page.getByRole('button', { name: 'Approve action' }).click()
   await page.getByRole('button', { name: 'Deploy solution' }).click()
   const advance = page.getByRole('button', { name: 'Advance 30 days' })
   await expect(advance).toBeEnabled()
   await advance.click({ noWaitAfter: true })
-  await page.waitForLoadState('load')
+  await expect(page.getByText(/Simulation: completed/)).toBeVisible()
 
   await page.goto(reviewPath('/app/insights'))
-  await expect(page.getByText('Proposal Intelligence measured an improvement')).toBeVisible()
-  await expect(page.getByText('58m / proposal')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Proposal preparation got faster.' })).toBeVisible()
+  await expect(page.getByText('58m', { exact: true }).first()).toBeVisible()
 })
 
 test('static review build serves deep links and remains usable on mobile', async ({ page }) => {
