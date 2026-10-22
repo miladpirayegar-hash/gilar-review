@@ -1,9 +1,10 @@
 import { test, expect } from '@playwright/test'
 
-const reviewPath = (path: string) => `/#${path}`
+const reviewBasePath = process.env.REVIEW_BASE_PATH ?? '/'
+const reviewPath = (path: string) => `${reviewBasePath}#${path}`
 
 test.beforeEach(async ({ page }) => {
-  await page.goto('/')
+  await page.goto(reviewBasePath)
   await page.evaluate(() => window.localStorage.removeItem('gilar-review-state-v1'))
 })
 
