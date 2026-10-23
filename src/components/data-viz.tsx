@@ -20,7 +20,7 @@ export function TimeSeriesChart({ metric, height = 180 }: { metric?: MetricViewD
 }
 
 export function BeforeAfterChart({ label, before, after, unit = 'number', beforeLabel = 'Before', afterLabel = 'After' }: { label: string; before?: number; after?: number; unit?: MetricViewDTO['unit']; beforeLabel?: string; afterLabel?: string }) {
-  if (before === undefined || after === undefined) return <div className="viz-empty">Complete the measurement window to compare results.</div>
+  if (before === undefined || after === undefined) return <div className="before-after-chart before-after-empty" aria-label={`${label} measurement pending`}><div className="before-after-heading"><strong>{label}</strong><span>Measurement pending</span></div><p>Complete the controlled window to compare the observed result.</p></div>
   const max = Math.max(Math.abs(before), Math.abs(after), 1)
   return <div className="before-after-chart" aria-label={`${label} before and after`}><div className="before-after-heading"><strong>{label}</strong><span>Observed workflow comparison</span></div><div className="before-after-bars"><div><span>{beforeLabel}</span><i className="before-bar" style={{ width: `${Math.max(8, Math.abs(before) / max * 100)}%` }} /><strong>{formatNumber(before, unit)}</strong></div><div><span>{afterLabel}</span><i className="after-bar" style={{ width: `${Math.max(8, Math.abs(after) / max * 100)}%` }} /><strong>{formatNumber(after, unit)}</strong></div></div></div>
 }
