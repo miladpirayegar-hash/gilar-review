@@ -1956,6 +1956,19 @@ button, input, select { font: inherit; }
 /* Landing contrast: the light review surface needs dark, readable controls. */
 .landing .hero-copy h1 em { color: var(--bi-blue) !important; }
 .landing .video-button { color: var(--bi-ink) !important; background: #fff !important; border-color: #aebdce !important; }
+
+/* Keep the Revenue context plot readable instead of stretching it across the full card. */
+.results-trend .time-series-chart {
+  width: min(100%, 820px);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (max-width: 900px) {
+  .results-trend .time-series-chart {
+    width: 100%;
+  }
+}
 .landing .video-button:hover { color: var(--bi-ink) !important; background: #f1f5fa !important; border-color: var(--bi-blue) !important; }
 .landing .play-button { color: var(--bi-blue) !important; border-color: #72849b !important; }
 .landing .video-time { color: var(--bi-muted) !important; }
