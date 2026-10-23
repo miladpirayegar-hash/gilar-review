@@ -1905,3 +1905,4 @@ button, input, select { font: inherit; }
 .today-page .attention-issue-metric span { margin-top: 3px; font-size: 11px !important; letter-spacing: .08em; }
 .today-page .attention-issue-footer { position: static !important; margin-top: 13px; padding-top: 11px; border-top: 1px solid #e7edf3; }
 .today-page .attention-issue-footer strong { font-size: 12px !important; }
+.fixes-page .fixes-section { margin-top: 28px !important; }
