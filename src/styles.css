@@ -1753,6 +1753,10 @@ button, input, select { font: inherit; }
 .simple-data-table-head, .simple-data-table-row { display: grid; grid-template-columns: repeat(4, minmax(140px, 1fr)); gap: 14px; min-width: 640px; padding: 15px 18px; }
 .simple-data-table-head { color: var(--bi-muted); background: var(--bi-soft); font-size: 13px; font-weight: 700; }
 .simple-data-table-row { border-top: 1px solid #edf0f3; font-size: 14px; }
+.route-error-state { display: grid; min-height: 100vh; place-items: center; padding: 32px; color: var(--bi-ink); background: var(--bi-bg); text-align: center; }
+.route-error-state > div { max-width: 520px; padding: 42px; border: 1px solid var(--bi-line); border-radius: 12px; background: var(--bi-surface); box-shadow: 0 10px 30px rgba(17,35,63,.08); }
+.route-error-state h1 { margin: 12px 0; font-size: clamp(32px, 5vw, 52px); letter-spacing: -.05em; }
+.route-error-state p { margin: 0 0 24px; color: var(--bi-muted); line-height: 1.55; }
 
 @media (max-width: 1100px) {
   .main-content { padding: 0 26px 64px !important; }

@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react'
+import { Component, type ErrorInfo, type ReactNode } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { AppShell } from './components/layout'
 import { LandingPage, SignUpPage, ConnectPage, SyncPage, MriPage } from './pages/onboarding'
@@ -14,9 +14,26 @@ function Protected({ children }: { children: ReactNode }) {
   return <AppShell>{children}</AppShell>
 }
 
+interface RouteErrorBoundaryState { hasError: boolean }
+
+class RouteErrorBoundary extends Component<{ children: ReactNode }, RouteErrorBoundaryState> {
+  state: RouteErrorBoundaryState = { hasError: false }
+
+  static getDerivedStateFromError(): RouteErrorBoundaryState { return { hasError: true } }
+
+  componentDidCatch(error: Error, info: ErrorInfo) {
+    console.error('Gilar route failed to render', error, info)
+  }
+
+  render() {
+    if (!this.state.hasError) return this.props.children
+    return <main className="route-error-state"><div><span className="eyebrow">Gilar workspace</span><h1>We couldn’t load this view.</h1><p>Your local synthetic data is safe. Return to Today to continue reviewing the workspace.</p><a className="button button-primary" href="#/app/home">Return to Today</a></div></main>
+  }
+}
+
 export default function App() {
   return (
-    <Routes>
+    <RouteErrorBoundary><Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/signup" element={<SignUpPage />} />
       <Route path="/onboarding/connect" element={<ConnectPage />} />
@@ -41,6 +58,6 @@ export default function App() {
       <Route path="/app/notifications" element={<Protected><NotificationsPage /></Protected>} />
       <Route path="/app/data-explorer" element={!dataExplorerEnabled ? <Navigate to="/app/home" replace /> : <Protected><DataExplorerPage /></Protected>} />
       <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    </Routes></RouteErrorBoundary>
   )
 }

@@ -42,3 +42,10 @@ test('static review build serves deep links and remains usable on mobile', async
   await expect(page.getByRole('heading', { name: 'Automations' })).toBeVisible()
   await expect(page.locator('body')).toBeVisible()
 })
+
+test('static review MRI completion opens Today instead of a blank route', async ({ page }) => {
+  await page.goto(reviewPath('/onboarding/mri'))
+  await page.getByRole('button', { name: 'See what needs attention' }).click()
+  await expect(page).toHaveURL(/#\/app\/home$/)
+  await expect(page.getByRole('heading', { name: 'Here’s what needs your attention.' })).toBeVisible()
+})

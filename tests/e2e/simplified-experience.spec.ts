@@ -30,3 +30,10 @@ test('Today remains usable on a narrow mobile viewport', async ({ page }) => {
   const width = await page.evaluate(() => ({ viewport: window.innerWidth, document: document.documentElement.scrollWidth }))
   expect(width.document).toBeLessThanOrEqual(width.viewport + 1)
 })
+
+test('Business MRI completion opens Today instead of a blank route', async ({ page }) => {
+  await page.goto('/onboarding/mri')
+  await page.getByRole('button', { name: 'See what needs attention' }).click()
+  await expect(page).toHaveURL(/\/app\/home$/)
+  await expect(page.getByRole('heading', { name: 'Here’s what needs your attention.' })).toBeVisible()
+})
