@@ -1996,3 +1996,26 @@ button, input, select { font: inherit; }
 .chart-tooltip:after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 8px; height: 8px; background: var(--bi-ink); transform: translateX(-50%) rotate(45deg); }
 .chart-tooltip strong { position: relative; z-index: 1; font-size: 12px; }
 .chart-tooltip span { position: relative; z-index: 1; color: #c6d4ea; font-size: 10px; }
+
+/* Revenue context: make the trend feel like an analysis surface, not a placeholder line. */
+.chart-stat-strip { position: absolute; z-index: 2; top: -31px; left: 0; display: flex; align-items: baseline; gap: 9px; }
+.chart-stat-current { color: var(--bi-ink); font-size: 19px; font-weight: 700; letter-spacing: -.04em; }
+.chart-stat-delta { padding: 4px 7px; border-radius: 999px; font-size: 10px; font-weight: 700; }
+.chart-stat-delta.positive { color: #14845b; background: #e7f8ef; }
+.chart-stat-delta.negative { color: #c74e54; background: #fff0f0; }
+.chart-stat-copy { color: var(--bi-muted); font-size: 10px; }
+.chart-grid-lines line { stroke: #dce7f3; stroke-dasharray: 1.5 3; stroke-width: .6; vector-effect: non-scaling-stroke; }
+.time-series-chart .chart-line { stroke-width: 2.7; filter: drop-shadow(0 3px 3px rgba(43,112,221,.18)); }
+.time-series-chart .chart-area { opacity: 1; }
+.chart-points circle { stroke-width: 1.8; }
+.chart-points circle.is-active { fill: #fff; stroke: var(--bi-ink); stroke-width: 2.2; }
+.chart-points circle.is-active::after { content: ''; }
+.chart-active-guide { stroke: rgba(43,112,221,.42); stroke-width: .8; }
+.chart-tooltip { min-width: 88px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.18); border-radius: 7px; box-shadow: 0 7px 18px rgba(16,39,70,.18); }
+.chart-tooltip strong { font-size: 13px; }
+.chart-tooltip span { font-size: 10px; }
+
+@media (max-width: 680px) {
+  .chart-stat-strip { top: -29px; }
+  .chart-stat-copy { display: none; }
+}
