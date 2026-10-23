@@ -1277,3 +1277,138 @@ body { background: #eef2f6; }
   .members-panel { order: -1; }
   .explorer-filters .search-box { flex-basis: auto; min-width: 0; }
 }
+
+/* Landscape system ----------------------------------------------------------
+   The review build uses the supplied terrain studies as a visual language:
+   Today is the landscape, Fixes is the pathway, Why/The Fix is the journey,
+   Business Health is the terrain map, and Results is the progress view. */
+:root {
+  --sunrise: #ff8a64;
+  --sand: #fdf6ee;
+  --sage: #22c55e;
+  --sky: #3b82f6;
+  --slate: #0f172a;
+  --mist: #f1f5f9;
+}
+
+body { background: var(--sand); color: var(--slate); }
+.main-shell, .main-content { background-color: #f8f5ef; }
+.main-content { background-image: linear-gradient(rgba(15,23,42,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.035) 1px, transparent 1px); background-size: 64px 64px; }
+.page-header { margin-bottom: 28px; }
+.page-header h1 { letter-spacing: -.065em; }
+.panel, .today-page .panel, .fixes-page .panel, .results-page .panel { border-color: rgba(15,23,42,.12); border-radius: 10px; }
+.button-primary { background: var(--slate); border-color: var(--slate); }
+.button-primary:hover { background: #26334a; border-color: #26334a; }
+.button-secondary { background: rgba(255,255,255,.72); border-color: rgba(15,23,42,.22); }
+
+/* A large editorial header gives each surface a sense of place. */
+.today-page > .page-header,
+.fixes-page > .page-header,
+.results-page > .page-header {
+  position: relative;
+  min-height: 306px;
+  margin: -4px -4px 32px;
+  padding: 47px 52px;
+  overflow: hidden;
+  border: 0;
+  border-radius: 0 0 14px 14px;
+  color: #fff;
+  background-position: center;
+  background-size: cover;
+  isolation: isolate;
+}
+.today-page > .page-header:before,
+.fixes-page > .page-header:before,
+.results-page > .page-header:before { content: ''; position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, rgba(4,14,27,.94) 0%, rgba(4,14,27,.72) 48%, rgba(4,14,27,.18) 100%); }
+.today-page > .page-header { background-image: var(--landscape-today); }
+.fixes-page > .page-header { background-image: var(--landscape-fixes); }
+.results-page > .page-header { background-image: var(--landscape-results); }
+.today-page > .page-header .eyebrow, .fixes-page > .page-header .eyebrow, .results-page > .page-header .eyebrow,
+.today-page > .page-header p, .fixes-page > .page-header p, .results-page > .page-header p { color: rgba(255,255,255,.78); }
+.today-page > .page-header h1, .fixes-page > .page-header h1, .results-page > .page-header h1 { max-width: 700px; color: #fff; font-size: clamp(48px, 5vw, 76px); }
+.today-page > .page-header p, .fixes-page > .page-header p, .results-page > .page-header p { max-width: 570px; font-size: 18px; }
+.today-page > .page-header .page-actions, .fixes-page > .page-header .page-actions, .results-page > .page-header .page-actions { align-self: flex-end; }
+.today-page > .page-header .button, .fixes-page > .page-header .button { color: var(--slate); border-color: #fff; background: #fff; }
+.results-page > .page-header .status-pill { color: #fff; border-color: rgba(255,255,255,.35); background: rgba(255,255,255,.12); }
+
+/* Today: the image opens into a clean instrument and decision boards. */
+.today-pulse { border: 1px solid rgba(15,23,42,.15); border-radius: 8px; background: #fff; }
+.today-pulse-intro { color: var(--slate); }
+.today-pulse > div:first-child strong { color: var(--slate); }
+.today-pulse > div:first-child p, .today-pulse-label { color: #526176; }
+.today-pulse-stats { border: 1px solid rgba(15,23,42,.1); background: #fff; }
+.today-pulse-stats > div { border-color: rgba(15,23,42,.12); }
+.today-pulse-stats strong { color: var(--slate); }
+.today-pulse-stats .pulse-signal-top span:first-child, .today-pulse-stats small { color: #64748b; }
+.pulse-trend.up { color: #159463; }.pulse-trend.down { color: #d94e4e; }.pulse-trend.flat { color: #64748b; }
+.today-sparkline { color: var(--sky); }
+.today-pulse .core-today .core-network { opacity: .9; }
+.today-pulse .core-today .core-node { border-color: rgba(37,99,255,.22); }
+.today-pulse .core-today .core-legend { display: none; }
+.attention-issue { border-color: rgba(15,23,42,.14); background: var(--sand); }
+.attention-issue.high { border-top-color: #ef4444; }.attention-issue.medium { border-top-color: #f59e0b; }
+.attention-issue h2 { letter-spacing: -.055em; }
+.attention-issue-footer strong { color: var(--slate); }
+.today-list-panel { border-top-color: #7f8b9a !important; }
+
+/* Fixes: the first recommendation is a photographic pathway into action. */
+.fixes-intro { background: rgba(255,255,255,.52); }
+.fixes-intro h2 { letter-spacing: -.06em; }
+.fix-row.featured { border: 0; background-image: linear-gradient(145deg, rgba(4,14,27,.86), rgba(4,14,27,.52)), var(--landscape-fixes); background-position: center; background-size: cover; }
+.fix-row.featured .fix-copy h2, .fix-row.featured .fix-copy p, .fix-row.featured .fix-copy small, .fix-row.featured .fix-value span { color: #fff; }
+.fix-row.featured .fix-copy p, .fix-row.featured .fix-copy small { color: rgba(255,255,255,.74); }
+.fix-row.featured .fix-number, .fix-row.featured .fix-row-label, .fix-row.featured .fix-confidence { color: #e5efff; }
+.fix-row.featured .fix-visual-meta { color: rgba(255,255,255,.8); }
+.fix-row.featured .fix-value strong { color: #fff; }
+.fix-row.featured > .button { color: var(--slate); border-color: #fff; background: #fff; }
+.fix-row:not(.featured) { background: rgba(255,255,255,.78); }
+.fix-row:not(.featured):last-child { background-image: linear-gradient(90deg, rgba(255,255,255,.88), rgba(255,255,255,.58)), var(--landscape-pathway); background-position: center; background-size: cover; }
+.fixes-reassurance { background: rgba(255,255,255,.55); }
+
+/* The causal journey and recommendation share the pathway visual language. */
+.pilot-causal-path { background-image: linear-gradient(125deg, rgba(4,14,27,.93), rgba(4,14,27,.57)), var(--landscape-pathway); background-position: center; background-size: cover; }
+.pilot-recommendation-main { background-image: linear-gradient(145deg, rgba(255,255,255,.94), rgba(255,255,255,.77)), var(--landscape-pathway); background-position: center; background-size: cover; }
+.pilot-recommendation-main .solution-heading h2 { letter-spacing: -.06em; }
+.pilot-recommendation-main .pilot-evidence-panel { background: rgba(255,255,255,.84); }
+.pilot-recommendation-main .fix-console-metrics { padding: 22px 24px; border: 1px solid rgba(15,23,42,.14); border-radius: 8px; background-image: linear-gradient(90deg, rgba(255,255,255,.84), rgba(255,255,255,.6)), var(--landscape-pathway); background-position: center; background-size: cover; }
+.pilot-recommendation-main .fix-process { padding: 18px 20px; border: 1px solid rgba(15,23,42,.12); border-radius: 8px; background-image: linear-gradient(90deg, rgba(255,255,255,.84), rgba(255,255,255,.62)), var(--landscape-pathway); background-position: center; background-size: cover; }
+
+/* Health: a terrain map, with the Intelligence Core still in command. */
+.health-command-surface { background-image: linear-gradient(122deg, rgba(4,14,27,.96), rgba(7,35,65,.68)), var(--landscape-health); background-position: center; background-size: cover; }
+.health-command-surface .intelligence-core { filter: saturate(.86); }
+.health-methodology { background: rgba(255,255,255,.66); }
+
+/* Results: progress view, with the measured transformation over the falls. */
+.before-after-section { background-image: linear-gradient(120deg, rgba(4,14,27,.93), rgba(7,35,65,.62)), var(--landscape-results); background-position: center; background-size: cover; }
+.results-hero { background-image: linear-gradient(120deg, rgba(4,14,27,.92), rgba(7,35,65,.62)), var(--landscape-results); background-position: center; background-size: cover; color: #fff; }
+.results-hero h2, .results-hero p { color: #fff; }
+
+/* Automations and reports keep the image as a quiet operational watermark. */
+.pilot-agent-grid { background-image: linear-gradient(90deg, rgba(248,245,239,.95), rgba(248,245,239,.78)), var(--landscape-pathway); background-position: center; background-size: cover; }
+.pilot-agent-card { background: rgba(255,255,255,.48); }
+.reports-overview { background-image: linear-gradient(105deg, rgba(4,14,27,.9), rgba(4,14,27,.45)), var(--landscape-results); background-position: center; background-size: cover; color: #fff; }
+.reports-overview h2, .reports-overview p, .reports-overview .eyebrow { color: #fff; }
+
+/* Landing and onboarding are the warm, welcoming edge of the operating system. */
+.landing { background-color: #07111f; background-image: linear-gradient(90deg, rgba(4,14,27,.82), rgba(4,14,27,.2)), var(--landscape-today); background-position: center; background-size: cover; }
+.landing:before { opacity: .38; }
+.landing-hero { position: relative; }
+.landing-hero:before { content: ''; position: absolute; z-index: 0; inset: 0; background: linear-gradient(90deg, rgba(4,14,27,.2), transparent 62%); pointer-events: none; }
+.landing-nav, .hero-copy, .hero-visual, .landing-bottom { position: relative; z-index: 1; }
+.landing-feature-strip { position: relative; z-index: 1; background: rgba(4,14,27,.68); }
+.onboarding-aside { background-image: linear-gradient(160deg, rgba(4,14,27,.88), rgba(4,14,27,.34)), var(--landscape-today); background-position: center; background-size: cover; }
+
+@media (max-width: 900px) {
+  .today-page > .page-header, .fixes-page > .page-header, .results-page > .page-header { min-height: 278px; padding: 34px 30px; margin-left: -2px; margin-right: -2px; }
+  .today-page > .page-header h1, .fixes-page > .page-header h1, .results-page > .page-header h1 { font-size: clamp(43px, 8vw, 62px); }
+  .today-page > .page-header .page-actions, .fixes-page > .page-header .page-actions, .results-page > .page-header .page-actions { align-self: flex-start; }
+}
+
+@media (max-width: 680px) {
+  .today-page > .page-header, .fixes-page > .page-header, .results-page > .page-header { min-height: 300px; margin: -2px -1px 25px; padding: 30px 21px; }
+  .today-page > .page-header h1, .fixes-page > .page-header h1, .results-page > .page-header h1 { font-size: 42px; }
+  .today-page > .page-header p, .fixes-page > .page-header p, .results-page > .page-header p { font-size: 15px; }
+  .fix-row.featured { background-position: 58% center; }
+  .pilot-causal-path, .before-after-section, .health-command-surface { background-position: 60% center; }
+  .landing { background-position: 58% center; }
+}
