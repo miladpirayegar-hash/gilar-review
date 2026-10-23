@@ -24,8 +24,8 @@ export function TimeSeriesChart({ metric, height = 180 }: { metric?: MetricViewD
   const activeLabel = activeSeriesPoint?.label ?? new Date(activeSeriesPoint?.timestamp ?? '').toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
   const chartId = `chart-${metric.key.replace(/[^a-z0-9]+/gi, '-').toLowerCase()}`
   const firstValue = metric.series[0]?.value ?? activePoint.value
-  const latestValue = metric.currentValue ?? metric.series[metric.series.length - 1]?.value ?? activePoint.value
-  const deltaPercent = metric.percentageChange ?? (firstValue ? ((latestValue - firstValue) / Math.abs(firstValue)) * 100 : 0)
+  const latestValue = metric.series[metric.series.length - 1]?.value ?? metric.currentValue ?? activePoint.value
+  const deltaPercent = firstValue ? ((latestValue - firstValue) / Math.abs(firstValue)) * 100 : 0
   const trendLabel = deltaPercent > 0 ? 'Up from the start of the period' : deltaPercent < 0 ? 'Down from the start of the period' : 'Holding steady across the period'
   const selectPoint = (index: number) => setActiveIndex(Math.max(0, Math.min(points.length - 1, index)))
   const movePoint = (index: number, direction: number) => (event: React.KeyboardEvent<SVGCircleElement>) => {
