@@ -1386,6 +1386,51 @@ body { background: var(--sand); color: var(--slate); }
 /* Automations and reports keep the image as a quiet operational watermark. */
 .pilot-agent-grid { background-image: linear-gradient(90deg, rgba(248,245,239,.95), rgba(248,245,239,.78)), var(--landscape-pathway); background-position: center; background-size: cover; }
 .pilot-agent-card { background: rgba(255,255,255,.48); }
+
+/* Agent cards: compact operational tiles with a clear visual hierarchy. */
+.pilot-agent-grid { gap: 14px; border-top: 0; }
+.pilot-agent-card { position: relative; grid-template-columns: 56px minmax(270px, 1.35fr) minmax(285px, .95fr) 150px; gap: 20px; min-height: 0; padding: 20px; overflow: hidden; border: 1px solid #d9e4f1; border-left: 4px solid #3477e5; border-radius: 12px; background: linear-gradient(112deg, #fff 0%, #f7faff 100%); box-shadow: none; }
+.pilot-agent-card::after { position: absolute; top: 0; right: 0; width: 180px; height: 100%; background: linear-gradient(90deg, transparent, rgba(52,119,229,.045)); content: ''; pointer-events: none; }
+.pilot-agent-card:nth-child(2) { border-left-color: #25a878; }
+.pilot-agent-card:nth-child(3) { border-left-color: #d99527; }
+.pilot-agent-card:nth-child(4) { border-left-color: #8769df; }
+.pilot-agent-card:hover { border-color: #aac5ef; border-left-color: #3477e5; background: linear-gradient(112deg, #fff 0%, #f2f7ff 100%); }
+.pilot-agent-card-top { position: relative; z-index: 1; display: contents; }
+.pilot-agent-card-top .agent-icon { grid-column: 1; grid-row: 1; width: 48px; height: 48px; align-self: start; border-radius: 12px; background: #eaf2ff !important; border-color: #c9dcff; }
+.pilot-agent-card-top .status-pill { grid-column: 1 / span 2; grid-row: 2; justify-self: start; align-self: end; margin: 8px 0 0; padding: 4px 7px; font-size: 10px; }
+.pilot-agent-card h2 { position: relative; z-index: 1; grid-column: 2; grid-row: 1; align-self: end; margin: 0 0 4px; color: #102746; font-size: 22px; line-height: 1.08; }
+.pilot-agent-card > p { position: relative; z-index: 1; grid-column: 2; grid-row: 2; align-self: start; min-height: 0; margin: 0; color: #667b95; font-size: 13px; line-height: 1.45; }
+.pilot-agent-stats { position: relative; z-index: 1; grid-column: 3; grid-row: 1 / span 2; align-self: stretch; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 9px; margin: 0; }
+.pilot-agent-stats span { justify-content: center; min-height: 48px; padding: 8px 10px; border: 1px solid #e0e8f2; border-radius: 8px; background: rgba(255,255,255,.82); }
+.pilot-agent-stats span:nth-child(1) { border-top: 2px solid #3477e5; }
+.pilot-agent-stats span:nth-child(2) { border-top: 2px solid #25a878; }
+.pilot-agent-stats span:nth-child(3) { border-top: 2px solid #d99527; }
+.pilot-agent-stats span:nth-child(4) { border-top: 2px solid #8769df; }
+.pilot-agent-stats strong { color: #215cc4; font-size: 20px; line-height: 1; }
+.pilot-agent-stats small { margin-top: 4px; color: #8293a8; font-size: 9px; line-height: 1.15; }
+.pilot-agent-card .agent-card-link { position: relative; z-index: 1; grid-column: 4; grid-row: 1 / span 2; align-self: center; justify-content: center; min-height: 36px; padding: 0 12px; border: 1px solid #b9d0f6; border-radius: 8px; background: #fff; font-size: 12px; }
+.pilot-agent-card .agent-card-link:hover { color: #fff; background: #1554c9; border-color: #1554c9; }
+
+@media (max-width: 1200px) {
+  .pilot-agent-card { grid-template-columns: 54px minmax(220px, 1fr) minmax(245px, .95fr) 132px; gap: 16px; }
+}
+
+@media (max-width: 900px) {
+  .pilot-agent-card { grid-template-columns: 54px minmax(0, 1fr) auto; gap: 14px; padding: 18px; }
+  .pilot-agent-stats { grid-column: 2; grid-row: 3; }
+  .pilot-agent-card .agent-card-link { grid-column: 3; grid-row: 1 / span 3; }
+}
+
+@media (max-width: 680px) {
+  .pilot-agent-card { grid-template-columns: 45px minmax(0, 1fr); gap: 12px; padding: 17px; }
+  .pilot-agent-card-top .agent-icon { width: 42px; height: 42px; }
+  .pilot-agent-card-top .status-pill { grid-column: 1; grid-row: 2; margin-top: 7px; }
+  .pilot-agent-card h2, .pilot-agent-card > p, .pilot-agent-stats { grid-column: 2; }
+  .pilot-agent-card h2 { font-size: 19px; }
+  .pilot-agent-card > p { font-size: 12px; }
+  .pilot-agent-stats { grid-row: 3; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pilot-agent-card .agent-card-link { grid-column: 2; grid-row: 4; justify-self: start; margin-top: 2px; }
+}
 .reports-overview { background-image: linear-gradient(105deg, rgba(4,14,27,.9), rgba(4,14,27,.45)), var(--landscape-results); background-position: center; background-size: cover; color: #fff; }
 .reports-overview h2, .reports-overview p, .reports-overview .eyebrow { color: #fff; }
 
