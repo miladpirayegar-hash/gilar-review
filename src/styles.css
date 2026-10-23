@@ -1890,3 +1890,18 @@ button, input, select { font: inherit; }
 .landing .bottom-scroll { color: var(--bi-muted) !important; }
 .landing .bottom-scroll span { border-color: #8292a6 !important; }
 .landing-feature-strip small { color: var(--bi-muted) !important; }
+
+/* Today attention cards: use a flat evidence layout instead of decorative card chrome. */
+.today-page .attention-issue,
+.today-page .attention-issue.high,
+.today-page .attention-issue.medium { display: flex !important; min-height: 214px !important; flex-direction: column !important; padding: 18px 19px !important; border: 1px solid var(--bi-line) !important; border-left: 3px solid var(--bi-blue) !important; border-radius: 8px !important; background: #fff !important; box-shadow: none !important; }
+.today-page .attention-issue.high { border-left-color: var(--bi-red) !important; }
+.today-page .attention-issue.medium { border-left-color: var(--bi-amber) !important; }
+.today-page .attention-issue::after { display: none !important; }
+.today-page .attention-issue h2 { margin: 15px 0 0 !important; font-size: 20px !important; line-height: 1.16 !important; }
+.today-page .attention-issue p { min-height: 0 !important; margin: 8px 0 0 !important; color: var(--bi-muted) !important; font-size: 13px !important; line-height: 1.4 !important; }
+.today-page .attention-issue-metric { margin-top: auto !important; padding-top: 14px; border-top: 1px solid #e7edf3; align-items: flex-start !important; }
+.today-page .attention-issue-metric strong { font-size: 21px !important; letter-spacing: -.035em !important; }
+.today-page .attention-issue-metric span { margin-top: 3px; font-size: 11px !important; letter-spacing: .08em; }
+.today-page .attention-issue-footer { position: static !important; margin-top: 13px; padding-top: 11px; border-top: 1px solid #e7edf3; }
+.today-page .attention-issue-footer strong { font-size: 12px !important; }
