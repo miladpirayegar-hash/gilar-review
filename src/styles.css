@@ -1876,3 +1876,17 @@ button, input, select { font: inherit; }
   .fix-row > .button { justify-self: start; margin-top: 11px; }
   .reports-overview { align-items: flex-start !important; flex-direction: column !important; }
 }
+
+/* Landing contrast: the light review surface needs dark, readable controls. */
+.landing .hero-copy h1 em { color: var(--bi-blue) !important; }
+.landing .video-button { color: var(--bi-ink) !important; background: #fff !important; border-color: #aebdce !important; }
+.landing .video-button:hover { color: var(--bi-ink) !important; background: #f1f5fa !important; border-color: var(--bi-blue) !important; }
+.landing .play-button { color: var(--bi-blue) !important; border-color: #72849b !important; }
+.landing .video-time { color: var(--bi-muted) !important; }
+.landing .hero-trust { color: var(--bi-muted) !important; }
+.landing .bottom-proof { color: var(--bi-muted) !important; }
+.landing .proof-number { color: var(--bi-ink) !important; }
+.landing .bottom-proof:after { color: var(--bi-muted) !important; }
+.landing .bottom-scroll { color: var(--bi-muted) !important; }
+.landing .bottom-scroll span { border-color: #8292a6 !important; }
+.landing-feature-strip small { color: var(--bi-muted) !important; }
