@@ -46,15 +46,51 @@ export interface SyntheticOverview {
 }
 
 const reviewMode = import.meta.env.VITE_GILAR_MODE === 'review'
-const reviewStorageKey = 'gilar-review-state-v1'
+const reviewStorageKey = 'gilar-review-state-v2'
+const legacyReviewStorageKeys = ['gilar-review-state-v1']
 const reviewClone = <T,>(value: T): T => structuredClone(value)
 const reviewInitialState = reviewMode ? reviewClone(reviewFixture as unknown as SyntheticOverview) : undefined
+
+function normalizeReviewState(value: SyntheticOverview) {
+  if (!reviewInitialState) return value
+  return {
+    ...reviewClone(reviewInitialState),
+    ...value,
+    company: value.company ?? reviewInitialState.company,
+    sources: value.sources ?? reviewInitialState.sources,
+    records: value.records ?? reviewInitialState.records,
+    metrics: value.metrics ?? reviewInitialState.metrics,
+    observations: value.observations ?? reviewInitialState.observations,
+    signals: value.signals ?? reviewInitialState.signals,
+    evidence: value.evidence ?? reviewInitialState.evidence,
+    issues: value.issues ?? reviewInitialState.issues,
+    rootCauses: value.rootCauses ?? reviewInitialState.rootCauses,
+    opportunities: value.opportunities ?? reviewInitialState.opportunities,
+    recommendations: value.recommendations ?? reviewInitialState.recommendations,
+    health: value.health ?? reviewInitialState.health,
+    dashboard: value.dashboard ?? reviewInitialState.dashboard,
+    brief: value.brief ?? reviewInitialState.brief,
+    agents: value.agents ?? reviewInitialState.agents,
+    roiRecords: value.roiRecords ?? reviewInitialState.roiRecords,
+    simulation: value.simulation ?? reviewInitialState.simulation,
+    explorer: value.explorer ?? reviewInitialState.explorer,
+    scenario: value.scenario ?? reviewInitialState.scenario,
+    briefItems: value.briefItems ?? reviewInitialState.briefItems,
+    conflicts: value.conflicts ?? reviewInitialState.conflicts,
+    edgeStates: value.edgeStates ?? reviewInitialState.edgeStates,
+    metricRegistry: value.metricRegistry ?? reviewInitialState.metricRegistry,
+    businessProfile: value.businessProfile ?? reviewInitialState.businessProfile,
+    advisoryContext: value.advisoryContext ?? reviewInitialState.advisoryContext,
+    advisory: value.advisory ?? reviewInitialState.advisory,
+  }
+}
 
 function loadReviewState() {
   if (!reviewInitialState || typeof window === 'undefined') return reviewInitialState
   try {
     const stored = window.localStorage.getItem(reviewStorageKey)
-    return stored ? reviewClone(JSON.parse(stored) as SyntheticOverview) : reviewClone(reviewInitialState)
+    legacyReviewStorageKeys.forEach((key) => window.localStorage.removeItem(key))
+    return stored ? normalizeReviewState(reviewClone(JSON.parse(stored) as SyntheticOverview)) : reviewClone(reviewInitialState)
   } catch {
     return reviewClone(reviewInitialState)
   }
@@ -175,7 +211,10 @@ function reviewAdvance(days: number) {
 
 function reviewReset() {
   reviewState = reviewInitialState ? reviewClone(reviewInitialState) : undefined
-  if (typeof window !== 'undefined') window.localStorage.removeItem(reviewStorageKey)
+  if (typeof window !== 'undefined') {
+    window.localStorage.removeItem(reviewStorageKey)
+    legacyReviewStorageKeys.forEach((key) => window.localStorage.removeItem(key))
+  }
   return reviewOverview()
 }
 

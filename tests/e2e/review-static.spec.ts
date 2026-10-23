@@ -5,7 +5,10 @@ const reviewPath = (path: string) => `${reviewBasePath}#${path}`
 
 test.beforeEach(async ({ page }) => {
   await page.goto(reviewBasePath)
-  await page.evaluate(() => window.localStorage.removeItem('gilar-review-state-v1'))
+  await page.evaluate(() => {
+    window.localStorage.removeItem('gilar-review-state-v1')
+    window.localStorage.removeItem('gilar-review-state-v2')
+  })
 })
 
 test('static review build completes the Northstar synthetic journey', async ({ page }) => {
