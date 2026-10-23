@@ -1388,7 +1388,7 @@ body { background: var(--sand); color: var(--slate); }
 .pilot-agent-card { background: rgba(255,255,255,.48); }
 
 /* Agent cards: compact operational tiles with a clear visual hierarchy. */
-.pilot-agent-grid { gap: 14px; border-top: 0; }
+.pilot-agent-grid { gap: 14px; border-top: 0; background-image: none !important; }
 .pilot-agent-card { position: relative; grid-template-columns: 56px minmax(270px, 1.35fr) minmax(285px, .95fr) 150px; gap: 20px; min-height: 0; padding: 20px; overflow: hidden; border: 1px solid #d9e4f1; border-left: 4px solid #3477e5; border-radius: 12px; background: linear-gradient(112deg, #fff 0%, #f7faff 100%); box-shadow: none; }
 .pilot-agent-card::after { position: absolute; top: 0; right: 0; width: 180px; height: 100%; background: linear-gradient(90deg, transparent, rgba(52,119,229,.045)); content: ''; pointer-events: none; }
 .pilot-agent-card:nth-child(2) { border-left-color: #25a878; }
@@ -1400,7 +1400,7 @@ body { background: var(--sand); color: var(--slate); }
 .pilot-agent-card-top .status-pill { grid-column: 1 / span 2; grid-row: 2; justify-self: start; align-self: end; margin: 8px 0 0; padding: 4px 7px; font-size: 10px; }
 .pilot-agent-card h2 { position: relative; z-index: 1; grid-column: 2; grid-row: 1; align-self: end; margin: 0 0 4px; color: #102746; font-size: 22px; line-height: 1.08; }
 .pilot-agent-card > p { position: relative; z-index: 1; grid-column: 2; grid-row: 2; align-self: start; min-height: 0; margin: 0; color: #667b95; font-size: 13px; line-height: 1.45; }
-.pilot-agent-stats { position: relative; z-index: 1; grid-column: 3; grid-row: 1 / span 2; align-self: stretch; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px 9px; margin: 0; }
+.pilot-agent-stats { position: relative; z-index: 1; grid-column: 3; grid-row: 1 / span 2; align-self: stretch; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7px 9px; margin: 0; }
 .pilot-agent-stats span { justify-content: center; min-height: 48px; padding: 8px 10px; border: 1px solid #e0e8f2; border-radius: 8px; background: rgba(255,255,255,.82); }
 .pilot-agent-stats span:nth-child(1) { border-top: 2px solid #3477e5; }
 .pilot-agent-stats span:nth-child(2) { border-top: 2px solid #25a878; }
@@ -1413,6 +1413,7 @@ body { background: var(--sand); color: var(--slate); }
 
 @media (max-width: 1200px) {
   .pilot-agent-card { grid-template-columns: 54px minmax(220px, 1fr) minmax(245px, .95fr) 132px; gap: 16px; }
+  .pilot-agent-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 900px) {
