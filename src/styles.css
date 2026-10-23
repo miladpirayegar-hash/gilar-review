@@ -1415,11 +1415,11 @@ body { background: var(--sand); color: var(--slate); }
 
 /* Reference shell: warm canvas, compact light rail, and a command header. */
 .app-shell { background: #f8f5ef; }
-.sidebar { width: 142px; padding: 17px 10px 14px; color: #15243c; background: #fbfaf7; border-right: 1px solid #e5e1d9; box-shadow: none; }
-.main-shell { margin-left: 142px; background: #f8f5ef; }
-.main-shell-expanded { margin-left: 142px; }
-.sidebar-top { justify-content: flex-start; padding: 0 11px 29px; }
-.sidebar .logo { margin: 0; color: #12223a; font-size: 22px; }
+.sidebar { width: 136px; padding: 13px 9px 14px; color: #15243c; background: #fbfaf7; border-right: 1px solid #e5e1d9; box-shadow: none; }
+.main-shell { margin-left: 136px; background: #f8f5ef; }
+.main-shell-expanded { margin-left: 136px; }
+.sidebar-top { justify-content: flex-start; padding: 0 10px 10px; }
+.sidebar .logo { margin: 0; color: #12223a; font-size: 25px; }
 .sidebar .logo-mark { display: none; }
 .sidebar-toggle, .workspace-switch { display: none; }
 .sidebar > .nav-label { display: none; }

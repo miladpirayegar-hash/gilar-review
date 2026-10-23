@@ -35,7 +35,7 @@ const secondaryGroups = [
   ] },
 ]
 
-function SyntheticDemoBanner() {
+export function SyntheticDemoBanner() {
   const [simulation, setSimulation] = useState<SyntheticSimulationSnapshot>()
   const [busy, setBusy] = useState(false)
   useEffect(() => {
@@ -68,7 +68,7 @@ export function Sidebar({ collapsed, onToggle, onNavigate }: { collapsed: boolea
 
 export function Header({ onMenu }: { onMenu: () => void }) {
   const navigate = useNavigate()
-  return <header className="topbar"><div className="mobile-header"><IconButton label="Open navigation" onClick={onMenu}><Menu size={20} /></IconButton><Logo /></div><button className="topbar-workspace"><span>Northstar Distribution</span><ChevronDown size={13} /></button><label className="topbar-search"><Search size={15} /><input aria-label="Ask Gilar anything" placeholder="Ask Gilar anything..." /><span><Command size={13} /></span></label><div className="topbar-actions"><SyntheticDemoBanner /><button className="sync-status"><span className="live-dot" /> Synthetic data synced</button><IconButton label="Open notifications" onClick={() => navigate('/app/notifications')}><Bell size={18} /><span className="notification-dot" /><span className="notification-count">1</span></IconButton><button className="top-avatar" onClick={() => navigate('/app/settings')}>MP</button></div></header>
+  return <header className="topbar"><div className="mobile-header"><IconButton label="Open navigation" onClick={onMenu}><Menu size={20} /></IconButton><Logo /></div><button className="topbar-workspace"><span>Northstar Distribution</span><ChevronDown size={13} /></button><label className="topbar-search"><Search size={15} /><input aria-label="Ask Gilar anything" placeholder="Ask Gilar anything..." /><span><Command size={13} /></span></label><div className="topbar-actions"><button className="sync-status"><span className="live-dot" /> Synthetic data synced</button><IconButton label="Open notifications" onClick={() => navigate('/app/notifications')}><Bell size={18} /><span className="notification-dot" /><span className="notification-count">1</span></IconButton><button className="top-avatar" onClick={() => navigate('/app/settings')}>MP</button></div></header>
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {
