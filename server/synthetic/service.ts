@@ -18,7 +18,10 @@ import type {
   NormalizedBusinessRecord,
 } from '../../shared/domain/models'
 import type { BusinessHealthScoreDTO, DashboardDTO } from '../../shared/contracts/dto'
+import type { AdvisoryContextDTO, AdvisoryOutputDTO, BusinessProfileDTO, MetricRegistryDTO, MetricSeriesPoint } from '../../shared/contracts/metrics'
 import { calculateHealthScore, calculateROI, detectSignals, scoreOpportunity } from '../services/bi'
+import { buildMetricRegistry } from '../services/metricRegistry'
+import { createAdvisoryContext, createAdvisoryOutput } from '../advisory/service'
 import { normalizeSyntheticRecords } from '../normalization/synthetic'
 import { createNorthstarRawDataset, northstarCompany, recordsByProvider, syntheticProviders } from './fixtures'
 import type { SyntheticRawRecord } from '../normalization/synthetic'
@@ -28,6 +31,39 @@ const CURRENT_START = '2026-08-01T00:00:00.000Z'
 const AS_OF = northstarCompany.asOf
 const baseRecord = (scope: TenantScope, id: string, timestamp = AS_OF) => ({ id, ...scope, createdAt: timestamp, updatedAt: timestamp })
 const percent = (value: number) => `${Math.round(value * 100)}%`
+const money = (value: number | undefined) => value === undefined ? 'Not enough data yet' : `$${Math.round(value).toLocaleString()}`
+const change = (current: number | undefined, previous: number | undefined) => current === undefined || previous === undefined || previous === 0 ? undefined : `${current >= previous ? '+' : ''}${((current - previous) / Math.abs(previous) * 100).toFixed(1)}%`
+
+function recordField(record: NormalizedBusinessRecord, fields: string[]): unknown {
+  const values = record as unknown as Record<string, unknown>
+  return fields.map((field) => values[field]).find((value) => value !== undefined)
+}
+
+function recordDate(record: NormalizedBusinessRecord, fields: string[]): string | undefined {
+  const value = recordField(record, fields)
+  return typeof value === 'string' ? value : undefined
+}
+
+function recordNumber(record: NormalizedBusinessRecord, fields: string[]): number | undefined {
+  const value = recordField(record, fields)
+  return typeof value === 'number' && Number.isFinite(value) ? value : undefined
+}
+
+function inRange(value: string | undefined, start: string, end: string): boolean { return Boolean(value && value >= start && value <= end) }
+
+function rangeSum(records: NormalizedBusinessRecord[], start: string, end: string, dateFields: string[], valueFields: string[], predicate?: (record: NormalizedBusinessRecord) => boolean): number {
+  return records.filter((record) => (!predicate || predicate(record)) && inRange(recordDate(record, dateFields), start, end)).reduce((sum, record) => sum + (recordNumber(record, valueFields) ?? 0), 0)
+}
+
+function monthlySeries(records: NormalizedBusinessRecord[], start: string, months: number, dateFields: string[], valueFields: string[], predicate?: (record: NormalizedBusinessRecord) => boolean): MetricSeriesPoint[] {
+  const startDate = new Date(start)
+  return Array.from({ length: months }, (_, index) => {
+    const date = new Date(Date.UTC(startDate.getUTCFullYear(), startDate.getUTCMonth() + index, 1))
+    const next = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1))
+    const value = records.filter((record) => (!predicate || predicate(record)) && inRange(recordDate(record, dateFields), date.toISOString(), next.toISOString())).reduce((sum, record) => sum + (recordNumber(record, valueFields) ?? 0), 0)
+    return { timestamp: date.toISOString(), label: date.toLocaleDateString('en-US', { month: 'short' }), value: Math.round(value * 100) / 100 }
+  })
+}
 
 export interface SyntheticSourceSummary {
   provider: string
@@ -211,6 +247,10 @@ export interface SyntheticOverview {
   briefItems: SyntheticBriefItem[]
   conflicts: SyntheticConflict[]
   edgeStates: SyntheticEdgeState[]
+  metricRegistry: MetricRegistryDTO
+  businessProfile: BusinessProfileDTO
+  advisoryContext: AdvisoryContextDTO
+  advisory: AdvisoryOutputDTO
 }
 
 interface TenantState {
@@ -368,6 +408,7 @@ export function calculateSyntheticROI(outcome: Outcome, implementationCost: numb
     costSaved: outcome.costSaved ?? 0,
     revenueGained: outcome.revenueGained ?? 0,
     annualizedImpact: outcome.annualizedImpact ?? 0,
+    implementationCost,
     confidence: outcome.confidence,
     measurementPeriodStart: outcome.measurementStart,
     measurementPeriodEnd: outcome.measurementEnd,
@@ -375,7 +416,7 @@ export function calculateSyntheticROI(outcome: Outcome, implementationCost: numb
     comparisonPeriodEnd: outcome.measurementStart,
     measurementWindowDays: Math.max(1, Math.round((new Date(outcome.measurementEnd).getTime() - new Date(outcome.measurementStart).getTime()) / 86400000)),
     formula: `(measured labor savings + estimated incremental revenue) / implementation cost = ($${Math.round(outcome.costSaved ?? 0).toLocaleString()} + $${Math.round(outcome.revenueGained ?? 0).toLocaleString()}) / $${implementationCost.toLocaleString()}`,
-    assumptions: ['Implementation cost is a directional synthetic estimate of $8,000.', 'Revenue impact is estimated and not treated as realized revenue.', 'The comparison uses the same 30-day measurement window after approval.'],
+    assumptions: [`Implementation cost is a directional synthetic estimate of $${implementationCost.toLocaleString()}.`, 'Revenue impact is estimated and not treated as realized revenue.', 'The comparison uses the same 30-day measurement window after approval.'],
     measuredComponents: [`${outcome.timeSavedHours ?? 0} hours saved`, `$${Math.round(outcome.costSaved ?? 0).toLocaleString()} labor savings`],
     estimatedComponents: [`$${Math.round(outcome.revenueGained ?? 0).toLocaleString()} incremental revenue impact`, `$${Math.round(outcome.annualizedImpact ?? 0).toLocaleString()} annualized impact`],
     sourceMetricIds: [outcome.metricId, 'metric_syn_conversion'],
@@ -435,10 +476,28 @@ export class SyntheticDemoService {
       ...observationsFor(scope, 'metric_syn_inventory', 12, 27, sourceRecord('shopify', 'InventoryRecord'), sourceRecord('shopify', 'InventoryRecord', 20)),
       ...observationsFor(scope, 'metric_syn_inactive', 31, 20, sourceRecord('hubspot', 'Deal'), sourceRecord('hubspot', 'Deal', 20)),
     ]
+    const currentEnd = AS_OF
+    const baselineEnd = '2026-07-31T23:59:59.000Z'
+    const orders = state.records.filter((record) => record.provenance.sourceEntityType === 'order')
+    const deals = state.records.filter((record) => record.provenance.sourceEntityType === 'deal')
+    const payments = state.records.filter((record) => record.provenance.sourceEntityType === 'payment')
+    const revenueCurrent = rangeSum(orders, CURRENT_START, currentEnd, ['orderedAt'], ['total'])
+    const revenueBaseline = rangeSum(orders, BASELINE_START, baselineEnd, ['orderedAt'], ['total'])
+    const pipelineCurrent = rangeSum(deals, CURRENT_START, currentEnd, ['openedAt'], ['amount'], (record) => ['qualified', 'proposal'].includes(String(recordField(record, ['stage']))))
+    const pipelineBaseline = rangeSum(deals, BASELINE_START, baselineEnd, ['openedAt'], ['amount'], (record) => ['qualified', 'proposal'].includes(String(recordField(record, ['stage']))))
+    const cashCurrent = rangeSum(payments, CURRENT_START, currentEnd, ['paidAt'], ['amount'])
+    const cashBaseline = rangeSum(payments, BASELINE_START, baselineEnd, ['paidAt'], ['amount'])
+    const derived = [
+      { definition: metric(scope, 'metric_syn_revenue', 'revenue', 'Revenue', 'financial', 'currency'), current: revenueCurrent, baseline: revenueBaseline, records: orders },
+      { definition: metric(scope, 'metric_syn_cash', 'cash_position', 'Cash position', 'financial', 'currency'), current: cashCurrent, baseline: cashBaseline, records: payments },
+      { definition: metric(scope, 'metric_syn_pipeline', 'pipeline_value', 'Pipeline value', 'sales', 'currency'), current: pipelineCurrent, baseline: pipelineBaseline, records: deals },
+    ]
+    metrics.push(...derived.map((item) => item.definition))
+    observations.push(...derived.flatMap((item) => observationsFor(scope, item.definition.id, item.current, item.baseline, item.records.slice(-20).map((record) => record.id), item.records.slice(0, 20).map((record) => record.id))))
     const metricInputs = metrics.map((item) => {
       const current = observations.find((row) => row.metricId === item.id && row.id.endsWith('_current'))!
       const baseline = observations.find((row) => row.metricId === item.id && row.id.endsWith('_baseline'))!
-      const sourceByMetric: Record<string, string> = { metric_syn_conversion: 'integration_hubspot', metric_syn_response: 'integration_outlook', metric_syn_overdue: 'integration_quickbooks', metric_syn_payment_delay: 'integration_quickbooks', metric_syn_admin: 'integration_csv_excel', metric_syn_software: 'integration_quickbooks', metric_syn_inventory: 'integration_shopify', metric_syn_inactive: 'integration_hubspot' }
+      const sourceByMetric: Record<string, string> = { metric_syn_conversion: 'integration_hubspot', metric_syn_response: 'integration_outlook', metric_syn_overdue: 'integration_quickbooks', metric_syn_payment_delay: 'integration_quickbooks', metric_syn_admin: 'integration_csv_excel', metric_syn_software: 'integration_quickbooks', metric_syn_inventory: 'integration_shopify', metric_syn_inactive: 'integration_hubspot', metric_syn_revenue: 'integration_shopify', metric_syn_cash: 'integration_quickbooks', metric_syn_pipeline: 'integration_hubspot' }
       return { metric: item, currentValue: current.value, baselineValue: baseline.value, observedAt: AS_OF, observationIds: [current.id, baseline.id], sourceId: sourceByMetric[item.id] }
     })
     const signals = detectSignals(scope, metricInputs, AS_OF)
@@ -528,13 +587,15 @@ export class SyntheticDemoService {
       ['Financial Health', 96, 4], ['Sales & Customers', 91, 5], ['Operations', 88, 5], ['People & Productivity', 84, 3], ['Marketing & Growth', 78, 2], ['Tools & Subscriptions', 93, 4], ['Risk & Compliance', 66, 1], ['Market Opportunities', 81, 3],
     ].map(([dimension, percentage, evidenceCount]) => ({ dimension: String(dimension), percentage: scenario === 'partial_coverage' && String(dimension) === 'Risk & Compliance' ? 28 : Number(percentage), status: scenario === 'partial_coverage' && String(dimension) === 'Risk & Compliance' ? 'partial' as const : scenario === 'low_confidence' ? 'available' as const : 'available' as const, confidence: scenario === 'low_confidence' ? .54 : scenario === 'partial_coverage' && String(dimension) === 'Risk & Compliance' ? .31 : .84, evidenceCount: Number(evidenceCount), trend: 'down' as const }))
     const health: BusinessHealthScoreDTO = { ...healthBase, coverage }
+    const overdueCurrent = observations.find((row) => row.metricId === 'metric_syn_overdue' && row.id.endsWith('_current'))?.value
+    const overdueBaseline = observations.find((row) => row.metricId === 'metric_syn_overdue' && row.id.endsWith('_baseline'))?.value
     const dashboard: DashboardDTO = {
       workspace: { id: scope.workspaceId, name: northstarCompany.name, organizationId: scope.organizationId },
       metrics: [
-        { key: 'revenue', label: 'Revenue', value: '$8.6M', change: '+4.8%', trend: 'up' },
-        { key: 'cash_position', label: 'Cash Position', value: '$386K', change: 'Stable', trend: 'flat' },
-        { key: 'pipeline', label: 'Pipeline', value: '$642K', change: '-18%', trend: 'down' },
-        { key: 'overdue_invoices', label: 'Overdue Invoices', value: '$48K', change: '+50%', trend: 'down' },
+        { key: 'revenue', label: 'Revenue', value: money(revenueCurrent), change: change(revenueCurrent, revenueBaseline), trend: revenueCurrent > revenueBaseline ? 'up' : revenueCurrent < revenueBaseline ? 'down' : 'flat' },
+        { key: 'cash_position', label: 'Cash Position', value: money(cashCurrent), change: change(cashCurrent, cashBaseline), trend: cashCurrent > cashBaseline ? 'up' : cashCurrent < cashBaseline ? 'down' : 'flat' },
+        { key: 'pipeline', label: 'Pipeline', value: money(pipelineCurrent), change: change(pipelineCurrent, pipelineBaseline), trend: pipelineCurrent > pipelineBaseline ? 'up' : pipelineCurrent < pipelineBaseline ? 'down' : 'flat' },
+        { key: 'overdue_invoices', label: 'Overdue Invoices', value: money(overdueCurrent), change: change(overdueCurrent, overdueBaseline), trend: overdueCurrent !== undefined && overdueBaseline !== undefined && overdueCurrent > overdueBaseline ? 'down' : 'flat' },
       ],
       attention: [],
     }
@@ -582,7 +643,14 @@ export class SyntheticDemoService {
       opportunities: briefItems.filter((item) => item.section === 'Opportunities').map((item) => item.detail),
       agentResults: agents.flatMap((agent) => agent.results.slice(0, 1)),
     }
-    return { metrics, observations, signals, evidence: evidenceRows, issues, rootCauses, opportunities, recommendations, health, dashboard, brief, agents, scenario, briefItems, conflicts, edgeStates }
+    const aliasMap: Record<string, string> = { conversion_decline: 'sales_conversion_rate', response_time_increase: 'lead_response_time', overdue_receivables: 'overdue_receivables', invoice_payment_delay: 'invoice_payment_delay', administrative_workload: 'administrative_workload', software_spend_anomaly: 'software_spend', inventory_shortage: 'inventory_days_remaining', customer_inactivity: 'inactive_high_value_accounts', revenue: 'revenue', cash_position: 'cash_position', pipeline_value: 'pipeline_value' }
+    const sourceSystems: Record<string, string[]> = { conversion_decline: ['HubSpot'], response_time_increase: ['Outlook'], overdue_receivables: ['QuickBooks'], invoice_payment_delay: ['QuickBooks'], administrative_workload: ['CSV / Excel'], software_spend_anomaly: ['QuickBooks'], inventory_shortage: ['Shopify'], customer_inactivity: ['HubSpot'], revenue: ['Shopify'], cash_position: ['QuickBooks'], pipeline_value: ['HubSpot'] }
+    const series: Record<string, MetricSeriesPoint[]> = { revenue: monthlySeries(orders, BASELINE_START, 6, ['orderedAt'], ['total']), cash_position: monthlySeries(payments, BASELINE_START, 6, ['paidAt'], ['amount']), pipeline_value: monthlySeries(deals, BASELINE_START, 6, ['openedAt'], ['amount'], (record) => ['qualified', 'proposal'].includes(String(recordField(record, ['stage'])))) }
+    const metricRegistry = buildMetricRegistry({ metrics, observations, asOf: AS_OF, keyAliases: aliasMap, sourceSystems, series, metadata: { revenue: { calculationMethod: 'Sum of normalized order totals by month.', evidenceState: 'calculated', period: 'Trailing 3 months' }, cash_position: { calculationMethod: 'Sum of normalized payments in the comparison period.', evidenceState: 'calculated', period: 'Trailing 3 months' }, pipeline_value: { calculationMethod: 'Sum of qualified and proposal-stage deals opened in the comparison period.', evidenceState: 'calculated', period: 'Trailing 3 months' } } })
+    const businessProfile: BusinessProfileDTO = { companyName: northstarCompany.name, industry: northstarCompany.industry, subIndustry: 'Industrial distribution', businessModel: 'B2B', employeeCount: northstarCompany.employeeCount, annualRevenueRange: northstarCompany.annualRevenueRange, geography: 'Synthetic North America workspace', customerType: 'B2B', salesCycle: 'Proposal-driven commercial sales', primaryProductsOrServices: ['Industrial supplies', 'Safety products', 'Packaging'], majorOperatingFunctions: ['Sales', 'Distribution', 'Finance', 'Customer success'], goals: ['Improve sales response speed', 'Protect cash collection', 'Reduce operating friction'], currentChallenges: issues.slice(0, 3).map((item) => item.title), seasonality: 'Not established from current history', strategicPriorities: opportunities.slice(0, 3).map((item) => item.title), source: 'synthetic_fixture', updatedAt: AS_OF }
+    const advisoryContext = createAdvisoryContext({ workspace: { name: northstarCompany.name, industry: northstarCompany.industry }, businessProfile, metrics: metricRegistry.metrics, signals, evidence: evidenceRows, issues, rootCauses, opportunities, recommendations })
+    const advisory = createAdvisoryOutput(advisoryContext)
+    return { metrics, observations, signals, evidence: evidenceRows, issues, rootCauses, opportunities, recommendations, health, dashboard, brief, agents, scenario, briefItems, conflicts, edgeStates, metricRegistry, businessProfile, advisoryContext, advisory }
   }
 
   private agentViews(scope: TenantScope, opportunities: Opportunity[], simulation: SyntheticSimulationSnapshot, state: TenantState): SyntheticAgentView[] {
@@ -600,7 +668,7 @@ export class SyntheticDemoService {
     ]
     const makeAgent = (id: string, name: string, description: string, status: Agent['status'], permissions: string[], currentTask: string, businessImpact: string, runs: SyntheticAgentRunView[], actions: SyntheticAgentActionView[], stats: SyntheticAgentStats, activity: string[], tasks: string[], results: string[]): SyntheticAgentView => ({ agent: { ...baseRecord(scope, id), name, description, status, requiredPermissions: permissions.map((permission) => permission.toLowerCase() as Agent['requiredPermissions'][number]), configuration: { approvalRequired: true, synthetic: true } }, activity, tasks, results, businessImpact, permissions, currentTask, stats, runs, actions, approvals: id === 'agent_proposal_intelligence' ? state.approvals : [], timeline: id === 'agent_proposal_intelligence' ? timeline : [] })
     const proposalActions = state.actions.filter((item) => item.recommendationId === 'recommendation_opportunity_proposal_intelligence').map((item) => ({ id: item.id, title: item.operation === 'deploy_synthetic_proposal_intelligence' ? 'Proposal Intelligence deployment' : 'Draft proposal for review', status: item.status, requestedAt: item.requestedAt, approvedAt: item.approvedAt, completedAt: item.completedAt, approvalRequired: true }))
-    const proposalStats: SyntheticAgentStats = { assisted: proposalRuns.length, completedRuns: proposalRuns.filter((item) => item.status === 'completed').length, failedRuns: proposalRuns.filter((item) => item.status === 'failed').length, pendingApprovals: pendingApprovals.length, completedActions: completedActions.length + (simulation.status === 'completed' ? 1 : 0), hoursSaved: simulation.outcome?.timeSavedHours ?? 116, measuredImpact: simulation.outcome?.annualizedImpact ?? 0, estimatedImpact: opportunities[0]?.estimatedAnnualValue ?? 0, successRate: proposalRuns.length ? Math.round((proposalRuns.filter((item) => item.status === 'completed').length / proposalRuns.length) * 100) : 0, directionalROI: simulation.roiRecord ? simulation.roiRecord.annualizedImpact / 8000 : opportunities[0]?.roi }
+    const proposalStats: SyntheticAgentStats = { assisted: proposalRuns.length, completedRuns: proposalRuns.filter((item) => item.status === 'completed').length, failedRuns: proposalRuns.filter((item) => item.status === 'failed').length, pendingApprovals: pendingApprovals.length, completedActions: completedActions.length + (simulation.status === 'completed' ? 1 : 0), hoursSaved: simulation.outcome?.timeSavedHours ?? 116, measuredImpact: simulation.outcome?.annualizedImpact ?? 0, estimatedImpact: opportunities[0]?.estimatedAnnualValue ?? 0, successRate: proposalRuns.length ? Math.round((proposalRuns.filter((item) => item.status === 'completed').length / proposalRuns.length) * 100) : 0, directionalROI: simulation.roiRecord ? simulation.roiRecord.annualizedImpact / Math.max(1, simulation.roiRecord.implementationCost ?? 1) : opportunities[0]?.roi }
     return [
       makeAgent('agent_proposal_intelligence', 'Proposal Intelligence', 'Searches approved proposal context and prepares a first draft for review.', simulation.status === 'failed' ? 'paused' : simulation.status === 'completed' ? 'active' : 'recommended', ['Observe', 'Recommend', 'Draft only'], simulation.status === 'completed' ? 'Monitor the measured result and source-linked ROI.' : pendingApprovals.length ? 'Waiting for owner approval before deployment.' : 'Ready to prepare the next approved draft.', '$82K estimated annual opportunity', proposalRuns.slice(-5).reverse().map((run, index) => ({ id: run.id, status: run.status, startedAt: run.startedAt, completedAt: run.completedAt, title: run.status === 'failed' ? 'Draft held for review' : `Proposal assisted ${proposalRuns.length - index}`, detail: run.errorMessage ?? 'Source-linked draft prepared for employee review.', recordType: 'AgentRun', recordId: run.id })), proposalActions, proposalStats, ['Indexed proposal records from HubSpot and Drive.', `Matched ${matchCrossSourceEntities(state.records).size} shared entities across sources.`, `${proposalRuns.length} proposal runs are auditable in this workspace.`], ['Prepare the next owner-approved draft', 'Flag stale pricing references'], simulation.outcome ? [`${simulation.outcome.timeSavedHours ?? 0} hours saved in the controlled window.`, `$${Math.round(simulation.outcome.costSaved ?? 0).toLocaleString()} labor savings measured.`] : ['Found 187 fragmented proposal files and 17-hour lead response time.']),
       makeAgent('agent_inbox_operations', 'Inbox Operations', 'Routes high-intent customer and supplier messages to the right owner.', 'recommended', ['Observe', 'Recommend'], 'Review the next owner-approved reminder queue.', '$48K receivables exposure', [], [], { assisted: 0, completedRuns: 0, failedRuns: 0, pendingApprovals: 0, completedActions: 0, hoursSaved: 0, measuredImpact: 0, estimatedImpact: 48000, successRate: 0 }, ['Clustered communication events from Outlook and Gmail.'], ['Draft owner-approved reminder queue', 'Escalate missing PO fields'], ['42% overdue reminder coverage needs an owner.']),

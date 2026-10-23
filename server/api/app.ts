@@ -83,6 +83,11 @@ export function createApp(services: ApplicationServices = createDemoApplicationS
   app.get('/api/session', async (_request, response) => send(response, sessionFrom(response)))
   app.get('/api/runtime', async (_request, response) => send(response, { mode: env.GILAR_MODE, demo: env.DEMO_MODE, synthetic: env.GILAR_MODE === 'synthetic', company: syntheticService.overview(scopeFrom(response)).company }))
   app.get('/api/synthetic/overview', async (_request, response) => send(response, syntheticService.overview(scopeFrom(response))))
+  app.get('/api/metrics', async (_request, response) => send(response, syntheticService.overview(scopeFrom(response)).metricRegistry))
+  app.get('/api/advisory/context', async (_request, response) => {
+    const overview = syntheticService.overview(scopeFrom(response))
+    send(response, { context: overview.advisoryContext, output: overview.advisory })
+  })
   app.get('/api/synthetic/evidence', async (request, response) => {
     const overview = syntheticService.overview(scopeFrom(response))
     const issueId = typeof request.query.issueId === 'string' ? request.query.issueId : undefined

@@ -43,6 +43,25 @@ export interface Workspace extends TenantEntity {
   status: RecordStatus
 }
 
+export interface BusinessProfile extends TenantEntity {
+  companyName: string
+  industry: string
+  subIndustry?: string
+  businessModel: 'B2B' | 'B2C' | 'B2B2C' | 'unknown'
+  employeeCount?: number
+  annualRevenueRange?: string
+  geography?: string
+  customerType?: 'B2B' | 'B2C' | 'B2B2C' | 'unknown'
+  salesCycle?: string
+  primaryProductsOrServices: string[]
+  majorOperatingFunctions: string[]
+  goals: string[]
+  currentChallenges: string[]
+  seasonality?: string
+  strategicPriorities: string[]
+  source: 'onboarding' | 'synthetic_fixture' | 'workspace'
+}
+
 export interface Membership extends EntityMetadata {
   id: string
   userId: string
@@ -313,6 +332,7 @@ export interface ROIRecord extends TenantEntity {
   costSaved: number
   revenueGained: number
   annualizedImpact: number
+  implementationCost?: number
   confidence: number
   measurementPeriodStart: ISODate
   measurementPeriodEnd: ISODate

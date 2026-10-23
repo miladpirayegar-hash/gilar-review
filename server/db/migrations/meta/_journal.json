@@ -15,6 +15,13 @@
       "when": 1792693966815,
       "tag": "0001_orange_loners",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792695000000,
+      "tag": "0002_business_profiles",
+      "breakpoints": true
     }
   ]
 }

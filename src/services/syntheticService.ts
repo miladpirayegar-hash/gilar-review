@@ -1,5 +1,6 @@
 import type { AgentRun, Approval, BusinessMetric, Evidence, Issue, MetricObservation, Opportunity, Recommendation, RootCause, Signal, ROIRecord } from '../../shared/domain/models'
 import type { BusinessHealthScoreDTO, DashboardDTO } from '../../shared/contracts/dto'
+import type { AdvisoryContextDTO, AdvisoryOutputDTO, BusinessProfileDTO, MetricRegistryDTO } from '../../shared/contracts/metrics'
 import reviewFixture from '../data/reviewFixture.json'
 
 export interface SyntheticSourceSummary { provider: string; displayName: string; status: 'connected' | 'needs_attention' | 'disconnected' | 'error'; mode: 'synthetic'; permission: 'observe' | 'recommend'; recordCount: number; lastSyncedAt: string; label: 'SYNTHETIC' }
@@ -38,6 +39,10 @@ export interface SyntheticOverview {
   briefItems: SyntheticBriefItem[]
   conflicts: SyntheticConflict[]
   edgeStates: SyntheticEdgeState[]
+  metricRegistry: MetricRegistryDTO
+  businessProfile: BusinessProfileDTO
+  advisoryContext: AdvisoryContextDTO
+  advisory: AdvisoryOutputDTO
 }
 
 const reviewMode = import.meta.env.VITE_GILAR_MODE === 'review'
@@ -151,6 +156,7 @@ function reviewAdvance(days: number) {
     costSaved: outcome.costSaved,
     revenueGained: outcome.revenueGained,
     annualizedImpact: outcome.annualizedImpact,
+    implementationCost: 8000,
     confidence: outcome.confidence,
     measurementPeriodStart: state.company.asOf,
     measurementPeriodEnd: measuredAt,

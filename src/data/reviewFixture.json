@@ -269,6 +269,42 @@
       "category": "customers",
       "unit": "number",
       "status": "active"
+    },
+    {
+      "id": "metric_syn_revenue",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "key": "revenue",
+      "name": "Revenue",
+      "category": "financial",
+      "unit": "currency",
+      "status": "active"
+    },
+    {
+      "id": "metric_syn_cash",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "key": "cash_position",
+      "name": "Cash position",
+      "category": "financial",
+      "unit": "currency",
+      "status": "active"
+    },
+    {
+      "id": "metric_syn_pipeline",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "key": "pipeline_value",
+      "name": "Pipeline value",
+      "category": "sales",
+      "unit": "currency",
+      "status": "active"
     }
   ],
   "observations": [
@@ -706,6 +742,210 @@
         "synthetic:hubspot:deal:hs-deal-18",
         "synthetic:hubspot:deal:hs-deal-19",
         "synthetic:hubspot:deal:hs-deal-20"
+      ]
+    },
+    {
+      "id": "metric_syn_revenue_current",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "metricId": "metric_syn_revenue",
+      "value": 151280,
+      "observedAt": "2026-10-21T17:00:00.000Z",
+      "periodStart": "2026-08-01T00:00:00.000Z",
+      "periodEnd": "2026-10-21T17:00:00.000Z",
+      "sourceRecordIds": [
+        "synthetic:shopify:order:shopify-order-53",
+        "synthetic:shopify:order:shopify-order-54",
+        "synthetic:shopify:order:shopify-order-55",
+        "synthetic:shopify:order:shopify-order-56",
+        "synthetic:shopify:order:shopify-order-57",
+        "synthetic:shopify:order:shopify-order-58",
+        "synthetic:shopify:order:shopify-order-59",
+        "synthetic:shopify:order:shopify-order-60",
+        "synthetic:shopify:order:shopify-order-61",
+        "synthetic:shopify:order:shopify-order-62",
+        "synthetic:shopify:order:shopify-order-63",
+        "synthetic:shopify:order:shopify-order-64",
+        "synthetic:shopify:order:shopify-order-65",
+        "synthetic:shopify:order:shopify-order-66",
+        "synthetic:shopify:order:shopify-order-67",
+        "synthetic:shopify:order:shopify-order-68",
+        "synthetic:shopify:order:shopify-order-69",
+        "synthetic:shopify:order:shopify-order-70",
+        "synthetic:shopify:order:shopify-order-71",
+        "synthetic:shopify:order:shopify-order-72"
+      ]
+    },
+    {
+      "id": "metric_syn_revenue_baseline",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "metricId": "metric_syn_revenue",
+      "value": 178560,
+      "observedAt": "2026-10-21T17:00:00.000Z",
+      "periodStart": "2026-05-01T00:00:00.000Z",
+      "periodEnd": "2026-07-31T23:59:59.000Z",
+      "sourceRecordIds": [
+        "synthetic:shopify:order:shopify-order-1",
+        "synthetic:shopify:order:shopify-order-2",
+        "synthetic:shopify:order:shopify-order-3",
+        "synthetic:shopify:order:shopify-order-4",
+        "synthetic:shopify:order:shopify-order-5",
+        "synthetic:shopify:order:shopify-order-6",
+        "synthetic:shopify:order:shopify-order-7",
+        "synthetic:shopify:order:shopify-order-8",
+        "synthetic:shopify:order:shopify-order-9",
+        "synthetic:shopify:order:shopify-order-10",
+        "synthetic:shopify:order:shopify-order-11",
+        "synthetic:shopify:order:shopify-order-12",
+        "synthetic:shopify:order:shopify-order-13",
+        "synthetic:shopify:order:shopify-order-14",
+        "synthetic:shopify:order:shopify-order-15",
+        "synthetic:shopify:order:shopify-order-16",
+        "synthetic:shopify:order:shopify-order-17",
+        "synthetic:shopify:order:shopify-order-18",
+        "synthetic:shopify:order:shopify-order-19",
+        "synthetic:shopify:order:shopify-order-20"
+      ]
+    },
+    {
+      "id": "metric_syn_cash_current",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "metricId": "metric_syn_cash",
+      "value": 129900,
+      "observedAt": "2026-10-21T17:00:00.000Z",
+      "periodStart": "2026-08-01T00:00:00.000Z",
+      "periodEnd": "2026-10-21T17:00:00.000Z",
+      "sourceRecordIds": [
+        "synthetic:quickbooks:payment:qb-payment-18",
+        "synthetic:quickbooks:payment:qb-payment-19",
+        "synthetic:quickbooks:payment:qb-payment-20",
+        "synthetic:quickbooks:payment:qb-payment-22",
+        "synthetic:quickbooks:payment:qb-payment-25",
+        "synthetic:quickbooks:payment:qb-payment-27",
+        "synthetic:quickbooks:payment:qb-payment-28",
+        "synthetic:quickbooks:payment:qb-payment-29",
+        "synthetic:quickbooks:payment:qb-payment-30",
+        "synthetic:quickbooks:payment:qb-payment-32",
+        "synthetic:quickbooks:payment:qb-payment-33",
+        "synthetic:quickbooks:payment:qb-payment-34",
+        "synthetic:quickbooks:payment:qb-payment-37",
+        "synthetic:quickbooks:payment:qb-payment-38",
+        "synthetic:quickbooks:payment:qb-payment-39",
+        "synthetic:quickbooks:payment:qb-payment-40",
+        "synthetic:quickbooks:payment:qb-payment-42",
+        "synthetic:quickbooks:payment:qb-payment-43",
+        "synthetic:quickbooks:payment:qb-payment-44",
+        "synthetic:quickbooks:payment:qb-payment-45"
+      ]
+    },
+    {
+      "id": "metric_syn_cash_baseline",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "metricId": "metric_syn_cash",
+      "value": 209100,
+      "observedAt": "2026-10-21T17:00:00.000Z",
+      "periodStart": "2026-05-01T00:00:00.000Z",
+      "periodEnd": "2026-07-31T23:59:59.000Z",
+      "sourceRecordIds": [
+        "synthetic:quickbooks:payment:qb-payment-2",
+        "synthetic:quickbooks:payment:qb-payment-3",
+        "synthetic:quickbooks:payment:qb-payment-4",
+        "synthetic:quickbooks:payment:qb-payment-5",
+        "synthetic:quickbooks:payment:qb-payment-7",
+        "synthetic:quickbooks:payment:qb-payment-8",
+        "synthetic:quickbooks:payment:qb-payment-9",
+        "synthetic:quickbooks:payment:qb-payment-10",
+        "synthetic:quickbooks:payment:qb-payment-13",
+        "synthetic:quickbooks:payment:qb-payment-14",
+        "synthetic:quickbooks:payment:qb-payment-15",
+        "synthetic:quickbooks:payment:qb-payment-17",
+        "synthetic:quickbooks:payment:qb-payment-18",
+        "synthetic:quickbooks:payment:qb-payment-19",
+        "synthetic:quickbooks:payment:qb-payment-20",
+        "synthetic:quickbooks:payment:qb-payment-22",
+        "synthetic:quickbooks:payment:qb-payment-25",
+        "synthetic:quickbooks:payment:qb-payment-27",
+        "synthetic:quickbooks:payment:qb-payment-28",
+        "synthetic:quickbooks:payment:qb-payment-29"
+      ]
+    },
+    {
+      "id": "metric_syn_pipeline_current",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "metricId": "metric_syn_pipeline",
+      "value": 354600,
+      "observedAt": "2026-10-21T17:00:00.000Z",
+      "periodStart": "2026-08-01T00:00:00.000Z",
+      "periodEnd": "2026-10-21T17:00:00.000Z",
+      "sourceRecordIds": [
+        "synthetic:hubspot:deal:hs-deal-44",
+        "synthetic:hubspot:deal:hs-deal-45",
+        "synthetic:hubspot:deal:hs-deal-46",
+        "synthetic:salesforce:deal:sf-deal-46",
+        "synthetic:hubspot:deal:hs-deal-47",
+        "synthetic:hubspot:deal:hs-deal-48",
+        "synthetic:hubspot:deal:hs-deal-49",
+        "synthetic:hubspot:deal:hs-deal-50",
+        "synthetic:hubspot:deal:hs-deal-51",
+        "synthetic:salesforce:deal:sf-deal-51",
+        "synthetic:hubspot:deal:hs-deal-52",
+        "synthetic:hubspot:deal:hs-deal-53",
+        "synthetic:hubspot:deal:hs-deal-54",
+        "synthetic:hubspot:deal:hs-deal-55",
+        "synthetic:hubspot:deal:hs-deal-56",
+        "synthetic:salesforce:deal:sf-deal-56",
+        "synthetic:hubspot:deal:hs-deal-57",
+        "synthetic:hubspot:deal:hs-deal-58",
+        "synthetic:hubspot:deal:hs-deal-59",
+        "synthetic:hubspot:deal:hs-deal-60"
+      ]
+    },
+    {
+      "id": "metric_syn_pipeline_baseline",
+      "organizationId": "org_northstar_review",
+      "workspaceId": "ws_northstar_review",
+      "createdAt": "2026-10-21T17:00:00.000Z",
+      "updatedAt": "2026-10-21T17:00:00.000Z",
+      "metricId": "metric_syn_pipeline",
+      "value": 196200,
+      "observedAt": "2026-10-21T17:00:00.000Z",
+      "periodStart": "2026-05-01T00:00:00.000Z",
+      "periodEnd": "2026-07-31T23:59:59.000Z",
+      "sourceRecordIds": [
+        "synthetic:hubspot:deal:hs-deal-1",
+        "synthetic:salesforce:deal:sf-deal-1",
+        "synthetic:hubspot:deal:hs-deal-2",
+        "synthetic:hubspot:deal:hs-deal-3",
+        "synthetic:hubspot:deal:hs-deal-4",
+        "synthetic:hubspot:deal:hs-deal-5",
+        "synthetic:hubspot:deal:hs-deal-6",
+        "synthetic:salesforce:deal:sf-deal-6",
+        "synthetic:hubspot:deal:hs-deal-7",
+        "synthetic:hubspot:deal:hs-deal-8",
+        "synthetic:hubspot:deal:hs-deal-9",
+        "synthetic:hubspot:deal:hs-deal-10",
+        "synthetic:hubspot:deal:hs-deal-11",
+        "synthetic:salesforce:deal:sf-deal-11",
+        "synthetic:hubspot:deal:hs-deal-12",
+        "synthetic:hubspot:deal:hs-deal-13",
+        "synthetic:hubspot:deal:hs-deal-14",
+        "synthetic:hubspot:deal:hs-deal-15",
+        "synthetic:hubspot:deal:hs-deal-16",
+        "synthetic:salesforce:deal:sf-deal-16"
       ]
     }
   ],
@@ -2802,29 +3042,29 @@
       {
         "key": "revenue",
         "label": "Revenue",
-        "value": "$8.6M",
-        "change": "+4.8%",
-        "trend": "up"
+        "value": "$151,280",
+        "change": "-15.3%",
+        "trend": "down"
       },
       {
         "key": "cash_position",
         "label": "Cash Position",
-        "value": "$386K",
-        "change": "Stable",
-        "trend": "flat"
+        "value": "$129,900",
+        "change": "-37.9%",
+        "trend": "down"
       },
       {
         "key": "pipeline",
         "label": "Pipeline",
-        "value": "$642K",
-        "change": "-18%",
-        "trend": "down"
+        "value": "$354,600",
+        "change": "+80.7%",
+        "trend": "up"
       },
       {
         "key": "overdue_invoices",
         "label": "Overdue Invoices",
-        "value": "$48K",
-        "change": "+50%",
+        "value": "$48,000",
+        "change": "+50.0%",
         "trend": "down"
       }
     ],
@@ -3866,6 +4106,2965 @@
   ],
   "conflicts": [],
   "edgeStates": [],
+  "metricRegistry": {
+    "asOf": "2026-10-21T17:00:00.000Z",
+    "metrics": [
+      {
+        "key": "sales_conversion_rate",
+        "label": "Sales conversion rate",
+        "unit": "percentage",
+        "currentValue": 0.23,
+        "previousValue": 0.31,
+        "direction": "down",
+        "percentageChange": -25.8,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "HubSpot"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 0.31
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 0.23
+          }
+        ]
+      },
+      {
+        "key": "lead_response_time",
+        "label": "Lead response time",
+        "unit": "duration",
+        "currentValue": 17,
+        "previousValue": 3,
+        "direction": "up",
+        "percentageChange": 466.7,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "Outlook"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 3
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 17
+          }
+        ]
+      },
+      {
+        "key": "overdue_receivables",
+        "label": "Overdue receivables",
+        "unit": "currency",
+        "currentValue": 48000,
+        "previousValue": 32000,
+        "direction": "up",
+        "percentageChange": 50,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "QuickBooks"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 32000
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 48000
+          }
+        ]
+      },
+      {
+        "key": "invoice_payment_delay",
+        "label": "Average payment delay",
+        "unit": "days",
+        "currentValue": 54,
+        "previousValue": 39,
+        "direction": "up",
+        "percentageChange": 38.5,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "QuickBooks"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 39
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 54
+          }
+        ]
+      },
+      {
+        "key": "administrative_workload",
+        "label": "Administrative workload",
+        "unit": "number",
+        "currentValue": 62,
+        "previousValue": 41,
+        "direction": "up",
+        "percentageChange": 51.2,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "CSV / Excel"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 41
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 62
+          }
+        ]
+      },
+      {
+        "key": "software_spend",
+        "label": "Recurring software spend",
+        "unit": "currency",
+        "currentValue": 16800,
+        "previousValue": 12400,
+        "direction": "up",
+        "percentageChange": 35.5,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "QuickBooks"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 12400
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 16800
+          }
+        ]
+      },
+      {
+        "key": "inventory_days_remaining",
+        "label": "Projected stock cover",
+        "unit": "days",
+        "currentValue": 12,
+        "previousValue": 27,
+        "direction": "down",
+        "percentageChange": -55.6,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "Shopify"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 27
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 12
+          }
+        ]
+      },
+      {
+        "key": "inactive_high_value_accounts",
+        "label": "Inactive high-value accounts",
+        "unit": "number",
+        "currentValue": 31,
+        "previousValue": 20,
+        "direction": "up",
+        "percentageChange": 55,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "HubSpot"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 20
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 31
+          }
+        ]
+      },
+      {
+        "key": "revenue",
+        "label": "Revenue",
+        "unit": "currency",
+        "currentValue": 151280,
+        "previousValue": 178560,
+        "direction": "down",
+        "percentageChange": -15.3,
+        "period": "Trailing 3 months",
+        "sourceSystems": [
+          "Shopify"
+        ],
+        "calculationMethod": "Sum of normalized order totals by month.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "calculated",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-05-01T00:00:00.000Z",
+            "label": "Apr",
+            "value": 53940
+          },
+          {
+            "timestamp": "2026-06-01T00:00:00.000Z",
+            "label": "May",
+            "value": 59520
+          },
+          {
+            "timestamp": "2026-07-01T00:00:00.000Z",
+            "label": "Jun",
+            "value": 65100
+          },
+          {
+            "timestamp": "2026-08-01T00:00:00.000Z",
+            "label": "Jul",
+            "value": 53940
+          },
+          {
+            "timestamp": "2026-09-01T00:00:00.000Z",
+            "label": "Aug",
+            "value": 59520
+          },
+          {
+            "timestamp": "2026-10-01T00:00:00.000Z",
+            "label": "Sep",
+            "value": 65100
+          }
+        ]
+      },
+      {
+        "key": "cash_position",
+        "label": "Cash position",
+        "unit": "currency",
+        "currentValue": 129900,
+        "previousValue": 209100,
+        "direction": "down",
+        "percentageChange": -37.9,
+        "period": "Trailing 3 months",
+        "sourceSystems": [
+          "QuickBooks"
+        ],
+        "calculationMethod": "Sum of normalized payments in the comparison period.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "calculated",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-05-01T00:00:00.000Z",
+            "label": "Apr",
+            "value": 64950
+          },
+          {
+            "timestamp": "2026-06-01T00:00:00.000Z",
+            "label": "May",
+            "value": 59400
+          },
+          {
+            "timestamp": "2026-07-01T00:00:00.000Z",
+            "label": "Jun",
+            "value": 84750
+          },
+          {
+            "timestamp": "2026-08-01T00:00:00.000Z",
+            "label": "Jul",
+            "value": 76050
+          },
+          {
+            "timestamp": "2026-09-01T00:00:00.000Z",
+            "label": "Aug",
+            "value": 53850
+          },
+          {
+            "timestamp": "2026-10-01T00:00:00.000Z",
+            "label": "Sep",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "key": "pipeline_value",
+        "label": "Pipeline value",
+        "unit": "currency",
+        "currentValue": 354600,
+        "previousValue": 196200,
+        "direction": "up",
+        "percentageChange": 80.7,
+        "period": "Trailing 3 months",
+        "sourceSystems": [
+          "HubSpot"
+        ],
+        "calculationMethod": "Sum of qualified and proposal-stage deals opened in the comparison period.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "calculated",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-05-01T00:00:00.000Z",
+            "label": "Apr",
+            "value": 0
+          },
+          {
+            "timestamp": "2026-06-01T00:00:00.000Z",
+            "label": "May",
+            "value": 196200
+          },
+          {
+            "timestamp": "2026-07-01T00:00:00.000Z",
+            "label": "Jun",
+            "value": 0
+          },
+          {
+            "timestamp": "2026-08-01T00:00:00.000Z",
+            "label": "Jul",
+            "value": 0
+          },
+          {
+            "timestamp": "2026-09-01T00:00:00.000Z",
+            "label": "Aug",
+            "value": 187800
+          },
+          {
+            "timestamp": "2026-10-01T00:00:00.000Z",
+            "label": "Sep",
+            "value": 166800
+          }
+        ]
+      }
+    ]
+  },
+  "businessProfile": {
+    "companyName": "Northstar Distribution Co.",
+    "industry": "B2B distribution",
+    "subIndustry": "Industrial distribution",
+    "businessModel": "B2B",
+    "employeeCount": 42,
+    "annualRevenueRange": "$8–10M",
+    "geography": "Synthetic North America workspace",
+    "customerType": "B2B",
+    "salesCycle": "Proposal-driven commercial sales",
+    "primaryProductsOrServices": [
+      "Industrial supplies",
+      "Safety products",
+      "Packaging"
+    ],
+    "majorOperatingFunctions": [
+      "Sales",
+      "Distribution",
+      "Finance",
+      "Customer success"
+    ],
+    "goals": [
+      "Improve sales response speed",
+      "Protect cash collection",
+      "Reduce operating friction"
+    ],
+    "currentChallenges": [
+      "Sales conversion decline",
+      "Receivables are aging",
+      "Admin work is fragmented"
+    ],
+    "seasonality": "Not established from current history",
+    "strategicPriorities": [
+      "Automate proposal generation",
+      "Automate receivables follow-up",
+      "Improve lead-response workflow"
+    ],
+    "source": "synthetic_fixture",
+    "updatedAt": "2026-10-21T17:00:00.000Z"
+  },
+  "advisoryContext": {
+    "workspace": {
+      "name": "Northstar Distribution Co.",
+      "industry": "B2B distribution"
+    },
+    "businessProfile": {
+      "companyName": "Northstar Distribution Co.",
+      "industry": "B2B distribution",
+      "subIndustry": "Industrial distribution",
+      "businessModel": "B2B",
+      "employeeCount": 42,
+      "annualRevenueRange": "$8–10M",
+      "geography": "Synthetic North America workspace",
+      "customerType": "B2B",
+      "salesCycle": "Proposal-driven commercial sales",
+      "primaryProductsOrServices": [
+        "Industrial supplies",
+        "Safety products",
+        "Packaging"
+      ],
+      "majorOperatingFunctions": [
+        "Sales",
+        "Distribution",
+        "Finance",
+        "Customer success"
+      ],
+      "goals": [
+        "Improve sales response speed",
+        "Protect cash collection",
+        "Reduce operating friction"
+      ],
+      "currentChallenges": [
+        "Sales conversion decline",
+        "Receivables are aging",
+        "Admin work is fragmented"
+      ],
+      "seasonality": "Not established from current history",
+      "strategicPriorities": [
+        "Automate proposal generation",
+        "Automate receivables follow-up",
+        "Improve lead-response workflow"
+      ],
+      "source": "synthetic_fixture",
+      "updatedAt": "2026-10-21T17:00:00.000Z"
+    },
+    "metrics": [
+      {
+        "key": "sales_conversion_rate",
+        "label": "Sales conversion rate",
+        "unit": "percentage",
+        "currentValue": 0.23,
+        "previousValue": 0.31,
+        "direction": "down",
+        "percentageChange": -25.8,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "HubSpot"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 0.31
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 0.23
+          }
+        ]
+      },
+      {
+        "key": "lead_response_time",
+        "label": "Lead response time",
+        "unit": "duration",
+        "currentValue": 17,
+        "previousValue": 3,
+        "direction": "up",
+        "percentageChange": 466.7,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "Outlook"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 3
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 17
+          }
+        ]
+      },
+      {
+        "key": "overdue_receivables",
+        "label": "Overdue receivables",
+        "unit": "currency",
+        "currentValue": 48000,
+        "previousValue": 32000,
+        "direction": "up",
+        "percentageChange": 50,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "QuickBooks"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 32000
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 48000
+          }
+        ]
+      },
+      {
+        "key": "invoice_payment_delay",
+        "label": "Average payment delay",
+        "unit": "days",
+        "currentValue": 54,
+        "previousValue": 39,
+        "direction": "up",
+        "percentageChange": 38.5,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "QuickBooks"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 39
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 54
+          }
+        ]
+      },
+      {
+        "key": "administrative_workload",
+        "label": "Administrative workload",
+        "unit": "number",
+        "currentValue": 62,
+        "previousValue": 41,
+        "direction": "up",
+        "percentageChange": 51.2,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "CSV / Excel"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 41
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 62
+          }
+        ]
+      },
+      {
+        "key": "software_spend",
+        "label": "Recurring software spend",
+        "unit": "currency",
+        "currentValue": 16800,
+        "previousValue": 12400,
+        "direction": "up",
+        "percentageChange": 35.5,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "QuickBooks"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 12400
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 16800
+          }
+        ]
+      },
+      {
+        "key": "inventory_days_remaining",
+        "label": "Projected stock cover",
+        "unit": "days",
+        "currentValue": 12,
+        "previousValue": 27,
+        "direction": "down",
+        "percentageChange": -55.6,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "Shopify"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 27
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 12
+          }
+        ]
+      },
+      {
+        "key": "inactive_high_value_accounts",
+        "label": "Inactive high-value accounts",
+        "unit": "number",
+        "currentValue": 31,
+        "previousValue": 20,
+        "direction": "up",
+        "percentageChange": 55,
+        "period": "Current comparison period",
+        "sourceSystems": [
+          "HubSpot"
+        ],
+        "calculationMethod": "Current observation compared with the immediately preceding observation.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "observed",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-07-31T23:59:59.000Z",
+            "value": 20
+          },
+          {
+            "timestamp": "2026-10-21T17:00:00.000Z",
+            "value": 31
+          }
+        ]
+      },
+      {
+        "key": "revenue",
+        "label": "Revenue",
+        "unit": "currency",
+        "currentValue": 151280,
+        "previousValue": 178560,
+        "direction": "down",
+        "percentageChange": -15.3,
+        "period": "Trailing 3 months",
+        "sourceSystems": [
+          "Shopify"
+        ],
+        "calculationMethod": "Sum of normalized order totals by month.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "calculated",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-05-01T00:00:00.000Z",
+            "label": "Apr",
+            "value": 53940
+          },
+          {
+            "timestamp": "2026-06-01T00:00:00.000Z",
+            "label": "May",
+            "value": 59520
+          },
+          {
+            "timestamp": "2026-07-01T00:00:00.000Z",
+            "label": "Jun",
+            "value": 65100
+          },
+          {
+            "timestamp": "2026-08-01T00:00:00.000Z",
+            "label": "Jul",
+            "value": 53940
+          },
+          {
+            "timestamp": "2026-09-01T00:00:00.000Z",
+            "label": "Aug",
+            "value": 59520
+          },
+          {
+            "timestamp": "2026-10-01T00:00:00.000Z",
+            "label": "Sep",
+            "value": 65100
+          }
+        ]
+      },
+      {
+        "key": "cash_position",
+        "label": "Cash position",
+        "unit": "currency",
+        "currentValue": 129900,
+        "previousValue": 209100,
+        "direction": "down",
+        "percentageChange": -37.9,
+        "period": "Trailing 3 months",
+        "sourceSystems": [
+          "QuickBooks"
+        ],
+        "calculationMethod": "Sum of normalized payments in the comparison period.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "calculated",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-05-01T00:00:00.000Z",
+            "label": "Apr",
+            "value": 64950
+          },
+          {
+            "timestamp": "2026-06-01T00:00:00.000Z",
+            "label": "May",
+            "value": 59400
+          },
+          {
+            "timestamp": "2026-07-01T00:00:00.000Z",
+            "label": "Jun",
+            "value": 84750
+          },
+          {
+            "timestamp": "2026-08-01T00:00:00.000Z",
+            "label": "Jul",
+            "value": 76050
+          },
+          {
+            "timestamp": "2026-09-01T00:00:00.000Z",
+            "label": "Aug",
+            "value": 53850
+          },
+          {
+            "timestamp": "2026-10-01T00:00:00.000Z",
+            "label": "Sep",
+            "value": 0
+          }
+        ]
+      },
+      {
+        "key": "pipeline_value",
+        "label": "Pipeline value",
+        "unit": "currency",
+        "currentValue": 354600,
+        "previousValue": 196200,
+        "direction": "up",
+        "percentageChange": 80.7,
+        "period": "Trailing 3 months",
+        "sourceSystems": [
+          "HubSpot"
+        ],
+        "calculationMethod": "Sum of qualified and proposal-stage deals opened in the comparison period.",
+        "confidence": 0.85,
+        "coverage": 1,
+        "timestamp": "2026-10-21T17:00:00.000Z",
+        "freshness": "Current workspace snapshot",
+        "evidenceState": "calculated",
+        "availability": "available",
+        "series": [
+          {
+            "timestamp": "2026-05-01T00:00:00.000Z",
+            "label": "Apr",
+            "value": 0
+          },
+          {
+            "timestamp": "2026-06-01T00:00:00.000Z",
+            "label": "May",
+            "value": 196200
+          },
+          {
+            "timestamp": "2026-07-01T00:00:00.000Z",
+            "label": "Jun",
+            "value": 0
+          },
+          {
+            "timestamp": "2026-08-01T00:00:00.000Z",
+            "label": "Jul",
+            "value": 0
+          },
+          {
+            "timestamp": "2026-09-01T00:00:00.000Z",
+            "label": "Aug",
+            "value": 187800
+          },
+          {
+            "timestamp": "2026-10-01T00:00:00.000Z",
+            "label": "Sep",
+            "value": 166800
+          }
+        ]
+      }
+    ],
+    "signals": [
+      {
+        "id": "signal_conversion_decline",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "metricId": "metric_syn_conversion",
+        "sourceId": "integration_hubspot",
+        "name": "Sales conversion decline",
+        "description": "Sales conversion is down 25.8% against the comparison period.",
+        "currentValue": 0.23,
+        "baselineValue": 0.31,
+        "absoluteChange": -0.07999999999999999,
+        "percentageChange": -25.80645161290322,
+        "direction": "down",
+        "severity": "high",
+        "detectedAt": "2026-10-21T17:00:00.000Z",
+        "confidence": 85,
+        "observationIds": [
+          "metric_syn_conversion_current",
+          "metric_syn_conversion_baseline"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "signal_response_time_increase",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "metricId": "metric_syn_response",
+        "sourceId": "integration_outlook",
+        "name": "Slower response time",
+        "description": "Median response time increased 466.7%.",
+        "currentValue": 17,
+        "baselineValue": 3,
+        "absoluteChange": 14,
+        "percentageChange": 466.6666666666667,
+        "direction": "up",
+        "severity": "high",
+        "detectedAt": "2026-10-21T17:00:00.000Z",
+        "confidence": 99,
+        "observationIds": [
+          "metric_syn_response_current",
+          "metric_syn_response_baseline"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "signal_overdue_receivables",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "metricId": "metric_syn_overdue",
+        "sourceId": "integration_quickbooks",
+        "name": "Receivables deterioration",
+        "description": "Overdue receivables increased 50.0% against the comparison period.",
+        "currentValue": 48000,
+        "baselineValue": 32000,
+        "absoluteChange": 16000,
+        "percentageChange": 50,
+        "direction": "up",
+        "severity": "high",
+        "detectedAt": "2026-10-21T17:00:00.000Z",
+        "confidence": 88,
+        "observationIds": [
+          "metric_syn_overdue_current",
+          "metric_syn_overdue_baseline"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "signal_invoice_payment_delay",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "metricId": "metric_syn_payment_delay",
+        "sourceId": "integration_quickbooks",
+        "name": "Slower invoice payment",
+        "description": "Average invoice payment delay increased 38.5%.",
+        "currentValue": 54,
+        "baselineValue": 39,
+        "absoluteChange": 15,
+        "percentageChange": 38.46153846153847,
+        "direction": "up",
+        "severity": "high",
+        "detectedAt": "2026-10-21T17:00:00.000Z",
+        "confidence": 87,
+        "observationIds": [
+          "metric_syn_payment_delay_current",
+          "metric_syn_payment_delay_baseline"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "signal_administrative_workload",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "metricId": "metric_syn_admin",
+        "sourceId": "integration_csv_excel",
+        "name": "Growing administrative workload",
+        "description": "Administrative workload increased 51.2%.",
+        "currentValue": 62,
+        "baselineValue": 41,
+        "absoluteChange": 21,
+        "percentageChange": 51.21951219512195,
+        "direction": "up",
+        "severity": "high",
+        "detectedAt": "2026-10-21T17:00:00.000Z",
+        "confidence": 88,
+        "observationIds": [
+          "metric_syn_admin_current",
+          "metric_syn_admin_baseline"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "signal_software_spend_anomaly",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "metricId": "metric_syn_software",
+        "sourceId": "integration_quickbooks",
+        "name": "Software spend anomaly",
+        "description": "Software spend is 35.5% above the comparison period.",
+        "currentValue": 16800,
+        "baselineValue": 12400,
+        "absoluteChange": 4400,
+        "percentageChange": 35.483870967741936,
+        "direction": "up",
+        "severity": "high",
+        "detectedAt": "2026-10-21T17:00:00.000Z",
+        "confidence": 86,
+        "observationIds": [
+          "metric_syn_software_current",
+          "metric_syn_software_baseline"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "signal_inventory_shortage",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "metricId": "metric_syn_inventory",
+        "sourceId": "integration_shopify",
+        "name": "Inventory shortage",
+        "description": "Projected stock cover is projected to last only 12 days.",
+        "currentValue": 12,
+        "baselineValue": 27,
+        "absoluteChange": -15,
+        "percentageChange": -55.55555555555556,
+        "direction": "down",
+        "severity": "high",
+        "detectedAt": "2026-10-21T17:00:00.000Z",
+        "confidence": 89,
+        "observationIds": [
+          "metric_syn_inventory_current",
+          "metric_syn_inventory_baseline"
+        ],
+        "status": "open"
+      },
+      {
+        "id": "signal_customer_inactivity",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "metricId": "metric_syn_inactive",
+        "sourceId": "integration_hubspot",
+        "name": "Customer inactivity",
+        "description": "Inactive customer count increased 55.0%.",
+        "currentValue": 31,
+        "baselineValue": 20,
+        "absoluteChange": 11,
+        "percentageChange": 55.00000000000001,
+        "direction": "up",
+        "severity": "high",
+        "detectedAt": "2026-10-21T17:00:00.000Z",
+        "confidence": 89,
+        "observationIds": [
+          "metric_syn_inactive_current",
+          "metric_syn_inactive_baseline"
+        ],
+        "status": "open"
+      }
+    ],
+    "evidence": [
+      {
+        "id": "evidence_sales_conversion",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "hubspot",
+        "sourceRecordId": "synthetic:hubspot:deal:hs-deal-1",
+        "sourceRecordIds": [
+          "synthetic:hubspot:deal:hs-deal-1",
+          "synthetic:hubspot:deal:hs-deal-2",
+          "synthetic:hubspot:deal:hs-deal-3",
+          "synthetic:hubspot:deal:hs-deal-4",
+          "synthetic:hubspot:deal:hs-deal-5",
+          "synthetic:hubspot:deal:hs-deal-6",
+          "synthetic:hubspot:deal:hs-deal-7",
+          "synthetic:hubspot:deal:hs-deal-8",
+          "synthetic:hubspot:deal:hs-deal-9",
+          "synthetic:hubspot:deal:hs-deal-10",
+          "synthetic:hubspot:deal:hs-deal-11",
+          "synthetic:hubspot:deal:hs-deal-12",
+          "synthetic:hubspot:deal:hs-deal-13",
+          "synthetic:hubspot:deal:hs-deal-14"
+        ],
+        "sourceEntityType": "Deal",
+        "signalId": "signal_conversion_decline",
+        "observedValue": "23%",
+        "comparisonValue": "31%",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "HubSpot conversion fell from 31% to 23% in the current three-month period.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_lead_response",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "outlook",
+        "sourceRecordId": "synthetic:outlook:communication:outlook-message-2",
+        "sourceRecordIds": [
+          "synthetic:outlook:communication:outlook-message-2",
+          "synthetic:outlook:communication:outlook-message-6",
+          "synthetic:outlook:communication:outlook-message-10",
+          "synthetic:outlook:communication:outlook-message-14",
+          "synthetic:outlook:communication:outlook-message-18",
+          "synthetic:outlook:communication:outlook-message-22",
+          "synthetic:outlook:communication:outlook-message-26",
+          "synthetic:outlook:communication:outlook-message-30",
+          "synthetic:outlook:communication:outlook-message-34",
+          "synthetic:outlook:communication:outlook-message-38",
+          "synthetic:outlook:communication:outlook-message-42",
+          "synthetic:outlook:communication:outlook-message-46",
+          "synthetic:outlook:communication:outlook-message-50",
+          "synthetic:outlook:communication:outlook-message-54",
+          "synthetic:outlook:communication:outlook-message-58",
+          "synthetic:outlook:communication:outlook-message-62",
+          "synthetic:outlook:communication:outlook-message-66",
+          "synthetic:outlook:communication:outlook-message-70"
+        ],
+        "sourceEntityType": "CommunicationEvent",
+        "signalId": "signal_response_time_increase",
+        "observedValue": "17 hours",
+        "comparisonValue": "3 hours",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Outlook median first response time grew from 3 hours to 17 hours for high-intent leads.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_proposal_calendar",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "microsoft_calendar",
+        "sourceRecordId": "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-1",
+        "sourceRecordIds": [
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-1",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-3",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-5",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-7",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-9",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-11",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-13",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-15",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-17",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-19",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-21",
+          "synthetic:microsoft_calendar:calendar_event:microsoft_calendar-event-23"
+        ],
+        "sourceEntityType": "CalendarEvent",
+        "signalId": "signal_response_time_increase",
+        "observedValue": "20 meetings",
+        "comparisonValue": "14 meetings",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Proposal-preparation meetings increased 42%, consuming selling time.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_fragmented_proposals",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "google_drive",
+        "sourceRecordId": "synthetic:google_drive:document:document-1",
+        "sourceRecordIds": [
+          "synthetic:google_drive:document:document-1",
+          "synthetic:google_drive:document:document-4",
+          "synthetic:google_drive:document:document-7",
+          "synthetic:google_drive:document:document-10",
+          "synthetic:google_drive:document:document-13",
+          "synthetic:google_drive:document:document-16",
+          "synthetic:google_drive:document:document-19",
+          "synthetic:google_drive:document:document-22",
+          "synthetic:google_drive:document:document-25",
+          "synthetic:google_drive:document:document-28",
+          "synthetic:google_drive:document:document-31",
+          "synthetic:google_drive:document:document-34",
+          "synthetic:google_drive:document:document-37",
+          "synthetic:google_drive:document:document-40",
+          "synthetic:google_drive:document:document-43",
+          "synthetic:google_drive:document:document-46",
+          "synthetic:google_drive:document:document-49",
+          "synthetic:google_drive:document:document-52"
+        ],
+        "sourceEntityType": "Document",
+        "signalId": "signal_response_time_increase",
+        "observedValue": "187 files",
+        "comparisonValue": "1 library",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Proposal templates, pricing sheets, and case studies are fragmented across 187 files in Drive and OneDrive.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_followup_gap",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "hubspot",
+        "sourceRecordId": "synthetic:hubspot:lead:hs-lead-1",
+        "sourceRecordIds": [
+          "synthetic:hubspot:lead:hs-lead-1",
+          "synthetic:hubspot:lead:hs-lead-2",
+          "synthetic:hubspot:lead:hs-lead-3",
+          "synthetic:hubspot:lead:hs-lead-4",
+          "synthetic:hubspot:lead:hs-lead-5",
+          "synthetic:hubspot:lead:hs-lead-6",
+          "synthetic:hubspot:lead:hs-lead-7",
+          "synthetic:hubspot:lead:hs-lead-8",
+          "synthetic:hubspot:lead:hs-lead-9",
+          "synthetic:hubspot:lead:hs-lead-10",
+          "synthetic:hubspot:lead:hs-lead-11",
+          "synthetic:hubspot:lead:hs-lead-12"
+        ],
+        "sourceEntityType": "Lead",
+        "signalId": "signal_conversion_decline",
+        "observedValue": "42%",
+        "comparisonValue": "78%",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Only 42% of high-intent leads received a second touch within five business days.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_overdue_balance",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "quickbooks",
+        "sourceRecordId": "synthetic:quickbooks:invoice:qb-invoice-1",
+        "sourceRecordIds": [
+          "synthetic:quickbooks:invoice:qb-invoice-1",
+          "synthetic:quickbooks:invoice:qb-invoice-2",
+          "synthetic:quickbooks:invoice:qb-invoice-3",
+          "synthetic:quickbooks:invoice:qb-invoice-4",
+          "synthetic:quickbooks:invoice:qb-invoice-5",
+          "synthetic:quickbooks:invoice:qb-invoice-6",
+          "synthetic:quickbooks:invoice:qb-invoice-7",
+          "synthetic:quickbooks:invoice:qb-invoice-8",
+          "synthetic:quickbooks:invoice:qb-invoice-9",
+          "synthetic:quickbooks:invoice:qb-invoice-10",
+          "synthetic:quickbooks:invoice:qb-invoice-11",
+          "synthetic:quickbooks:invoice:qb-invoice-12",
+          "synthetic:quickbooks:invoice:qb-invoice-13",
+          "synthetic:quickbooks:invoice:qb-invoice-14",
+          "synthetic:quickbooks:invoice:qb-invoice-15",
+          "synthetic:quickbooks:invoice:qb-invoice-16",
+          "synthetic:quickbooks:invoice:qb-invoice-17",
+          "synthetic:quickbooks:invoice:qb-invoice-18"
+        ],
+        "sourceEntityType": "Invoice",
+        "signalId": "signal_overdue_receivables",
+        "observedValue": "$48,000",
+        "comparisonValue": "$32,000",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "QuickBooks shows $48,000 in overdue invoice balance, up from $32,000.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_payment_delay",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "quickbooks",
+        "sourceRecordId": "synthetic:quickbooks:payment:qb-payment-2",
+        "sourceRecordIds": [
+          "synthetic:quickbooks:payment:qb-payment-2",
+          "synthetic:quickbooks:payment:qb-payment-3",
+          "synthetic:quickbooks:payment:qb-payment-4",
+          "synthetic:quickbooks:payment:qb-payment-5",
+          "synthetic:quickbooks:payment:qb-payment-7",
+          "synthetic:quickbooks:payment:qb-payment-8",
+          "synthetic:quickbooks:payment:qb-payment-9",
+          "synthetic:quickbooks:payment:qb-payment-10",
+          "synthetic:quickbooks:payment:qb-payment-13",
+          "synthetic:quickbooks:payment:qb-payment-14",
+          "synthetic:quickbooks:payment:qb-payment-15",
+          "synthetic:quickbooks:payment:qb-payment-17",
+          "synthetic:quickbooks:payment:qb-payment-18",
+          "synthetic:quickbooks:payment:qb-payment-19",
+          "synthetic:quickbooks:payment:qb-payment-20",
+          "synthetic:quickbooks:payment:qb-payment-22"
+        ],
+        "sourceEntityType": "Payment",
+        "signalId": "signal_invoice_payment_delay",
+        "observedValue": "54 days",
+        "comparisonValue": "39 days",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Average invoice payment time increased from 39 to 54 days.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_reminder_inconsistency",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "gmail",
+        "sourceRecordId": "synthetic:gmail:communication:gmail-message-1",
+        "sourceRecordIds": [
+          "synthetic:gmail:communication:gmail-message-1",
+          "synthetic:gmail:communication:gmail-message-5",
+          "synthetic:gmail:communication:gmail-message-9",
+          "synthetic:gmail:communication:gmail-message-13",
+          "synthetic:gmail:communication:gmail-message-17",
+          "synthetic:gmail:communication:gmail-message-21",
+          "synthetic:gmail:communication:gmail-message-25",
+          "synthetic:gmail:communication:gmail-message-29",
+          "synthetic:gmail:communication:gmail-message-33",
+          "synthetic:gmail:communication:gmail-message-37",
+          "synthetic:gmail:communication:gmail-message-41",
+          "synthetic:gmail:communication:gmail-message-45"
+        ],
+        "sourceEntityType": "CommunicationEvent",
+        "signalId": "signal_overdue_receivables",
+        "observedValue": "42%",
+        "comparisonValue": "80%",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Gmail shows reminder coverage on only 42% of overdue accounts, with no consistent owner sequence.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_owner_hygiene",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "hubspot",
+        "sourceRecordId": "synthetic:hubspot:deal:hs-deal-1",
+        "sourceRecordIds": [
+          "synthetic:hubspot:deal:hs-deal-1",
+          "synthetic:hubspot:deal:hs-deal-2",
+          "synthetic:hubspot:deal:hs-deal-3",
+          "synthetic:hubspot:deal:hs-deal-4",
+          "synthetic:hubspot:deal:hs-deal-5",
+          "synthetic:hubspot:deal:hs-deal-6",
+          "synthetic:hubspot:deal:hs-deal-7",
+          "synthetic:hubspot:deal:hs-deal-8",
+          "synthetic:hubspot:deal:hs-deal-9",
+          "synthetic:hubspot:deal:hs-deal-10"
+        ],
+        "sourceEntityType": "Deal",
+        "signalId": "signal_overdue_receivables",
+        "observedValue": "7 accounts",
+        "comparisonValue": "0 accounts",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Seven overdue accounts have either a blank or stale CRM owner.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_po_attachments",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "outlook",
+        "sourceRecordId": "synthetic:outlook:communication:outlook-message-2",
+        "sourceRecordIds": [
+          "synthetic:outlook:communication:outlook-message-2",
+          "synthetic:outlook:communication:outlook-message-6",
+          "synthetic:outlook:communication:outlook-message-10",
+          "synthetic:outlook:communication:outlook-message-14",
+          "synthetic:outlook:communication:outlook-message-18",
+          "synthetic:outlook:communication:outlook-message-22",
+          "synthetic:outlook:communication:outlook-message-26",
+          "synthetic:outlook:communication:outlook-message-30",
+          "synthetic:outlook:communication:outlook-message-34",
+          "synthetic:outlook:communication:outlook-message-38",
+          "synthetic:outlook:communication:outlook-message-42",
+          "synthetic:outlook:communication:outlook-message-46",
+          "synthetic:outlook:communication:outlook-message-50",
+          "synthetic:outlook:communication:outlook-message-54",
+          "synthetic:outlook:communication:outlook-message-58",
+          "synthetic:outlook:communication:outlook-message-62"
+        ],
+        "sourceEntityType": "CommunicationEvent",
+        "signalId": "signal_administrative_workload",
+        "observedValue": "37 POs/month",
+        "comparisonValue": "12 POs/month",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Outlook contains recurring supplier PO attachments that are re-keyed into the spreadsheet queue.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_manual_po_entry",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "csv_excel",
+        "sourceRecordId": "synthetic:csv_excel:purchase_order:excel-po-1",
+        "sourceRecordIds": [
+          "synthetic:csv_excel:purchase_order:excel-po-1",
+          "synthetic:csv_excel:purchase_order:excel-po-2",
+          "synthetic:csv_excel:purchase_order:excel-po-3",
+          "synthetic:csv_excel:purchase_order:excel-po-4",
+          "synthetic:csv_excel:purchase_order:excel-po-5",
+          "synthetic:csv_excel:purchase_order:excel-po-6",
+          "synthetic:csv_excel:purchase_order:excel-po-7",
+          "synthetic:csv_excel:purchase_order:excel-po-8",
+          "synthetic:csv_excel:purchase_order:excel-po-9",
+          "synthetic:csv_excel:purchase_order:excel-po-10",
+          "synthetic:csv_excel:purchase_order:excel-po-11",
+          "synthetic:csv_excel:purchase_order:excel-po-12",
+          "synthetic:csv_excel:purchase_order:excel-po-13",
+          "synthetic:csv_excel:purchase_order:excel-po-14",
+          "synthetic:csv_excel:purchase_order:excel-po-15",
+          "synthetic:csv_excel:purchase_order:excel-po-16"
+        ],
+        "sourceEntityType": "PurchaseOrder",
+        "signalId": "signal_administrative_workload",
+        "observedValue": "46 fields/week",
+        "comparisonValue": "18 fields/week",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "The Excel purchasing tracker records the same order, vendor, and shipment fields manually.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_admin_calendar",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "google_calendar",
+        "sourceRecordId": "synthetic:google_calendar:calendar_event:google_calendar-event-2",
+        "sourceRecordIds": [
+          "synthetic:google_calendar:calendar_event:google_calendar-event-2",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-4",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-6",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-8",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-10",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-12",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-14",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-16",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-18",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-20",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-22",
+          "synthetic:google_calendar:calendar_event:google_calendar-event-24"
+        ],
+        "sourceEntityType": "CalendarEvent",
+        "signalId": "signal_administrative_workload",
+        "observedValue": "18 hrs/month",
+        "comparisonValue": "7 hrs/month",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Calendar blocks labeled data entry and reconciliation grew to 18 hours per month.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_shipment_slack",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "slack",
+        "sourceRecordId": "synthetic:slack:communication:slack-message-3",
+        "sourceRecordIds": [
+          "synthetic:slack:communication:slack-message-3",
+          "synthetic:slack:communication:slack-message-7",
+          "synthetic:slack:communication:slack-message-11",
+          "synthetic:slack:communication:slack-message-15",
+          "synthetic:slack:communication:slack-message-19",
+          "synthetic:slack:communication:slack-message-23",
+          "synthetic:slack:communication:slack-message-27",
+          "synthetic:slack:communication:slack-message-31",
+          "synthetic:slack:communication:slack-message-35",
+          "synthetic:slack:communication:slack-message-39",
+          "synthetic:slack:communication:slack-message-43",
+          "synthetic:slack:communication:slack-message-47",
+          "synthetic:slack:communication:slack-message-51",
+          "synthetic:slack:communication:slack-message-55"
+        ],
+        "sourceEntityType": "CommunicationEvent",
+        "signalId": "signal_administrative_workload",
+        "observedValue": "28 threads",
+        "comparisonValue": "9 threads",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Slack has 28 shipment-status threads asking for information already present in email attachments.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_software_spend",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "quickbooks",
+        "sourceRecordId": "synthetic:quickbooks:expense:qb-expense-1",
+        "sourceRecordIds": [
+          "synthetic:quickbooks:expense:qb-expense-1",
+          "synthetic:quickbooks:expense:qb-expense-2",
+          "synthetic:quickbooks:expense:qb-expense-3",
+          "synthetic:quickbooks:expense:qb-expense-4",
+          "synthetic:quickbooks:expense:qb-expense-5",
+          "synthetic:quickbooks:expense:qb-expense-6",
+          "synthetic:quickbooks:expense:qb-expense-7",
+          "synthetic:quickbooks:expense:qb-expense-8",
+          "synthetic:quickbooks:expense:qb-expense-9",
+          "synthetic:quickbooks:expense:qb-expense-10",
+          "synthetic:quickbooks:expense:qb-expense-11",
+          "synthetic:quickbooks:expense:qb-expense-12",
+          "synthetic:quickbooks:expense:qb-expense-13",
+          "synthetic:quickbooks:expense:qb-expense-14",
+          "synthetic:quickbooks:expense:qb-expense-15",
+          "synthetic:quickbooks:expense:qb-expense-16"
+        ],
+        "sourceEntityType": "Expense",
+        "signalId": "signal_software_spend_anomaly",
+        "observedValue": "$16,800/year",
+        "comparisonValue": "$12,400/year",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Recurring software charges rose while three overlapping products have low activity.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_tool_utilization",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "slack",
+        "sourceRecordId": "synthetic:slack:task:slack-task-1",
+        "sourceRecordIds": [
+          "synthetic:slack:task:slack-task-1",
+          "synthetic:slack:task:slack-task-2",
+          "synthetic:slack:task:slack-task-3",
+          "synthetic:slack:task:slack-task-4",
+          "synthetic:slack:task:slack-task-5",
+          "synthetic:slack:task:slack-task-6",
+          "synthetic:slack:task:slack-task-7",
+          "synthetic:slack:task:slack-task-8",
+          "synthetic:slack:task:slack-task-9",
+          "synthetic:slack:task:slack-task-10"
+        ],
+        "sourceEntityType": "Task",
+        "signalId": "signal_software_spend_anomaly",
+        "observedValue": "18–35%",
+        "comparisonValue": "70%",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Slack activity and team records show three tools with seat utilization below 35%.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_team_overlap",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "microsoft_365",
+        "sourceRecordId": "synthetic:microsoft_365:employee:m365-employee-1",
+        "sourceRecordIds": [
+          "synthetic:microsoft_365:employee:m365-employee-1",
+          "synthetic:microsoft_365:employee:m365-employee-2",
+          "synthetic:microsoft_365:employee:m365-employee-3",
+          "synthetic:microsoft_365:employee:m365-employee-4",
+          "synthetic:microsoft_365:employee:m365-employee-5",
+          "synthetic:microsoft_365:employee:m365-employee-6",
+          "synthetic:microsoft_365:employee:m365-employee-7",
+          "synthetic:microsoft_365:employee:m365-employee-8",
+          "synthetic:microsoft_365:employee:m365-employee-9",
+          "synthetic:microsoft_365:employee:m365-employee-10"
+        ],
+        "sourceEntityType": "Employee",
+        "signalId": "signal_software_spend_anomaly",
+        "observedValue": "3 overlaps",
+        "comparisonValue": "0 overlaps",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "The 42-person team has overlapping CRM, inbox, and proposal utilities with unclear ownership.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_shopify_demand",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "shopify",
+        "sourceRecordId": "synthetic:shopify:order:shopify-order-1",
+        "sourceRecordIds": [
+          "synthetic:shopify:order:shopify-order-1",
+          "synthetic:shopify:order:shopify-order-2",
+          "synthetic:shopify:order:shopify-order-3",
+          "synthetic:shopify:order:shopify-order-4",
+          "synthetic:shopify:order:shopify-order-5",
+          "synthetic:shopify:order:shopify-order-6",
+          "synthetic:shopify:order:shopify-order-7",
+          "synthetic:shopify:order:shopify-order-8",
+          "synthetic:shopify:order:shopify-order-9",
+          "synthetic:shopify:order:shopify-order-10",
+          "synthetic:shopify:order:shopify-order-11",
+          "synthetic:shopify:order:shopify-order-12",
+          "synthetic:shopify:order:shopify-order-13",
+          "synthetic:shopify:order:shopify-order-14",
+          "synthetic:shopify:order:shopify-order-15",
+          "synthetic:shopify:order:shopify-order-16",
+          "synthetic:shopify:order:shopify-order-17",
+          "synthetic:shopify:order:shopify-order-18"
+        ],
+        "sourceEntityType": "Order",
+        "signalId": "signal_inventory_shortage",
+        "observedValue": "+26%",
+        "comparisonValue": "+8%",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Shopify order volume for Beta Industrial Gloves rose 26% while replenishment cadence stayed flat.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_inventory_cover",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "shopify",
+        "sourceRecordId": "synthetic:shopify:inventory:shopify-inventory-1",
+        "sourceRecordIds": [
+          "synthetic:shopify:inventory:shopify-inventory-1",
+          "synthetic:shopify:inventory:shopify-inventory-2",
+          "synthetic:shopify:inventory:shopify-inventory-3",
+          "synthetic:shopify:inventory:shopify-inventory-4",
+          "synthetic:shopify:inventory:shopify-inventory-5",
+          "synthetic:shopify:inventory:shopify-inventory-6",
+          "synthetic:shopify:inventory:shopify-inventory-7",
+          "synthetic:shopify:inventory:shopify-inventory-8"
+        ],
+        "sourceEntityType": "InventoryRecord",
+        "signalId": "signal_inventory_shortage",
+        "observedValue": "12 days",
+        "comparisonValue": "27 days",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Shopify inventory projects only 12 days of cover for Beta Industrial Gloves.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_qb_sku_sales",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "quickbooks",
+        "sourceRecordId": "synthetic:quickbooks:invoice:qb-invoice-1",
+        "sourceRecordIds": [
+          "synthetic:quickbooks:invoice:qb-invoice-1",
+          "synthetic:quickbooks:invoice:qb-invoice-2",
+          "synthetic:quickbooks:invoice:qb-invoice-3",
+          "synthetic:quickbooks:invoice:qb-invoice-4",
+          "synthetic:quickbooks:invoice:qb-invoice-5",
+          "synthetic:quickbooks:invoice:qb-invoice-6",
+          "synthetic:quickbooks:invoice:qb-invoice-7",
+          "synthetic:quickbooks:invoice:qb-invoice-8",
+          "synthetic:quickbooks:invoice:qb-invoice-9",
+          "synthetic:quickbooks:invoice:qb-invoice-10",
+          "synthetic:quickbooks:invoice:qb-invoice-11",
+          "synthetic:quickbooks:invoice:qb-invoice-12",
+          "synthetic:quickbooks:invoice:qb-invoice-13",
+          "synthetic:quickbooks:invoice:qb-invoice-14"
+        ],
+        "sourceEntityType": "Invoice",
+        "signalId": "signal_inventory_shortage",
+        "observedValue": "-18%",
+        "comparisonValue": "+4%",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "QuickBooks revenue for the affected SKU is down 18% in the latest month because orders are being delayed.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      },
+      {
+        "id": "evidence_stockout_discussion",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "sourceSystem": "slack",
+        "sourceRecordId": "synthetic:slack:communication:slack-message-3",
+        "sourceRecordIds": [
+          "synthetic:slack:communication:slack-message-3",
+          "synthetic:slack:communication:slack-message-7",
+          "synthetic:slack:communication:slack-message-11",
+          "synthetic:slack:communication:slack-message-15",
+          "synthetic:slack:communication:slack-message-19",
+          "synthetic:slack:communication:slack-message-23",
+          "synthetic:slack:communication:slack-message-27",
+          "synthetic:slack:communication:slack-message-31",
+          "synthetic:slack:communication:slack-message-35",
+          "synthetic:slack:communication:slack-message-39"
+        ],
+        "sourceEntityType": "CommunicationEvent",
+        "signalId": "signal_inventory_shortage",
+        "observedValue": "9 mentions",
+        "comparisonValue": "1 mention",
+        "observedAt": "2026-10-21T17:00:00.000Z",
+        "periodStart": "2026-08-01T00:00:00.000Z",
+        "periodEnd": "2026-10-21T17:00:00.000Z",
+        "description": "Slack contains nine recent stock-shortage discussions from sales and warehouse staff.",
+        "strength": 0.88,
+        "relevance": 0.9,
+        "synchronizedAt": "2026-10-21T17:00:00.000Z"
+      }
+    ],
+    "issues": [
+      {
+        "id": "issue_sales_conversion_decline",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "title": "Sales conversion decline",
+        "description": "Conversion fell from 31% to 23% while proposal preparation and response time expanded.",
+        "severity": "high",
+        "category": "Sales & Customers",
+        "signalIds": [
+          "signal_conversion_decline",
+          "signal_response_time_increase"
+        ],
+        "evidenceIds": [
+          "evidence_sales_conversion",
+          "evidence_lead_response",
+          "evidence_proposal_calendar",
+          "evidence_fragmented_proposals",
+          "evidence_followup_gap"
+        ],
+        "rootCauseIds": [
+          "root_cause_slow_proposals",
+          "root_cause_fragmented_knowledge",
+          "root_cause_followup_gap"
+        ],
+        "impact": {
+          "estimatedAnnualValue": 82000,
+          "estimatedRevenueUpside": 82000,
+          "currency": "USD",
+          "origin": "estimate"
+        },
+        "confidence": 0.91,
+        "status": "open"
+      },
+      {
+        "id": "issue_receivables_deterioration",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "title": "Receivables are aging",
+        "description": "Overdue balances and payment delay are rising while reminder coverage is inconsistent.",
+        "severity": "high",
+        "category": "Financial Health",
+        "signalIds": [
+          "signal_overdue_receivables",
+          "signal_invoice_payment_delay"
+        ],
+        "evidenceIds": [
+          "evidence_overdue_balance",
+          "evidence_payment_delay",
+          "evidence_reminder_inconsistency",
+          "evidence_owner_hygiene"
+        ],
+        "rootCauseIds": [
+          "root_cause_receivables_followup",
+          "root_cause_stale_owners"
+        ],
+        "impact": {
+          "estimatedAnnualValue": 48000,
+          "estimatedRevenueUpside": 48000,
+          "currency": "USD",
+          "origin": "estimate"
+        },
+        "confidence": 0.9,
+        "status": "open"
+      },
+      {
+        "id": "issue_admin_fragmented_workflow",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "title": "Admin work is fragmented",
+        "description": "Purchase orders and shipment questions move manually across email, spreadsheets, calendars, and Slack.",
+        "severity": "high",
+        "category": "Operations",
+        "signalIds": [
+          "signal_administrative_workload"
+        ],
+        "evidenceIds": [
+          "evidence_po_attachments",
+          "evidence_manual_po_entry",
+          "evidence_admin_calendar",
+          "evidence_shipment_slack"
+        ],
+        "rootCauseIds": [
+          "root_cause_manual_transfer",
+          "root_cause_shipment_fragmentation"
+        ],
+        "impact": {
+          "estimatedAnnualValue": 28000,
+          "estimatedRevenueUpside": 28000,
+          "currency": "USD",
+          "origin": "estimate"
+        },
+        "confidence": 0.9,
+        "status": "open"
+      },
+      {
+        "id": "issue_tool_cost_leakage",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "title": "Software cost leakage",
+        "description": "Recurring software spend is rising while several overlapping tools show low activity.",
+        "severity": "medium",
+        "category": "Tools & Subscriptions",
+        "signalIds": [
+          "signal_software_spend_anomaly"
+        ],
+        "evidenceIds": [
+          "evidence_software_spend",
+          "evidence_tool_utilization",
+          "evidence_team_overlap"
+        ],
+        "rootCauseIds": [
+          "root_cause_tool_overlap"
+        ],
+        "impact": {
+          "estimatedAnnualValue": 19800,
+          "estimatedRevenueUpside": 19800,
+          "currency": "USD",
+          "origin": "estimate"
+        },
+        "confidence": 0.86,
+        "status": "open"
+      },
+      {
+        "id": "issue_inventory_stockout_risk",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "title": "Inventory stockout risk",
+        "description": "Demand is rising for selected products while stock cover is falling and teams are already reporting shortages.",
+        "severity": "high",
+        "category": "Operations",
+        "signalIds": [
+          "signal_inventory_shortage"
+        ],
+        "evidenceIds": [
+          "evidence_shopify_demand",
+          "evidence_inventory_cover",
+          "evidence_qb_sku_sales",
+          "evidence_stockout_discussion"
+        ],
+        "rootCauseIds": [
+          "root_cause_replenishment_cadence",
+          "root_cause_stockout_visibility"
+        ],
+        "impact": {
+          "estimatedAnnualValue": 31000,
+          "estimatedRevenueUpside": 31000,
+          "currency": "USD",
+          "origin": "estimate"
+        },
+        "confidence": 0.88,
+        "status": "open"
+      }
+    ],
+    "rootCauses": [
+      {
+        "id": "root_cause_slow_proposals",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_sales_conversion_decline",
+        "title": "Proposal workflow is too slow",
+        "explanation": "The sales team is spending more time assembling proposal context while response time is rising.",
+        "contributingFactorIds": [
+          "factor_manual_proposal_research"
+        ],
+        "evidenceIds": [
+          "evidence_lead_response",
+          "evidence_proposal_calendar",
+          "evidence_fragmented_proposals"
+        ],
+        "confidence": 0.92,
+        "order": 1,
+        "isPrimary": true,
+        "certainty": "inferred"
+      },
+      {
+        "id": "root_cause_fragmented_knowledge",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_sales_conversion_decline",
+        "title": "Proposal knowledge is fragmented",
+        "explanation": "Past proposals, pricing, and case studies are distributed across 187 files rather than a searchable approved library.",
+        "contributingFactorIds": [],
+        "evidenceIds": [
+          "evidence_fragmented_proposals"
+        ],
+        "confidence": 0.96,
+        "order": 2,
+        "isPrimary": false,
+        "certainty": "observed"
+      },
+      {
+        "id": "root_cause_followup_gap",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_sales_conversion_decline",
+        "title": "Follow-up ownership is inconsistent",
+        "explanation": "The lower second-touch rate is consistent with a workflow gap, but individual rep intent is not directly observable.",
+        "contributingFactorIds": [
+          "factor_manual_proposal_research"
+        ],
+        "evidenceIds": [
+          "evidence_followup_gap"
+        ],
+        "confidence": 0.78,
+        "order": 3,
+        "isPrimary": false,
+        "certainty": "inferred"
+      },
+      {
+        "id": "root_cause_receivables_followup",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_receivables_deterioration",
+        "title": "Overdue follow-up is not consistently triggered",
+        "explanation": "Accounting data confirms the balance and payment delay; email activity suggests reminders are inconsistent.",
+        "contributingFactorIds": [],
+        "evidenceIds": [
+          "evidence_overdue_balance",
+          "evidence_payment_delay",
+          "evidence_reminder_inconsistency"
+        ],
+        "confidence": 0.9,
+        "order": 1,
+        "isPrimary": true,
+        "certainty": "inferred"
+      },
+      {
+        "id": "root_cause_stale_owners",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_receivables_deterioration",
+        "title": "Account ownership data is stale",
+        "explanation": "Seven overdue accounts lack a reliable owner, so the accountable recipient for a reminder is unknown.",
+        "contributingFactorIds": [],
+        "evidenceIds": [
+          "evidence_owner_hygiene"
+        ],
+        "confidence": 0.84,
+        "order": 2,
+        "isPrimary": false,
+        "certainty": "observed"
+      },
+      {
+        "id": "root_cause_manual_transfer",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_admin_fragmented_workflow",
+        "title": "Purchase orders are transferred by hand",
+        "explanation": "Supplier email attachments are manually copied into the Excel purchasing tracker and then rechecked in Slack.",
+        "contributingFactorIds": [],
+        "evidenceIds": [
+          "evidence_po_attachments",
+          "evidence_manual_po_entry"
+        ],
+        "confidence": 0.94,
+        "order": 1,
+        "isPrimary": true,
+        "certainty": "observed"
+      },
+      {
+        "id": "root_cause_shipment_fragmentation",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_admin_fragmented_workflow",
+        "title": "Shipment status is fragmented across channels",
+        "explanation": "The team uses Slack to chase status that is not linked to the original supplier document.",
+        "contributingFactorIds": [],
+        "evidenceIds": [
+          "evidence_shipment_slack",
+          "evidence_admin_calendar"
+        ],
+        "confidence": 0.82,
+        "order": 2,
+        "isPrimary": false,
+        "certainty": "inferred"
+      },
+      {
+        "id": "root_cause_tool_overlap",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_tool_cost_leakage",
+        "title": "Overlapping tools are under-used",
+        "explanation": "Recurring charges continue for tools with low activity and overlapping responsibilities.",
+        "contributingFactorIds": [],
+        "evidenceIds": [
+          "evidence_software_spend",
+          "evidence_tool_utilization",
+          "evidence_team_overlap"
+        ],
+        "confidence": 0.88,
+        "order": 1,
+        "isPrimary": true,
+        "certainty": "inferred"
+      },
+      {
+        "id": "root_cause_replenishment_cadence",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_inventory_stockout_risk",
+        "title": "Replenishment cadence misses demand changes",
+        "explanation": "Shopify demand is increasing for a selected SKU while inventory and accounting signals show exposure.",
+        "contributingFactorIds": [],
+        "evidenceIds": [
+          "evidence_shopify_demand",
+          "evidence_inventory_cover",
+          "evidence_qb_sku_sales"
+        ],
+        "confidence": 0.9,
+        "order": 1,
+        "isPrimary": true,
+        "certainty": "inferred"
+      },
+      {
+        "id": "root_cause_stockout_visibility",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_inventory_stockout_risk",
+        "title": "Stockout risk is discussed before it is measured",
+        "explanation": "Slack contains the warnings, but there is no shared alert tied to projected days of cover.",
+        "contributingFactorIds": [],
+        "evidenceIds": [
+          "evidence_stockout_discussion"
+        ],
+        "confidence": 0.8,
+        "order": 2,
+        "isPrimary": false,
+        "certainty": "observed"
+      }
+    ],
+    "opportunities": [
+      {
+        "id": "opportunity_proposal_intelligence",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_sales_conversion_decline",
+        "rootCauseId": "root_cause_slow_proposals",
+        "title": "Automate proposal generation",
+        "category": "Growth",
+        "summary": "Create a searchable proposal workflow that gathers approved pricing, context, and examples before a seller reviews the draft.",
+        "evidenceIds": [
+          "evidence_sales_conversion",
+          "evidence_lead_response",
+          "evidence_proposal_calendar",
+          "evidence_fragmented_proposals"
+        ],
+        "estimatedAnnualValue": 82000,
+        "estimatedSavings": 16400,
+        "estimatedRevenueUpside": 82000,
+        "urgency": 0.95,
+        "confidence": 0.91,
+        "implementationDifficulty": 2,
+        "recommendedAction": "Deploy Proposal Intelligence in draft-only mode and measure proposal time for 30 days.",
+        "sourceSystem": "hubspot",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 5.22,
+        "priorityScore": 35444.5,
+        "status": "prioritized"
+      },
+      {
+        "id": "opportunity_receivables_followup",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_receivables_deterioration",
+        "rootCauseId": "root_cause_receivables_followup",
+        "title": "Automate receivables follow-up",
+        "category": "Finance",
+        "summary": "Route overdue account reminders to the right owner using QuickBooks aging and communication history.",
+        "evidenceIds": [
+          "evidence_overdue_balance",
+          "evidence_payment_delay",
+          "evidence_reminder_inconsistency",
+          "evidence_owner_hygiene"
+        ],
+        "estimatedAnnualValue": 48000,
+        "estimatedSavings": 0,
+        "estimatedRevenueUpside": 48000,
+        "urgency": 0.94,
+        "confidence": 0.9,
+        "implementationDifficulty": 2,
+        "recommendedAction": "Prepare reminder drafts for owner approval; never send automatically.",
+        "sourceSystem": "quickbooks",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 5.33,
+        "priorityScore": 20304,
+        "status": "prioritized"
+      },
+      {
+        "id": "opportunity_lead_response",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_sales_conversion_decline",
+        "rootCauseId": "root_cause_followup_gap",
+        "title": "Improve lead-response workflow",
+        "category": "Growth",
+        "summary": "Give high-intent leads a consistent first and second touch while proposal work is underway.",
+        "evidenceIds": [
+          "evidence_sales_conversion",
+          "evidence_lead_response",
+          "evidence_followup_gap"
+        ],
+        "estimatedAnnualValue": 38000,
+        "estimatedSavings": 7200,
+        "estimatedRevenueUpside": 38000,
+        "urgency": 0.88,
+        "confidence": 0.84,
+        "implementationDifficulty": 2,
+        "recommendedAction": "Configure an approval-based lead response queue for high-intent opportunities.",
+        "sourceSystem": "hubspot",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 5.28,
+        "priorityScore": 14044.8,
+        "status": "prioritized"
+      },
+      {
+        "id": "opportunity_saas_consolidation",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_tool_cost_leakage",
+        "rootCauseId": "root_cause_tool_overlap",
+        "title": "Consolidate overlapping SaaS tools",
+        "category": "Tools & Subscriptions",
+        "summary": "Review low-utilization CRM, proposal, inbox, and analytics subscriptions before renewal.",
+        "evidenceIds": [
+          "evidence_software_spend",
+          "evidence_tool_utilization",
+          "evidence_team_overlap"
+        ],
+        "estimatedAnnualValue": 19800,
+        "estimatedSavings": 19800,
+        "estimatedRevenueUpside": 0,
+        "urgency": 0.7,
+        "confidence": 0.86,
+        "implementationDifficulty": 1,
+        "recommendedAction": "Create a renewal review with seat utilization and overlapping capabilities attached.",
+        "sourceSystem": "quickbooks",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 5.66,
+        "priorityScore": 11919.6,
+        "status": "prioritized"
+      },
+      {
+        "id": "opportunity_owner_hygiene",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_receivables_deterioration",
+        "rootCauseId": "root_cause_stale_owners",
+        "title": "Repair account ownership hygiene",
+        "category": "Customers",
+        "summary": "Resolve blank and stale CRM ownership so receivables and follow-up tasks have an accountable owner.",
+        "evidenceIds": [
+          "evidence_owner_hygiene",
+          "evidence_reminder_inconsistency"
+        ],
+        "estimatedAnnualValue": 16000,
+        "estimatedSavings": 0,
+        "estimatedRevenueUpside": 16000,
+        "urgency": 0.8,
+        "confidence": 0.84,
+        "implementationDifficulty": 1,
+        "recommendedAction": "Run an owner exception report and route changes for approval.",
+        "sourceSystem": "hubspot",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 4.57,
+        "priorityScore": 10752,
+        "status": "identified"
+      },
+      {
+        "id": "opportunity_po_automation",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_admin_fragmented_workflow",
+        "rootCauseId": "root_cause_manual_transfer",
+        "title": "Automate PO and order data entry",
+        "category": "Operations",
+        "summary": "Extract supplier PO fields once, match them to the vendor, and route exceptions to operations.",
+        "evidenceIds": [
+          "evidence_po_attachments",
+          "evidence_manual_po_entry",
+          "evidence_admin_calendar"
+        ],
+        "estimatedAnnualValue": 28000,
+        "estimatedSavings": 28000,
+        "estimatedRevenueUpside": 0,
+        "urgency": 0.82,
+        "confidence": 0.9,
+        "implementationDifficulty": 2,
+        "recommendedAction": "Deploy Document Automation for attachment extraction with exception review.",
+        "sourceSystem": "csv_excel",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 4,
+        "priorityScore": 10332,
+        "status": "prioritized"
+      },
+      {
+        "id": "opportunity_inventory_forecasting",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_inventory_stockout_risk",
+        "rootCauseId": "root_cause_replenishment_cadence",
+        "title": "Improve inventory forecasting",
+        "category": "Operations",
+        "summary": "Combine Shopify demand, QuickBooks sales, and current stock cover into an early replenishment signal.",
+        "evidenceIds": [
+          "evidence_shopify_demand",
+          "evidence_inventory_cover",
+          "evidence_qb_sku_sales"
+        ],
+        "estimatedAnnualValue": 31000,
+        "estimatedSavings": 0,
+        "estimatedRevenueUpside": 31000,
+        "urgency": 0.92,
+        "confidence": 0.88,
+        "implementationDifficulty": 3,
+        "recommendedAction": "Set a 21-day cover alert with a weekly owner review.",
+        "sourceSystem": "shopify",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 2.82,
+        "priorityScore": 8365.87,
+        "status": "identified"
+      },
+      {
+        "id": "opportunity_knowledge_search",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_sales_conversion_decline",
+        "rootCauseId": "root_cause_fragmented_knowledge",
+        "title": "Create searchable company knowledge",
+        "category": "Productivity",
+        "summary": "Index approved proposal, pricing, and case-study documents with source links and freshness dates.",
+        "evidenceIds": [
+          "evidence_fragmented_proposals",
+          "evidence_proposal_calendar"
+        ],
+        "estimatedAnnualValue": 24000,
+        "estimatedSavings": 24000,
+        "estimatedRevenueUpside": 0,
+        "urgency": 0.76,
+        "confidence": 0.9,
+        "implementationDifficulty": 2,
+        "recommendedAction": "Build an approved document index with permission-aware retrieval.",
+        "sourceSystem": "google_drive",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 4,
+        "priorityScore": 8208,
+        "status": "identified"
+      },
+      {
+        "id": "opportunity_shipment_updates",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "issueId": "issue_admin_fragmented_workflow",
+        "rootCauseId": "root_cause_shipment_fragmentation",
+        "title": "Automate shipment-status communication",
+        "category": "Customer Experience",
+        "summary": "Turn supplier and warehouse status into a shared update before the same question appears in Slack.",
+        "evidenceIds": [
+          "evidence_shipment_slack",
+          "evidence_po_attachments"
+        ],
+        "estimatedAnnualValue": 18500,
+        "estimatedSavings": 18500,
+        "estimatedRevenueUpside": 0,
+        "urgency": 0.73,
+        "confidence": 0.82,
+        "implementationDifficulty": 2,
+        "recommendedAction": "Draft internal and customer-facing shipment updates from approved source documents.",
+        "sourceSystem": "slack",
+        "analysisPeriod": {
+          "start": "2026-08-01T00:00:00.000Z",
+          "end": "2026-10-21T17:00:00.000Z"
+        },
+        "impactOrigin": "estimate",
+        "roi": 3.7,
+        "priorityScore": 5537.05,
+        "status": "identified"
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "recommendation_opportunity_proposal_intelligence",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_proposal_intelligence",
+        "solutionId": "solution_opportunity_proposal_intelligence",
+        "rationale": "Create a searchable proposal workflow that gathers approved pricing, context, and examples before a seller reviews the draft.",
+        "evidenceIds": [
+          "evidence_sales_conversion",
+          "evidence_lead_response",
+          "evidence_proposal_calendar",
+          "evidence_fragmented_proposals"
+        ],
+        "expectedBenefit": "Deploy Proposal Intelligence in draft-only mode and measure proposal time for 30 days.",
+        "expectedROI": 5.22,
+        "estimatedTimeSavedHours": 390,
+        "implementationComplexity": "medium",
+        "confidence": 0.91,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.91,
+          "sourceEvidenceIds": [
+            "evidence_sales_conversion",
+            "evidence_lead_response",
+            "evidence_proposal_calendar",
+            "evidence_fragmented_proposals"
+          ]
+        }
+      },
+      {
+        "id": "recommendation_opportunity_receivables_followup",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_receivables_followup",
+        "solutionId": "solution_opportunity_receivables_followup",
+        "rationale": "Route overdue account reminders to the right owner using QuickBooks aging and communication history.",
+        "evidenceIds": [
+          "evidence_overdue_balance",
+          "evidence_payment_delay",
+          "evidence_reminder_inconsistency",
+          "evidence_owner_hygiene"
+        ],
+        "expectedBenefit": "Prepare reminder drafts for owner approval; never send automatically.",
+        "expectedROI": 5.33,
+        "estimatedTimeSavedHours": 0,
+        "implementationComplexity": "medium",
+        "confidence": 0.9,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.9,
+          "sourceEvidenceIds": [
+            "evidence_overdue_balance",
+            "evidence_payment_delay",
+            "evidence_reminder_inconsistency",
+            "evidence_owner_hygiene"
+          ]
+        }
+      },
+      {
+        "id": "recommendation_opportunity_lead_response",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_lead_response",
+        "solutionId": "solution_opportunity_lead_response",
+        "rationale": "Give high-intent leads a consistent first and second touch while proposal work is underway.",
+        "evidenceIds": [
+          "evidence_sales_conversion",
+          "evidence_lead_response",
+          "evidence_followup_gap"
+        ],
+        "expectedBenefit": "Configure an approval-based lead response queue for high-intent opportunities.",
+        "expectedROI": 5.28,
+        "estimatedTimeSavedHours": 171,
+        "implementationComplexity": "medium",
+        "confidence": 0.84,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.84,
+          "sourceEvidenceIds": [
+            "evidence_sales_conversion",
+            "evidence_lead_response",
+            "evidence_followup_gap"
+          ]
+        }
+      },
+      {
+        "id": "recommendation_opportunity_saas_consolidation",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_saas_consolidation",
+        "solutionId": "solution_opportunity_saas_consolidation",
+        "rationale": "Review low-utilization CRM, proposal, inbox, and analytics subscriptions before renewal.",
+        "evidenceIds": [
+          "evidence_software_spend",
+          "evidence_tool_utilization",
+          "evidence_team_overlap"
+        ],
+        "expectedBenefit": "Create a renewal review with seat utilization and overlapping capabilities attached.",
+        "expectedROI": 5.66,
+        "estimatedTimeSavedHours": 471,
+        "implementationComplexity": "low",
+        "confidence": 0.86,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.86,
+          "sourceEvidenceIds": [
+            "evidence_software_spend",
+            "evidence_tool_utilization",
+            "evidence_team_overlap"
+          ]
+        }
+      },
+      {
+        "id": "recommendation_opportunity_owner_hygiene",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_owner_hygiene",
+        "solutionId": "solution_opportunity_owner_hygiene",
+        "rationale": "Resolve blank and stale CRM ownership so receivables and follow-up tasks have an accountable owner.",
+        "evidenceIds": [
+          "evidence_owner_hygiene",
+          "evidence_reminder_inconsistency"
+        ],
+        "expectedBenefit": "Run an owner exception report and route changes for approval.",
+        "expectedROI": 4.57,
+        "estimatedTimeSavedHours": 0,
+        "implementationComplexity": "low",
+        "confidence": 0.84,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.84,
+          "sourceEvidenceIds": [
+            "evidence_owner_hygiene",
+            "evidence_reminder_inconsistency"
+          ]
+        }
+      },
+      {
+        "id": "recommendation_opportunity_po_automation",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_po_automation",
+        "solutionId": "solution_opportunity_po_automation",
+        "rationale": "Extract supplier PO fields once, match them to the vendor, and route exceptions to operations.",
+        "evidenceIds": [
+          "evidence_po_attachments",
+          "evidence_manual_po_entry",
+          "evidence_admin_calendar"
+        ],
+        "expectedBenefit": "Deploy Document Automation for attachment extraction with exception review.",
+        "expectedROI": 4,
+        "estimatedTimeSavedHours": 667,
+        "implementationComplexity": "medium",
+        "confidence": 0.9,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.9,
+          "sourceEvidenceIds": [
+            "evidence_po_attachments",
+            "evidence_manual_po_entry",
+            "evidence_admin_calendar"
+          ]
+        }
+      },
+      {
+        "id": "recommendation_opportunity_inventory_forecasting",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_inventory_forecasting",
+        "solutionId": "solution_opportunity_inventory_forecasting",
+        "rationale": "Combine Shopify demand, QuickBooks sales, and current stock cover into an early replenishment signal.",
+        "evidenceIds": [
+          "evidence_shopify_demand",
+          "evidence_inventory_cover",
+          "evidence_qb_sku_sales"
+        ],
+        "expectedBenefit": "Set a 21-day cover alert with a weekly owner review.",
+        "expectedROI": 2.82,
+        "estimatedTimeSavedHours": 0,
+        "implementationComplexity": "high",
+        "confidence": 0.88,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.88,
+          "sourceEvidenceIds": [
+            "evidence_shopify_demand",
+            "evidence_inventory_cover",
+            "evidence_qb_sku_sales"
+          ]
+        }
+      },
+      {
+        "id": "recommendation_opportunity_knowledge_search",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_knowledge_search",
+        "solutionId": "solution_opportunity_knowledge_search",
+        "rationale": "Index approved proposal, pricing, and case-study documents with source links and freshness dates.",
+        "evidenceIds": [
+          "evidence_fragmented_proposals",
+          "evidence_proposal_calendar"
+        ],
+        "expectedBenefit": "Build an approved document index with permission-aware retrieval.",
+        "expectedROI": 4,
+        "estimatedTimeSavedHours": 571,
+        "implementationComplexity": "medium",
+        "confidence": 0.9,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.9,
+          "sourceEvidenceIds": [
+            "evidence_fragmented_proposals",
+            "evidence_proposal_calendar"
+          ]
+        }
+      },
+      {
+        "id": "recommendation_opportunity_shipment_updates",
+        "organizationId": "org_northstar_review",
+        "workspaceId": "ws_northstar_review",
+        "createdAt": "2026-10-21T17:00:00.000Z",
+        "updatedAt": "2026-10-21T17:00:00.000Z",
+        "opportunityId": "opportunity_shipment_updates",
+        "solutionId": "solution_opportunity_shipment_updates",
+        "rationale": "Turn supplier and warehouse status into a shared update before the same question appears in Slack.",
+        "evidenceIds": [
+          "evidence_shipment_slack",
+          "evidence_po_attachments"
+        ],
+        "expectedBenefit": "Draft internal and customer-facing shipment updates from approved source documents.",
+        "expectedROI": 3.7,
+        "estimatedTimeSavedHours": 440,
+        "implementationComplexity": "medium",
+        "confidence": 0.82,
+        "risks": [
+          "Synthetic estimate; validate with a controlled rollout and owner approval."
+        ],
+        "requiredPermissions": [
+          "observe",
+          "recommend"
+        ],
+        "approvalRequired": true,
+        "status": "ready",
+        "aiProvenance": {
+          "provider": "gilar-deterministic",
+          "model": "synthetic-rules-v1",
+          "generatedAt": "2026-10-21T17:00:00.000Z",
+          "promptVersion": "synthetic-northstar-v1",
+          "confidence": 0.82,
+          "sourceEvidenceIds": [
+            "evidence_shipment_slack",
+            "evidence_po_attachments"
+          ]
+        }
+      }
+    ],
+    "constraints": [
+      "No production writes without explicit approval.",
+      "Estimates are not realized revenue.",
+      "Unsupported facts must remain suppressed."
+    ],
+    "permissions": [
+      "observe",
+      "recommend"
+    ]
+  },
+  "advisory": {
+    "executiveSummary": "Northstar Distribution Co. has 11 available metrics across 5 connected source systems. Automate proposal generation is the strongest current starting point.",
+    "risks": [
+      "Sales conversion decline",
+      "Receivables are aging",
+      "Admin work is fragmented"
+    ],
+    "opportunities": [
+      "Automate proposal generation",
+      "Automate receivables follow-up",
+      "Improve lead-response workflow",
+      "Consolidate overlapping SaaS tools",
+      "Repair account ownership hygiene"
+    ],
+    "recommendedActions": [
+      {
+        "opportunityId": "opportunity_proposal_intelligence",
+        "title": "Automate proposal generation",
+        "reasoning": "Create a searchable proposal workflow that gathers approved pricing, context, and examples before a seller reviews the draft. This is relevant to distribution / wholesale because it maps to proposal workflow.",
+        "evidenceIds": [
+          "evidence_sales_conversion",
+          "evidence_lead_response",
+          "evidence_proposal_calendar",
+          "evidence_fragmented_proposals"
+        ],
+        "confidence": 0.91,
+        "expectedImpact": 82000,
+        "implementationDifficulty": 2,
+        "industryRelevance": "Relevant workflow pattern",
+        "assumptions": [
+          "Impact is an estimate until an approved measurement window completes.",
+          "Recommendations remain bounded by the listed permissions."
+        ],
+        "unansweredQuestions": [
+          "Which proposals are waiting on internal context?",
+          "Which overdue accounts lack an accountable owner?"
+        ]
+      },
+      {
+        "opportunityId": "opportunity_receivables_followup",
+        "title": "Automate receivables follow-up",
+        "reasoning": "Route overdue account reminders to the right owner using QuickBooks aging and communication history. This is relevant to distribution / wholesale because it maps to proposal workflow.",
+        "evidenceIds": [
+          "evidence_overdue_balance",
+          "evidence_payment_delay",
+          "evidence_reminder_inconsistency",
+          "evidence_owner_hygiene"
+        ],
+        "confidence": 0.9,
+        "expectedImpact": 48000,
+        "implementationDifficulty": 2,
+        "industryRelevance": "Relevant workflow pattern",
+        "assumptions": [
+          "Impact is an estimate until an approved measurement window completes.",
+          "Recommendations remain bounded by the listed permissions."
+        ],
+        "unansweredQuestions": [
+          "Which proposals are waiting on internal context?",
+          "Which overdue accounts lack an accountable owner?"
+        ]
+      },
+      {
+        "opportunityId": "opportunity_lead_response",
+        "title": "Improve lead-response workflow",
+        "reasoning": "Give high-intent leads a consistent first and second touch while proposal work is underway. This is relevant to distribution / wholesale because it maps to proposal workflow.",
+        "evidenceIds": [
+          "evidence_sales_conversion",
+          "evidence_lead_response",
+          "evidence_followup_gap"
+        ],
+        "confidence": 0.84,
+        "expectedImpact": 38000,
+        "implementationDifficulty": 2,
+        "industryRelevance": "Relevant workflow pattern",
+        "assumptions": [
+          "Impact is an estimate until an approved measurement window completes.",
+          "Recommendations remain bounded by the listed permissions."
+        ],
+        "unansweredQuestions": [
+          "Which proposals are waiting on internal context?",
+          "Which overdue accounts lack an accountable owner?"
+        ]
+      },
+      {
+        "opportunityId": "opportunity_saas_consolidation",
+        "title": "Consolidate overlapping SaaS tools",
+        "reasoning": "Review low-utilization CRM, proposal, inbox, and analytics subscriptions before renewal. This is relevant to distribution / wholesale because it maps to proposal workflow.",
+        "evidenceIds": [
+          "evidence_software_spend",
+          "evidence_tool_utilization",
+          "evidence_team_overlap"
+        ],
+        "confidence": 0.86,
+        "expectedImpact": 19800,
+        "implementationDifficulty": 1,
+        "industryRelevance": "Relevant workflow pattern",
+        "assumptions": [
+          "Impact is an estimate until an approved measurement window completes.",
+          "Recommendations remain bounded by the listed permissions."
+        ],
+        "unansweredQuestions": [
+          "Which proposals are waiting on internal context?",
+          "Which overdue accounts lack an accountable owner?"
+        ]
+      },
+      {
+        "opportunityId": "opportunity_owner_hygiene",
+        "title": "Repair account ownership hygiene",
+        "reasoning": "Resolve blank and stale CRM ownership so receivables and follow-up tasks have an accountable owner. This is relevant to distribution / wholesale because it maps to proposal workflow.",
+        "evidenceIds": [
+          "evidence_owner_hygiene",
+          "evidence_reminder_inconsistency"
+        ],
+        "confidence": 0.84,
+        "expectedImpact": 16000,
+        "implementationDifficulty": 1,
+        "industryRelevance": "Relevant workflow pattern",
+        "assumptions": [
+          "Impact is an estimate until an approved measurement window completes.",
+          "Recommendations remain bounded by the listed permissions."
+        ],
+        "unansweredQuestions": [
+          "Which proposals are waiting on internal context?",
+          "Which overdue accounts lack an accountable owner?"
+        ]
+      }
+    ]
+  },
   "roiRecords": [],
   "simulation": {
     "demoOnly": true,
