@@ -8,9 +8,9 @@ export function MiniSparkline({ series, tone = 'blue', label }: { series: Metric
   return <svg className={`viz-sparkline ${tone}`} viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label={label ?? 'Metric trend'}>{points.length > 1 && <path d={path} fill="none" vectorEffect="non-scaling-stroke" />}</svg>
 }
 
-export function MetricTrend({ metric, compact = false }: { metric?: MetricViewDTO; compact?: boolean }) {
+export function MetricTrend({ metric, compact = false, hideSparkline = false }: { metric?: MetricViewDTO; compact?: boolean; hideSparkline?: boolean }) {
   if (!metric || metric.availability === 'insufficient' || metric.currentValue === undefined) return <div className="viz-empty">Not enough data yet</div>
-  return <div className={`metric-trend ${compact ? 'compact' : ''}`}><div className="metric-trend-copy"><strong>{formatMetric(metric)}</strong><span className={`trend-value ${trendTone(metric)}`}>{metric.direction === 'up' ? '↑' : metric.direction === 'down' ? '↓' : '→'} {formatMetricDelta(metric)}</span><small>{metric.period} · {metric.evidenceState}</small></div><MiniSparkline series={metric.series} tone={trendTone(metric) === 'positive' ? 'green' : trendTone(metric) === 'negative' ? 'red' : 'blue'} label={`${metric.label} trend`} /></div>
+  return <div className={`metric-trend ${compact ? 'compact' : ''} ${hideSparkline ? 'without-sparkline' : ''}`}><div className="metric-trend-copy"><strong>{formatMetric(metric)}</strong><span className={`trend-value ${trendTone(metric)}`}>{metric.direction === 'up' ? '↑' : metric.direction === 'down' ? '↓' : '→'} {formatMetricDelta(metric)}</span><small>{metric.period} · {metric.evidenceState}</small></div>{!hideSparkline && <MiniSparkline series={metric.series} tone={trendTone(metric) === 'positive' ? 'green' : trendTone(metric) === 'negative' ? 'red' : 'blue'} label={`${metric.label} trend`} />}</div>
 }
 
 export function TimeSeriesChart({ metric, height = 180 }: { metric?: MetricViewDTO; height?: number }) {

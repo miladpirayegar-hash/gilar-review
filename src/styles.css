@@ -2019,3 +2019,13 @@ button, input, select { font: inherit; }
   .chart-stat-strip { top: -29px; }
   .chart-stat-copy { display: none; }
 }
+
+/* Business pulse keeps the metric reading compact without decorative mini-charts. */
+.today-pulse .metric-trend.without-sparkline {
+  display: block;
+  min-height: 0;
+}
+
+.today-pulse .metric-trend.without-sparkline .metric-trend-copy {
+  width: 100%;
+}
