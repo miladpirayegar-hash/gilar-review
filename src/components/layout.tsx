@@ -1,6 +1,6 @@
 import { cloneElement, isValidElement, useEffect, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { Activity, Bell, Bot, ChevronDown, CircleHelp, FileText, Gauge, Home, LayoutGrid, LineChart, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, Settings, Users, Wrench } from 'lucide-react'
+import { Activity, Bell, Bot, ChevronDown, CircleHelp, Command, FileText, Gauge, Home, LayoutGrid, LineChart, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, Search, Settings, Users, Wrench } from 'lucide-react'
 import { workspaceService } from '../services/demoService'
 import { syntheticApi, type SyntheticSimulationSnapshot } from '../services/syntheticService'
 
@@ -46,7 +46,7 @@ function SyntheticDemoBanner() {
   }, [])
   if (!simulation || pilotMode) return null
   const act = async (operation: () => Promise<unknown>) => { setBusy(true); try { await operation(); window.location.reload() } finally { setBusy(false) } }
-  return <div className="synthetic-demo-banner"><span className="synthetic-demo-label">SYNTHETIC / DEMO</span><span><strong>Northstar Distribution Co.</strong> · deterministic 12-month business history</span><span className="synthetic-demo-state">Simulation: {simulation.status}{simulation.status !== 'baseline' && ` · ${simulation.elapsedDays}/${simulation.targetDays} days`}</span><button onClick={() => void act(() => syntheticApi.advance(30))} disabled={busy || simulation.status === 'baseline' || simulation.status === 'completed'}>Advance 30 days</button><button onClick={() => void act(() => syntheticApi.reset())} disabled={busy}>Reset demo company</button></div>
+  return <div className="synthetic-demo-banner header-synthetic-banner"><span className="synthetic-demo-label">SYNTHETIC</span><span className="synthetic-demo-state">{simulation.status === 'baseline' ? 'Review mode' : `Simulation: ${simulation.status}`}</span><button onClick={() => void act(() => syntheticApi.advance(30))} disabled={busy || simulation.status === 'baseline' || simulation.status === 'completed'}>Advance 30 days</button><button onClick={() => void act(() => syntheticApi.reset())} disabled={busy}>Reset</button></div>
 }
 
 export function Sidebar({ collapsed, onToggle, onNavigate }: { collapsed: boolean; onToggle: () => void; onNavigate?: () => void }) {
@@ -68,15 +68,13 @@ export function Sidebar({ collapsed, onToggle, onNavigate }: { collapsed: boolea
 
 export function Header({ onMenu }: { onMenu: () => void }) {
   const navigate = useNavigate()
-  const location = useLocation()
-  const pageLabel = location.pathname.includes('/opportunities') ? 'Fixes' : location.pathname.includes('/insights') ? 'Results' : location.pathname.includes('/executive') ? 'Business Health' : location.pathname.includes('/agents') ? 'Automations' : location.pathname.includes('/reports') || location.pathname.includes('/brief') ? 'Reports' : location.pathname.includes('/connections') ? 'Connections' : location.pathname.includes('/settings') ? 'Settings' : location.pathname.includes('/team') ? 'Team' : 'Today'
-  return <header className="topbar"><div className="mobile-header"><IconButton label="Open navigation" onClick={onMenu}><Menu size={20} /></IconButton><Logo /></div><div className="breadcrumb"><span>Northstar Distribution</span><span>/</span><strong>{pageLabel}</strong></div><div className="topbar-actions"><button className="sync-status"><span className="live-dot" /> Synthetic data synced</button><IconButton label="Open notifications" onClick={() => navigate('/app/notifications')}><Bell size={18} /><span className="notification-dot" /></IconButton><button className="top-avatar" onClick={() => navigate('/app/settings')}>MP</button></div></header>
+  return <header className="topbar"><div className="mobile-header"><IconButton label="Open navigation" onClick={onMenu}><Menu size={20} /></IconButton><Logo /></div><button className="topbar-workspace"><span>Northstar Distribution</span><ChevronDown size={13} /></button><label className="topbar-search"><Search size={15} /><input aria-label="Ask Gilar anything" placeholder="Ask Gilar anything..." /><span><Command size={13} /></span></label><div className="topbar-actions"><SyntheticDemoBanner /><button className="sync-status"><span className="live-dot" /> Synthetic data synced</button><IconButton label="Open notifications" onClick={() => navigate('/app/notifications')}><Bell size={18} /><span className="notification-dot" /><span className="notification-count">1</span></IconButton><button className="top-avatar" onClick={() => navigate('/app/settings')}>MP</button></div></header>
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   const [collapsed, setCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  return <div className="app-shell"><div className={`mobile-overlay ${mobileOpen ? 'show' : ''}`} onClick={() => setMobileOpen(false)} /><div className={mobileOpen ? 'sidebar-mobile-open' : ''}><Sidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} onNavigate={() => setMobileOpen(false)} /></div><div className={`main-shell ${collapsed ? 'main-shell-expanded' : ''}`}><Header onMenu={() => setMobileOpen(true)} /><main className="main-content"><SyntheticDemoBanner />{children}</main></div></div>
+  return <div className="app-shell"><div className={`mobile-overlay ${mobileOpen ? 'show' : ''}`} onClick={() => setMobileOpen(false)} /><div className={mobileOpen ? 'sidebar-mobile-open' : ''}><Sidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} onNavigate={() => setMobileOpen(false)} /></div><div className={`main-shell ${collapsed ? 'main-shell-expanded' : ''}`}><Header onMenu={() => setMobileOpen(true)} /><main className="main-content">{children}</main></div></div>
 }
 
 export function PageHeader({ eyebrow, title, description, actions, children }: { eyebrow?: string; title: string; description?: string; actions?: React.ReactNode; children?: React.ReactNode }) {

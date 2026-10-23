@@ -38,7 +38,7 @@ export function TodayPage() {
   ]
 
   return <div className="today-page">
-    <PageHeader eyebrow="Today · Wednesday, October 21, 2026" title="Here’s what needs your attention." description="Gilar has narrowed the day down to a few decisions with clear business impact." actions={<Button onClick={() => navigate('/app/opportunities')}>See all fixes <ArrowRight size={15} /></Button>} />
+    <PageHeader eyebrow="Good morning, Milad." title="Here’s what needs your attention." description="Gilar monitored your business overnight and found 3 key issues with the biggest potential impact." actions={<Button onClick={() => navigate('/app/opportunities')}>View all fixes <ArrowRight size={15} /></Button>} />
 
     <section className="today-pulse" aria-label="Business pulse">
       <div className="today-pulse-intro"><span className="today-pulse-label"><i className="live-dot" /> Northstar Distribution · live signals</span><strong>Business pulse</strong><p>Revenue is healthy. Sales speed and cash collection are the clearest places to move next.</p><IntelligenceCore variant="today" compact /></div>
