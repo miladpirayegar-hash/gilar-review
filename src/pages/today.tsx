@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useState } from 'react'
-import { ArrowDownRight, ArrowRight, ArrowUpRight, BarChart3, Check, CircleAlert, Clock3, TrendingDown, TrendingUp, Wallet, Zap } from 'lucide-react'
+import { ArrowDownRight, ArrowRight, ArrowUpRight, Check, CircleAlert, Clock3, TrendingDown, TrendingUp, Wallet, Zap } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { Button, EmptyState, PageHeader, SectionTitle, StatusPill } from '../components/layout'
+import { IntelligenceCore } from '../components/intelligence-core'
 import { syntheticApi, type SyntheticOverview } from '../services/syntheticService'
 
 function useCustomerOverview() {
@@ -40,7 +41,7 @@ export function TodayPage() {
     <PageHeader eyebrow="Today · Wednesday, October 21, 2026" title="Here’s what needs your attention." description="Gilar has narrowed the day down to a few decisions with clear business impact." actions={<Button onClick={() => navigate('/app/opportunities')}>See all fixes <ArrowRight size={15} /></Button>} />
 
     <section className="today-pulse" aria-label="Business pulse">
-      <div className="today-pulse-intro"><span className="today-pulse-label"><i className="live-dot" /> Northstar Distribution · live signals</span><strong>Business pulse</strong><p>Revenue is healthy. Sales speed and cash collection are the clearest places to move next.</p><div className="pulse-orbit"><span className="pulse-orbit-ring ring-a" /><span className="pulse-orbit-ring ring-b" /><span className="pulse-orbit-core"><BarChart3 size={21} /></span></div></div>
+      <div className="today-pulse-intro"><span className="today-pulse-label"><i className="live-dot" /> Northstar Distribution · live signals</span><strong>Business pulse</strong><p>Revenue is healthy. Sales speed and cash collection are the clearest places to move next.</p><IntelligenceCore variant="today" compact /></div>
       <div className="today-pulse-stats">{metrics.slice(0, 4).map((metric, index) => <div className="pulse-signal" key={metric.label}><div className="pulse-signal-top"><span>{['Revenue', 'Cash position', 'Pipeline', 'Overdue invoices'][index] ?? metric.label}</span><span className={`pulse-trend ${metric.trend}`}>{metric.trend === 'down' ? <ArrowDownRight size={14} /> : metric.trend === 'up' ? <ArrowUpRight size={14} /> : <span>•</span>} {metric.change}</span></div><strong>{metric.value}</strong><PulseSparkline down={metric.trend === 'down'} /><small>{index === 0 ? 'vs. last month' : index === 1 ? 'current position' : index === 2 ? 'qualified pipeline' : 'needs follow-up'}</small></div>)}</div>
     </section>
 
