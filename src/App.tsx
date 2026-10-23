@@ -5,6 +5,7 @@ import { LandingPage, SignUpPage, ConnectPage, SyncPage, MriPage } from './pages
 import { OpportunityMapPage, DeployPage, TeamPage, SettingsPage, NotificationsPage, DataExplorerPage } from './pages/product'
 import { PilotAgentsPage, PilotAgentWorkspacePage, PilotBriefPage, PilotExecutivePage, PilotInsightsPage, PilotRecommendationPage, PilotRootCausePage } from './pages/pilot'
 import { TodayPage, FixesPage, ResultsPage } from './pages/today'
+import { ReportsPage } from './pages/reports'
 
 const mode = import.meta.env.VITE_GILAR_MODE ?? 'demo'
 const dataExplorerEnabled = import.meta.env.VITE_GILAR_ENABLE_DATA_EXPLORER !== 'false' && ['demo', 'synthetic'].includes(mode)
@@ -34,6 +35,8 @@ export default function App() {
       <Route path="/app/insights" element={<Protected><ResultsPage /></Protected>} />
       <Route path="/app/insights/detail" element={<Protected><PilotInsightsPage /></Protected>} />
       <Route path="/app/team" element={<Protected><TeamPage /></Protected>} />
+      <Route path="/app/reports" element={<Protected><ReportsPage /></Protected>} />
+      <Route path="/app/connections" element={<Protected><SettingsPage /></Protected>} />
       <Route path="/app/settings" element={<Protected><SettingsPage /></Protected>} />
       <Route path="/app/notifications" element={<Protected><NotificationsPage /></Protected>} />
       <Route path="/app/data-explorer" element={!dataExplorerEnabled ? <Navigate to="/app/home" replace /> : <Protected><DataExplorerPage /></Protected>} />

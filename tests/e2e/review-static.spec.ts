@@ -37,8 +37,8 @@ test('static review build completes the Northstar synthetic journey', async ({ p
 test('static review build serves deep links and remains usable on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto(reviewPath('/app/brief'))
-  await expect(page.getByRole('heading', { name: 'Your Daily Brief' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Your daily brief' })).toBeVisible()
   await page.goto(reviewPath('/app/agents'))
-  await expect(page.getByRole('heading', { name: 'AI Agents' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Automations' })).toBeVisible()
   await expect(page.locator('body')).toBeVisible()
 })
