@@ -1906,3 +1906,17 @@ button, input, select { font: inherit; }
 .today-page .attention-issue-footer { position: static !important; margin-top: 13px; padding-top: 11px; border-top: 1px solid #e7edf3; }
 .today-page .attention-issue-footer strong { font-size: 12px !important; }
 .fixes-page .fixes-section { margin-top: 28px !important; }
+
+/* Interactive time series: make the selected point and its value inspectable. */
+.time-series-chart > .chart-plot { position: relative; grid-column: 2; grid-row: 1; min-width: 0; height: 220px; }
+.time-series-chart > .chart-plot > svg { width: 100%; height: 220px !important; overflow: visible; }
+.chart-interaction-hint { position: absolute; z-index: 2; top: -22px; right: 0; color: var(--bi-muted); font-size: 11px; }
+.chart-points circle { cursor: pointer; outline: none; transition: r .15s ease, stroke-width .15s ease; }
+.chart-points circle:hover,
+.chart-points circle:focus,
+.chart-points circle.is-active { stroke-width: 2.5; }
+.chart-active-guide { stroke: rgba(43,112,221,.28); stroke-dasharray: 2 3; vector-effect: non-scaling-stroke; }
+.chart-tooltip { position: absolute; z-index: 3; display: flex; min-width: 76px; transform: translate(-50%, -100%); flex-direction: column; gap: 2px; padding: 7px 9px; color: #fff; background: var(--bi-ink); border-radius: 5px; box-shadow: none; pointer-events: none; white-space: nowrap; }
+.chart-tooltip:after { content: ''; position: absolute; bottom: -4px; left: 50%; width: 8px; height: 8px; background: var(--bi-ink); transform: translateX(-50%) rotate(45deg); }
+.chart-tooltip strong { position: relative; z-index: 1; font-size: 12px; }
+.chart-tooltip span { position: relative; z-index: 1; color: #c6d4ea; font-size: 10px; }

@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { MetricSeriesPoint, MetricViewDTO } from '../../shared/contracts/metrics'
 import { formatMetric, formatMetricDelta, formatNumber, normalizedPoints, trendTone } from '../services/metricPresentation'
 
@@ -14,9 +15,20 @@ export function MetricTrend({ metric, compact = false }: { metric?: MetricViewDT
 
 export function TimeSeriesChart({ metric, height = 180 }: { metric?: MetricViewDTO; height?: number }) {
   const points = normalizedPoints(metric?.series ?? [])
+  const [activeIndex, setActiveIndex] = useState(0)
   if (!metric || !points.length) return <div className="viz-empty chart-empty">{metric?.availability === 'partial' ? 'More history is needed to show this trend.' : 'Connect a source to calculate this trend.'}</div>
+  const selectedIndex = Math.min(activeIndex, points.length - 1)
   const path = points.map((point, index) => `${index ? 'L' : 'M'} ${point.x} ${point.y}`).join(' ')
-  return <div className="time-series-chart" style={{ minHeight: height }}><div className="chart-y-axis"><span>{formatNumber(Math.max(...metric.series.map((point) => point.value)), metric.unit)}</span><span>{formatNumber(Math.min(...metric.series.map((point) => point.value)), metric.unit)}</span></div><svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label={`${metric.label} time series`}><path className="chart-area" d={`${path} L 100 100 L 0 100 Z`} /><path className="chart-line" d={path} /><g className="chart-points">{points.map((point) => <circle key={`${point.timestamp}-${point.value}`} cx={point.x} cy={point.y} r="1.6" />)}</g></svg><div className="chart-x-axis">{metric.series.map((point) => <span key={point.timestamp}>{point.label ?? new Date(point.timestamp).toLocaleDateString(undefined, { month: 'short' })}</span>)}</div></div>
+  const activePoint = points[selectedIndex]
+  const activeSeriesPoint = metric.series[selectedIndex]
+  const activeLabel = activeSeriesPoint?.label ?? new Date(activeSeriesPoint?.timestamp ?? '').toLocaleDateString(undefined, { month: 'short', day: 'numeric' })
+  const selectPoint = (index: number) => setActiveIndex(Math.max(0, Math.min(points.length - 1, index)))
+  const movePoint = (index: number, direction: number) => (event: React.KeyboardEvent<SVGCircleElement>) => {
+    if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return
+    event.preventDefault()
+    selectPoint(index + (event.key === 'ArrowRight' ? direction : -direction))
+  }
+  return <div className="time-series-chart" style={{ minHeight: height }}><div className="chart-y-axis"><span>{formatNumber(Math.max(...metric.series.map((point) => point.value)), metric.unit)}</span><span>{formatNumber(Math.min(...metric.series.map((point) => point.value)), metric.unit)}</span></div><div className="chart-plot"><span className="chart-interaction-hint">Hover or focus a point</span><svg viewBox="0 0 100 100" preserveAspectRatio="none" role="img" aria-label={`${metric.label} time series`}><path className="chart-area" d={`${path} L 100 100 L 0 100 Z`} /><path className="chart-line" d={path} /><line className="chart-active-guide" x1={activePoint.x} x2={activePoint.x} y1="0" y2="100" /><g className="chart-points">{points.map((point, index) => <circle className={index === selectedIndex ? 'is-active' : ''} key={`${point.timestamp}-${point.value}`} cx={point.x} cy={point.y} r={index === selectedIndex ? '2.4' : '1.6'} tabIndex={0} role="button" aria-label={`${metric.label}, ${metric.series[index]?.label ?? point.label ?? new Date(point.timestamp).toLocaleDateString(undefined, { month: 'short', day: 'numeric' })}: ${formatNumber(metric.series[index]?.value ?? point.value, metric.unit)}`} onMouseEnter={() => selectPoint(index)} onFocus={() => selectPoint(index)} onKeyDown={movePoint(index, 1)} onClick={() => selectPoint(index)} />)}</g></svg><div className="chart-tooltip" style={{ left: `${activePoint.x}%`, top: `${Math.max(5, activePoint.y - 22)}%` }}><strong>{formatNumber(activeSeriesPoint?.value ?? activePoint.value, metric.unit)}</strong><span>{activeLabel}</span></div></div><div className="chart-x-axis">{metric.series.map((point) => <span key={point.timestamp}>{point.label ?? new Date(point.timestamp).toLocaleDateString(undefined, { month: 'short' })}</span>)}</div></div>
 }
 
 export function BeforeAfterChart({ label, before, after, unit = 'number', beforeLabel = 'Before', afterLabel = 'After' }: { label: string; before?: number; after?: number; unit?: MetricViewDTO['unit']; beforeLabel?: string; afterLabel?: string }) {
