@@ -179,6 +179,7 @@ export function SettingsPage() {
   useEffect(() => {
     if (isConnections) void quickBooksApi.status().then(setQuickBooksStatus)
   }, [isConnections])
+  useEffect(() => { setSection(isConnections ? 'Integrations' : 'General') }, [isConnections])
 
   const refreshQuickBooks = async () => { await quickBooksApi.sync('manual'); setQuickBooksStatus(await quickBooksApi.status()) }
   const connectQuickBooks = async () => { const url = await quickBooksApi.connect(); if (url) window.location.assign(url) }
