@@ -1,0 +1,119 @@
+.mission-attention-heading {
+  margin: 22px 0 0;
+  color: var(--canvas-ink);
+  font-family: var(--ed-serif);
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.actions-legacy-bridge {
+  margin-top: 28px;
+  padding: 18px 0 19px;
+  border-bottom: 1px solid rgba(21, 36, 62, 0.16);
+}
+
+.actions-legacy-bridge h2 {
+  margin: 8px 0 5px;
+  color: var(--canvas-ink);
+  font-family: var(--ed-serif);
+  font-size: 31px;
+  font-weight: 400;
+}
+
+.actions-legacy-bridge p,
+.brief-coverage-banner p {
+  margin: 0;
+  color: var(--canvas-muted);
+  font-size: 12px;
+}
+
+.ledger-outcome-callout {
+  margin-top: 30px;
+  padding: 25px 28px;
+  color: #f4f7fb;
+  background: var(--canvas-night);
+}
+
+.ledger-outcome-callout > .canvas-kicker {
+  color: #88aefb;
+}
+
+.ledger-outcome-callout h2 {
+  margin: 8px 0 7px;
+  color: #f4f7fb;
+  font-family: var(--ed-serif);
+  font-size: 34px;
+  font-weight: 400;
+}
+
+.ledger-outcome-callout p {
+  max-width: 720px;
+  color: rgba(244, 247, 251, 0.66);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.ledger-outcome-callout > div {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 18px;
+  color: #a7dfc9;
+  font-family: var(--ed-mono);
+  font-size: 10px;
+}
+
+.ledger-outcome-callout > div > span {
+  padding: 6px 8px;
+  border: 1px solid rgba(167, 223, 201, 0.35);
+}
+
+.ledger-outcome-callout > div > strong {
+  margin-left: auto;
+  color: #fff;
+  font-family: var(--ed-serif);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.ledger-no-outcome > strong {
+  display: block;
+  margin-top: 16px;
+  color: #f4f7fb;
+  font-family: var(--ed-mono);
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.brief-coverage-banner {
+  margin-top: 24px;
+  padding: 15px 18px;
+  border-left: 2px solid var(--canvas-yellow);
+  background: rgba(234, 184, 83, 0.1);
+}
+
+.brief-coverage-banner strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--canvas-ink);
+  font-family: var(--ed-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 680px) {
+  .ledger-outcome-callout {
+    padding: 20px;
+  }
+
+  .ledger-outcome-callout > div {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .ledger-outcome-callout > div > strong {
+    width: 100%;
+    margin-left: 0;
+  }
+}
