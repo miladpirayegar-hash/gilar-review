@@ -1,6 +1,6 @@
 import { cloneElement, isValidElement, useEffect, useState } from 'react'
 import { NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { Activity, Bell, Bot, ChevronDown, CircleHelp, Command, FileText, Gauge, Home, LayoutGrid, LineChart, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, Search, Settings, Users, Wrench } from 'lucide-react'
+import { Activity, Bell, Bot, ChevronDown, CircleHelp, Command, FileText, Gauge, Home, LayoutGrid, LineChart, Menu, PanelLeftClose, PanelLeftOpen, PlugZap, Search, Settings, Target, Users, Wrench } from 'lucide-react'
 import { workspaceService } from '../services/demoService'
 import { syntheticApi, type SyntheticSimulationSnapshot } from '../services/syntheticService'
 
@@ -23,10 +23,13 @@ const primaryNav = [
 ]
 const pilotMode = import.meta.env.VITE_GILAR_MODE === 'pilot'
 const secondaryGroups = [
-  { label: 'Gilar', items: [
+  { label: 'Intelligence', items: [
     { label: 'Business Health', to: '/app/executive', icon: Gauge },
-    { label: 'Automations', to: '/app/agents', icon: Bot },
+    { label: 'Opportunity Map', to: '/app/opportunities/map', icon: Target },
     { label: 'Reports', to: '/app/reports', icon: FileText },
+  ] },
+  { label: 'Execution', items: [
+    { label: 'Automations', to: '/app/agents', icon: Bot },
   ] },
   { label: 'Workspace', items: [
     { label: 'Connections', to: '/app/connections', icon: PlugZap },
@@ -53,8 +56,8 @@ export function Sidebar({ collapsed, onToggle, onNavigate }: { collapsed: boolea
   const location = useLocation()
   const workspace = workspaceService.getCurrent()
   const workspaceName = ['synthetic', 'pilot', 'review'].includes(import.meta.env.VITE_GILAR_MODE) ? 'Northstar Distribution Co.' : workspace.name
-  const isActive = (to: string, label: string) => location.pathname === to || (label === 'Fixes' && location.pathname.startsWith('/app/opportunities')) || (label === 'Results' && location.pathname.startsWith('/app/insights')) || (label === 'Business Health' && location.pathname.startsWith('/app/executive')) || (label === 'Automations' && location.pathname.startsWith('/app/agents')) || (label === 'Reports' && location.pathname.startsWith('/app/reports')) || (label === 'Connections' && location.pathname.startsWith('/app/connections')) || (label === 'Team' && location.pathname.startsWith('/app/team')) || (label === 'Settings' && location.pathname === '/app/settings')
-  const renderNav = (items: typeof primaryNav) => items.map(({ label, to, icon: Icon }) => <NavLink key={to} to={to} onClick={onNavigate} className={`nav-item ${isActive(to, label) ? 'active' : ''}`}><Icon size={19} /><span>{label}</span>{label === 'Fixes' && <span className="nav-count">5</span>}</NavLink>)
+  const isActive = (to: string, label: string) => location.pathname === to || (label === 'Fixes' && location.pathname.startsWith('/app/opportunities') && location.pathname !== '/app/opportunities/map') || (label === 'Results' && location.pathname.startsWith('/app/insights')) || (label === 'Business Health' && location.pathname.startsWith('/app/executive')) || (label === 'Opportunity Map' && location.pathname.startsWith('/app/opportunities/map')) || (label === 'Automations' && location.pathname.startsWith('/app/agents')) || (label === 'Reports' && location.pathname.startsWith('/app/reports')) || (label === 'Connections' && location.pathname.startsWith('/app/connections')) || (label === 'Team' && location.pathname.startsWith('/app/team')) || (label === 'Settings' && location.pathname === '/app/settings')
+  const renderNav = (items: typeof primaryNav) => items.map(({ label, to, icon: Icon }) => <NavLink key={to} to={to} end onClick={onNavigate} className={({ isActive: routeActive }) => `nav-item ${isActive(to, label) || routeActive ? 'active' : ''}`}><Icon size={19} /><span>{label}</span>{label === 'Fixes' && <span className="nav-count">5</span>}</NavLink>)
   return <aside className={`sidebar ${collapsed ? 'sidebar-collapsed' : ''}`}>
     <div className="sidebar-top"><Logo dark /> <IconButton label="Collapse navigation" onClick={onToggle} className="sidebar-toggle">{collapsed ? <PanelLeftOpen size={17} /> : <PanelLeftClose size={17} />}</IconButton></div>
     <button className="workspace-switch"><span className="workspace-avatar">N</span><span className="workspace-copy"><strong>{workspaceName}</strong><small>Business workspace</small></span><ChevronDown size={15} /></button>

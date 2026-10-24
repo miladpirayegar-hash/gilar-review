@@ -1,9 +1,15 @@
 import { useMemo, useState } from 'react'
-import type { Opportunity } from '../../shared/domain/models'
 import type { MetricViewDTO } from '../../shared/contracts/metrics'
 import type { BusinessHealthScoreDTO } from '../../shared/contracts/dto'
 import type { SyntheticOverview } from '../services/syntheticService'
 import { formatMetric, formatMetricDelta, formatNumber, normalizedPoints, trendTone } from '../services/metricPresentation'
+
+export interface EditorialOpportunityPoint {
+  id: string
+  title: string
+  estimatedAnnualValue: number
+  implementationDifficulty: number
+}
 
 function Sparkline({ metric }: { metric: MetricViewDTO }) {
   const points = normalizedPoints(metric.series)
@@ -28,7 +34,7 @@ export function EditorialMetricStrip({ metrics }: { metrics: MetricViewDTO[] }) 
   </section>
 }
 
-export function ImpactEffortDiagram({ opportunities, onSelect }: { opportunities: Opportunity[]; onSelect: (opportunity: Opportunity) => void }) {
+export function ImpactEffortDiagram({ opportunities, onSelect }: { opportunities: EditorialOpportunityPoint[]; onSelect: (opportunity: EditorialOpportunityPoint) => void }) {
   const visible = opportunities.slice(0, 8)
   const maxValue = Math.max(...visible.map((item) => item.estimatedAnnualValue), 1)
   const maxEffort = Math.max(...visible.map((item) => item.implementationDifficulty), 4)
@@ -56,7 +62,7 @@ function polarPoint(index: number, total: number, radius: number, center = 50) {
 }
 
 export function BusinessHealthDiagram({ health }: { health: BusinessHealthScoreDTO }) {
-  const dimensions = health.dimensions.slice(0, 5)
+  const dimensions = health.dimensions
   const [active, setActive] = useState(0)
   const confidence = Math.round((health.coverage ?? []).reduce((sum, item) => sum + item.confidence, 0) / Math.max(1, (health.coverage ?? []).length) * 100)
   const points = dimensions.map((dimension, index) => { const point = polarPoint(index, dimensions.length, Math.max(9, dimension.score / 100 * 35)); return `${point.x},${point.y}` }).join(' ')
