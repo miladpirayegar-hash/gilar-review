@@ -38,6 +38,22 @@ const secondaryGroups = [
   ] },
 ]
 
+const commandNav = [
+  { label: 'Business', accessibleLabel: 'Today', to: '/app/home' },
+  { label: 'Brief', accessibleLabel: 'Brief', to: '/app/brief' },
+  { label: 'Actions', accessibleLabel: 'Fixes', to: '/app/opportunities' },
+  { label: 'Results', accessibleLabel: 'Results', to: '/app/insights' },
+]
+
+const commandSecondaryNav = [
+  { label: 'Business Health', to: '/app/executive' },
+  { label: 'Automations', to: '/app/agents' },
+  { label: 'Reports', to: '/app/reports' },
+  { label: 'Connections', to: '/app/connections' },
+  { label: 'Team', to: '/app/team' },
+  { label: 'Settings', to: '/app/settings' },
+]
+
 export function SyntheticDemoBanner() {
   const [simulation, setSimulation] = useState<SyntheticSimulationSnapshot>()
   const [busy, setBusy] = useState(false)
@@ -71,13 +87,15 @@ export function Sidebar({ collapsed, onToggle, onNavigate }: { collapsed: boolea
 
 export function Header({ onMenu }: { onMenu: () => void }) {
   const navigate = useNavigate()
-  return <header className="topbar"><div className="mobile-header"><IconButton label="Open navigation" onClick={onMenu}><Menu size={20} /></IconButton><Logo /></div><button className="topbar-workspace"><span>Northstar Distribution</span><ChevronDown size={13} /></button><label className="topbar-search"><Search size={15} /><input aria-label="Ask Gilar anything" placeholder="Ask Gilar anything..." /><span><Command size={13} /></span></label><div className="topbar-actions"><button className="sync-status"><span className="live-dot" /> Synthetic data synced</button><IconButton label="Open notifications" onClick={() => navigate('/app/notifications')}><Bell size={18} /><span className="notification-dot" /><span className="notification-count">1</span></IconButton><button className="top-avatar" onClick={() => navigate('/app/settings')}>MP</button></div></header>
+  return <header className="topbar"><div className="desktop-brand"><Logo /></div><div className="mobile-header"><IconButton label="Open navigation" onClick={onMenu}><Menu size={20} /></IconButton><Logo /></div><button className="topbar-workspace"><span>Northstar Distribution</span><ChevronDown size={13} /></button><label className="topbar-search"><Search size={15} /><input aria-label="Ask Gilar anything" placeholder="Ask Gilar anything..." /><span><Command size={13} /></span></label><div className="topbar-actions"><button className="sync-status"><span className="live-dot" /> Synthetic data synced</button><IconButton label="Open notifications" onClick={() => navigate('/app/notifications')}><Bell size={18} /><span className="notification-dot" /><span className="notification-count">1</span></IconButton><button className="top-avatar" onClick={() => navigate('/app/settings')}>MP</button></div></header>
 }
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const [collapsed, setCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
-  return <div className="app-shell"><div className={`mobile-overlay ${mobileOpen ? 'show' : ''}`} onClick={() => setMobileOpen(false)} /><div className={mobileOpen ? 'sidebar-mobile-open' : ''}><Sidebar collapsed={collapsed} onToggle={() => setCollapsed(!collapsed)} onNavigate={() => setMobileOpen(false)} /></div><div className={`main-shell ${collapsed ? 'main-shell-expanded' : ''}`}><Header onMenu={() => setMobileOpen(true)} /><main className="main-content">{children}</main></div></div>
+  const location = useLocation()
+  const currentPath = location.pathname
+  const isCommandActive = (to: string) => to === '/app/home' ? currentPath === to : currentPath === to || currentPath.startsWith(`${to}/`)
+  return <div className="app-shell command-shell"><div className={`mobile-overlay ${mobileOpen ? 'show' : ''}`} onClick={() => setMobileOpen(false)} /><Header onMenu={() => setMobileOpen(true)} /><div className={`command-nav ${mobileOpen ? 'command-nav-open' : ''}`}><div className="command-nav-inner"><nav aria-label="Gilar command navigation" className="command-core-nav">{commandNav.map((item) => <NavLink key={item.to} to={item.to} end={item.to === '/app/home'} onClick={() => setMobileOpen(false)} aria-label={item.accessibleLabel} className={isCommandActive(item.to) ? 'command-link active' : 'command-link'}>{item.label}{item.label === 'Actions' && <span className="command-count">5</span>}</NavLink>)}</nav><nav aria-label="Gilar workspace navigation" className="command-secondary-nav">{commandSecondaryNav.map((item) => <NavLink key={item.to} to={item.to} onClick={() => setMobileOpen(false)} className={isCommandActive(item.to) ? 'command-secondary-link active' : 'command-secondary-link'}>{item.label}</NavLink>)}</nav></div></div><div className="main-shell"><main className="main-content">{children}</main></div></div>
 }
 
 export function PageHeader({ eyebrow, title, description, actions, children }: { eyebrow?: string; title: string; description?: string; actions?: React.ReactNode; children?: React.ReactNode }) {
