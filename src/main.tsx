@@ -6,6 +6,7 @@ import "./styles.css";
 import "./editorial.css";
 import "./mission.css";
 import "./mission-overrides.css";
+import "./outer-space.css";
 
 const reviewMode = import.meta.env.VITE_GILAR_MODE === "review";
 const Router = reviewMode ? HashRouter : BrowserRouter;

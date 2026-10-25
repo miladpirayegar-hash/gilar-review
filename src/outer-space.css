@@ -1,0 +1,153 @@
+/*
+ * Gilar design tokens — Outer Space
+ *
+ * This file is loaded last so the legacy, editorial, and Mission Control
+ * surfaces all consume one brand system during the migration. Compatibility
+ * aliases are intentionally kept for older routes until those selectors are
+ * retired.
+ */
+:root {
+  --primary: #2C363E;
+  --primary-hover: #20282E;
+  --primary-deep: #20282E;
+  --primary-dark: #151B1F;
+  --primary-mid: #53616B;
+  --primary-muted: #89949C;
+  --primary-light: #D8DDE0;
+  --primary-surface: #EEF1F2;
+  --primary-on-dark: #D8DDE0;
+  --primary-on-dark-muted: #89949C;
+  --foreground: #2C363E;
+  --selected: #2C363E;
+  --focus: #2C363E;
+  --canvas: #F7F8F7;
+  --surface: #FFFFFF;
+
+  /* Legacy aliases: old routes now resolve their primary UI through Outer Space. */
+  --ink: var(--primary);
+  --muted: var(--primary-mid);
+  --soft-muted: var(--primary-muted);
+  --border: var(--primary-light);
+  --border-strong: var(--primary-muted);
+  --blue: var(--primary);
+  --blue-dark: var(--primary-hover);
+  --blue-soft: var(--primary-surface);
+  --sidebar: var(--primary-dark);
+  --sidebar-muted: var(--primary-muted);
+
+  /* Editorial aliases. */
+  --ed-paper: var(--canvas);
+  --ed-paper-deep: var(--primary-surface);
+  --ed-ink: var(--primary);
+  --ed-slate: var(--primary-mid);
+  --ed-soft: var(--primary-muted);
+  --ed-rule: rgba(44, 54, 62, .16);
+  --ed-rule-light: rgba(44, 54, 62, .09);
+  --ed-accent: var(--primary);
+  --ed-accent-soft: var(--primary-surface);
+
+  /* Business Canvas aliases. */
+  --canvas-paper: var(--canvas);
+  --canvas-white: var(--surface);
+  --canvas-ink: var(--primary);
+  --canvas-muted: var(--primary-mid);
+  --canvas-blue: var(--primary);
+  --canvas-night: var(--primary);
+  --canvas-deep: var(--primary-dark);
+  --canvas-on-dark: var(--primary-on-dark);
+}
+
+html, body, #root { background: var(--canvas) !important; color: var(--foreground); }
+body { color: var(--foreground) !important; }
+
+/* Primary controls and navigation. */
+.button-primary,
+.button-primary:hover,
+.command-count,
+.nav-item.active,
+.sidebar-link.active {
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--surface) !important;
+}
+.button-primary:hover { background: var(--primary-hover) !important; border-color: var(--primary-hover) !important; }
+.button-primary { box-shadow: 0 5px 14px rgba(21, 27, 31, .14) !important; }
+.nav-item.active:before { background: var(--primary) !important; box-shadow: 0 0 14px rgba(44, 54, 62, .34) !important; }
+.command-link:hover, .command-link.active { color: var(--primary) !important; border-color: var(--primary) !important; }
+.command-secondary-link:hover, .command-secondary-link.active { color: var(--primary) !important; }
+.command-secondary-link.active { text-decoration-color: var(--primary) !important; }
+.top-avatar, .workspace-avatar, .avatar { background: var(--primary) !important; }
+.logo-mark span { background: var(--primary) !important; }
+
+/* Outer Space replaces the old dominant blue in legacy visual primitives. */
+.metric-icon,
+.quick-icon.blue,
+.attention-index.blue,
+.row-action.blue,
+.dot.blue,
+.legend-dot.blue,
+.health-score-card .metric-top svg,
+.health-donut,
+.fix-row.featured,
+.fix-number,
+.fix-confidence,
+.text-button,
+.ed-kicker,
+.eyebrow,
+.ed-opportunity-dot,
+.ed-process-index,
+.ed-process-step.current strong,
+.ed-radar-value,
+.ed-flow-core,
+.ed-core-mark,
+.ed-result-metric strong i,
+.ed-signal-route,
+.ed-signal-node,
+.ed-signal-label b {
+  color: var(--primary) !important;
+}
+.metric-icon, .quick-icon.blue, .attention-index.blue { background: var(--primary-surface) !important; }
+.ed-opportunity-dot, .ed-flow-core, .ed-radar-value, .ed-signal-node { border-color: var(--primary) !important; }
+.ed-core-mark { background: var(--primary) !important; color: var(--surface) !important; }
+.ed-signal-node.focus, .ed-radar circle.active { fill: var(--primary) !important; }
+.ed-signal-route { stroke: var(--primary) !important; }
+
+/* Business Canvas: graphite structure, one restrained brand emphasis. */
+.command-shell .topbar,
+.command-shell .topbar-search { border-color: rgba(44, 54, 62, .15) !important; }
+.canvas-stage {
+  background: radial-gradient(circle at 50% 48%, rgba(44, 54, 62, .10), transparent 22%),
+    linear-gradient(145deg, rgba(255, 255, 255, .72), rgba(238, 241, 242, .68)) !important;
+  border-color: rgba(44, 54, 62, .18) !important;
+}
+.canvas-stage::before, .canvas-stage::after { border-color: rgba(44, 54, 62, .12) !important; }
+.connection-line { stroke: rgba(44, 54, 62, .30) !important; }
+.connection-line.observed { stroke: rgba(44, 54, 62, .66) !important; }
+.business-node { border-color: rgba(44, 54, 62, .20) !important; }
+.business-node:hover, .business-node.selected { border-color: var(--primary) !important; }
+.business-node.selected { background: var(--surface) !important; }
+.status-opportunity, .node-trend i { background: var(--primary) !important; }
+.node-opportunity .business-node-change { color: var(--primary) !important; }
+.canvas-inspector, .mission-control { background: var(--primary) !important; }
+.mission-row { background: transparent !important; }
+.mission-row:hover { background: rgba(216, 221, 224, .08) !important; }
+.canvas-inspector .button, .model-build-page footer .button { background: var(--surface) !important; color: var(--primary-dark) !important; }
+.mission-control .canvas-kicker, .mission-column-label, .lane-heading,
+.mission-row-value em { color: var(--primary-on-dark) !important; }
+.mission-column-label > span { color: var(--primary) !important; background: var(--primary-on-dark) !important; }
+.cause-sequence > svg { color: var(--primary-on-dark) !important; }
+.model-build-page { background: var(--primary-dark) !important; }
+.model-build-main h1 em, .model-build-top b, .model-core svg,
+.model-orbit.active, .model-orbit.active i { color: var(--primary-light) !important; }
+.model-core { border-color: var(--primary-light) !important; }
+.model-orbit.active { border-color: var(--primary-light) !important; }
+.model-build-visual { background: radial-gradient(circle, rgba(44, 54, 62, .34), transparent 33%) !important; }
+
+/* Keep semantic meaning separate from the brand. */
+.status-risk, .dot.red, .ed-signal-node.risk { background: var(--red) !important; }
+.status-healthy, .dot.green, .ed-signal-node.source { background: var(--green) !important; }
+.status-watch, .dot.yellow { background: var(--yellow) !important; }
+
+@media (max-width: 680px) {
+  .business-node:not(:last-of-type)::after { background: rgba(44, 54, 62, .45) !important; }
+}

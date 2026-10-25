@@ -30,17 +30,17 @@
 .ledger-outcome-callout {
   margin-top: 30px;
   padding: 25px 28px;
-  color: #f4f7fb;
+  color: var(--primary-on-dark);
   background: var(--canvas-night);
 }
 
 .ledger-outcome-callout > .canvas-kicker {
-  color: #88aefb;
+  color: var(--primary-light);
 }
 
 .ledger-outcome-callout h2 {
   margin: 8px 0 7px;
-  color: #f4f7fb;
+  color: var(--primary-on-dark);
   font-family: var(--ed-serif);
   font-size: 34px;
   font-weight: 400;
@@ -79,7 +79,7 @@
 .ledger-no-outcome > strong {
   display: block;
   margin-top: 16px;
-  color: #f4f7fb;
+  color: var(--primary-on-dark);
   font-family: var(--ed-mono);
   font-size: 11px;
   font-weight: 400;
