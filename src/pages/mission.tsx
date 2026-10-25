@@ -322,9 +322,8 @@ function CanvasInspector({
           <div className="inspector-explanation">
             <span className="canvas-kicker">What changed</span>
             <p>
-              Response time expanded while proposal preparation became harder to
-              search and reuse. Gilar treats this as an observed chain, not a
-              guaranteed causal claim.
+              Response time rose as proposal work became harder to find and reuse.
+              Observed chain; not proof.
             </p>
             <div className="inspector-sources">
               <span>
@@ -345,7 +344,7 @@ function CanvasInspector({
             <span className="canvas-kicker">What Gilar sees</span>
             <p>
               {relatedIssue?.description ??
-                `This area is being monitored from ${node.source}. Select the related action to inspect its evidence and permissions.`}
+                `Monitored from ${node.source}. Open the related action for evidence and permissions.`}
             </p>
             <div className="inspector-sources">
               <span>
@@ -377,10 +376,9 @@ function MissionControl({ overview }: { overview?: SyntheticOverview }) {
       <div className="mission-control-heading">
         <div>
           <span className="canvas-kicker">Mission Control / Today</span>
-          <h2>Here’s what needs your attention.</h2>
+          <h2>What needs action.</h2>
           <p>
-            Gilar is watching the connected business and routing only the
-            decisions that deserve your time.
+            Signals routed by impact and urgency.
           </p>
         </div>
         <span className="mission-live">
@@ -471,13 +469,12 @@ export function BusinessCanvasPage() {
             Business / Northstar Distribution
           </span>
           <h1>
-            What’s happening
+            What needs
             <br />
-            <em>inside your company?</em>
+            <em>action?</em>
           </h1>
           <p>
-            Gilar maps the systems, signals, and decisions moving through the
-            business right now.
+            The systems and signals driving decisions now.
           </p>
         </div>
         <div className="canvas-intro-actions">
@@ -596,9 +593,7 @@ export function MissionBriefPage() {
           <em>this week.</em>
         </h1>
         <p>
-          The decline is concentrated in opportunities that still require manual
-          proposal preparation. Here is the short version of what Gilar found
-          and what it recommends next.
+          Proposal work is slowing pipeline. Here’s the signal and next move.
         </p>
       </section>
       <section className="brief-signal-story">
@@ -656,12 +651,10 @@ export function MissionBriefPage() {
       <section className="brief-two-column">
         <article>
           <span className="canvas-kicker">Why this matters</span>
-          <h2>Small workflow friction is showing up as a sales problem.</h2>
+          <h2>Manual proposal work is slowing sales.</h2>
           <p>
-            Gilar found the same pattern across connected systems: slower
-            response, more proposal effort, and a lower conversion rate. The
-            evidence is strong enough to recommend a controlled fix, but every
-            financial implication remains clearly labeled.
+            Response time rose, proposal effort increased, and conversion fell.
+            Evidence supports a controlled fix; financial impact remains estimated.
           </p>
           <div className="brief-causal-lines">
             <span>
@@ -681,8 +674,7 @@ export function MissionBriefPage() {
           <Sparkles size={22} />
           <h2>Automate proposal preparation.</h2>
           <p>
-            Search approved context, draft the first version, and keep the owner
-            in control before anything leaves the business.
+            Search, draft, review, measure—with approval at every step.
           </p>
           <div className="brief-recommendation-meta">
             <span>
@@ -734,13 +726,12 @@ export function MissionActionsPage() {
         <div>
           <span className="canvas-kicker">Actions / Mission Control</span>
           <h1>
-            One place for every
+            Your next best
             <br />
-            <em>business decision.</em>
+            <em>actions.</em>
           </h1>
           <p>
-            Review what needs you, what Gilar is already handling, and what the
-            system is watching.
+            See what needs you, what Gilar handles, and what’s next.
           </p>
         </div>
         <div className="actions-state">
@@ -757,10 +748,10 @@ export function MissionActionsPage() {
       </section>
       <section className="actions-legacy-bridge">
         <span className="canvas-kicker">
-          A practical starting point · evidence-weighted ranking
+          Ranked by impact and effort
         </span>
-        <h2>What I would fix first.</h2>
-        <p>Open the evidence before you approve an action.</p>
+        <h2>What to fix first.</h2>
+        <p>Review evidence. Approve the move.</p>
       </section>
       <div className="actions-workspace">
         <section className="action-lane needs-you">
@@ -770,7 +761,7 @@ export function MissionActionsPage() {
           </div>
           <h3>What needs your attention</h3>
           <p className="lane-description">
-            Evidence is ready. Gilar is waiting for your direction.
+            Evidence ready. Your call.
           </p>
           {attention.map((item, index) => {
             const issue = issueMap.get(item.issueId);
@@ -827,7 +818,7 @@ export function MissionActionsPage() {
             </strong>
           </div>
           <p className="lane-description">
-            Controlled workflows with approval boundaries and audit trails.
+            Approved workflows in progress.
           </p>
           <article className="working-process">
             <div className="working-process-head">
@@ -975,10 +966,10 @@ export function ImpactLedgerPage() {
           <span className="canvas-kicker">Measured outcome</span>
           <h2>Proposal preparation got faster.</h2>
           <p>
-            The approval-gated workflow moved from{" "}
+            Proposal preparation moved from{" "}
             {simulation?.before.proposalMinutes ?? "—"}m to{" "}
             {simulation?.after?.proposalMinutes ?? "—"}m, with revenue
-            implications still labeled as estimated.
+            Revenue impact remains estimated.
           </p>
           <div>
             <span>Measured</span>
@@ -998,11 +989,10 @@ export function ImpactLedgerPage() {
           <span className="canvas-kicker">Attribution boundary</span>
           <h2>No measurable ROI is available</h2>
           <p>
-            The measurement window completed, but current data could not
-            attribute a reliable business result.
+            Measurement completed, but attribution is unavailable.
           </p>
           <strong>
-            ROI methodology will appear once a measurable outcome exists.
+            ROI appears when results can be measured.
           </strong>
         </section>
       )}
@@ -1052,7 +1042,7 @@ export function ImpactLedgerPage() {
         <div className="ledger-heading">
           <div>
             <span className="canvas-kicker">Impact timeline</span>
-            <h2>From intervention to evidence.</h2>
+            <h2>Intervention to evidence.</h2>
           </div>
           <StatusPill
             tone={simulation?.status === "completed" ? "green" : "yellow"}
@@ -1105,9 +1095,8 @@ export function ImpactLedgerPage() {
           <span className="canvas-kicker">What is measured</span>
           <h2>Observed outcomes stay auditable.</h2>
           <p>
-            Proposal preparation and response time are measured after the
-            approval-gated action. Revenue remains estimated until attributable
-            evidence supports it.
+            Proposal time and response speed are measured after approval. Revenue
+            stays estimated until attributable evidence exists.
           </p>
           <button onClick={() => navigate("/app/opportunities/deploy")}>
             View action lifecycle <ArrowRight size={14} />
@@ -1150,7 +1139,7 @@ export function MissionLandingPage() {
         <section className="landing-signal-hero">
           <div className="landing-signal-copy">
             <span className="canvas-kicker">
-              The business intelligence system
+              Business intelligence
             </span>
             <h1>
               Your business is connected.
@@ -1158,9 +1147,7 @@ export function MissionLandingPage() {
               <em>Gilar shows you where to act.</em>
             </h1>
             <p>
-              See the relationships between pipeline, sales, revenue, and cash.
-              Understand what changed. Approve the right fix. Measure what
-              happened next.
+              See what changed. Approve a fix. Measure the result.
             </p>
             <div className="landing-actions">
               <Button onClick={() => navigate("/signup")}>
@@ -1214,7 +1201,7 @@ export function MissionLandingPage() {
         </section>
         <section className="landing-proof">
           <div>
-            <span className="canvas-kicker">A different way to work</span>
+            <span className="canvas-kicker">A faster way to decide</span>
             <h2>
               See why.
               <br />
@@ -1227,19 +1214,19 @@ export function MissionLandingPage() {
             <span>
               <i>01</i>
               <strong>Business Canvas</strong>
-              <small>Explore the company as one connected system.</small>
+              <small>Map the company.</small>
             </span>
             <span>
               <i>02</i>
               <strong>Mission Control</strong>
               <small>
-                Move from signal to decision without dashboard hunting.
+                Turn signals into action.
               </small>
             </span>
             <span>
               <i>03</i>
               <strong>Impact Ledger</strong>
-              <small>Keep measured results separate from estimates.</small>
+              <small>Separate measured impact.</small>
             </span>
           </div>
         </section>
@@ -1285,8 +1272,7 @@ export function BusinessModelBuildPage() {
             <em>the shape of your business.</em>
           </h1>
           <p>
-            Connections become metrics. Metrics become relationships.
-            Relationships reveal the decisions that matter.
+            Connections become signals. Signals reveal decisions.
           </p>
           <div className="model-progress">
             {stages.map((stage, index) => (
@@ -1329,7 +1315,7 @@ export function BusinessModelBuildPage() {
       </main>
       <footer>
         <span>
-          <ShieldCheck size={14} /> Synthetic records stay local to this review.
+          <ShieldCheck size={14} /> Synthetic records stay local.
         </span>
         <Button onClick={() => navigate("/app/home")}>
           See what needs attention <ArrowRight size={15} />

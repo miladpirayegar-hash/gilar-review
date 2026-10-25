@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test'
 
 test('customer path keeps the primary journey and secondary workspace hierarchy', async ({ page }) => {
   await page.goto('/app/home')
-  await expect(page.getByRole('heading', { name: 'Here’s what needs your attention.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'What needs action?' })).toBeVisible()
   await expect(page.getByRole('navigation').getByRole('link', { name: 'Today' })).toBeVisible()
   await expect(page.getByRole('navigation').getByRole('link', { name: /Fixes/ })).toBeVisible()
   await expect(page.getByRole('navigation').getByRole('link', { name: 'Results' })).toBeVisible()
@@ -16,7 +16,7 @@ test('customer path keeps the primary journey and secondary workspace hierarchy'
   await expect(page.getByRole('navigation').getByRole('link', { name: 'Settings' })).toBeVisible()
 
   await page.goto('/app/opportunities')
-  await expect(page.getByRole('heading', { name: 'What I would fix first.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Your next best actions.' })).toBeVisible()
   await page.goto('/app/insights')
   await expect(page.getByRole('heading', { name: 'What changed.' })).toBeVisible()
 })
@@ -24,7 +24,7 @@ test('customer path keeps the primary journey and secondary workspace hierarchy'
 test('Today remains usable on a narrow mobile viewport', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('/app/home')
-  await expect(page.getByRole('heading', { name: 'Here’s what needs your attention.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'What needs action?' })).toBeVisible()
   await page.getByRole('button', { name: 'Open navigation' }).click()
   await expect(page.getByRole('navigation').getByRole('link', { name: 'Today' })).toBeVisible()
   const width = await page.evaluate(() => ({ viewport: window.innerWidth, document: document.documentElement.scrollWidth }))
@@ -35,5 +35,5 @@ test('Business MRI completion opens Today instead of a blank route', async ({ pa
   await page.goto('/onboarding/mri')
   await page.getByRole('button', { name: 'See what needs attention' }).click()
   await expect(page).toHaveURL(/\/app\/home$/)
-  await expect(page.getByRole('heading', { name: 'Here’s what needs your attention.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'What needs action?' })).toBeVisible()
 })

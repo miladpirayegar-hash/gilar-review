@@ -22,11 +22,11 @@ test('Northstar synthetic diagnosis to measured ROI', async ({ page }) => {
   await expect(page.getByText('84%', { exact: true })).toBeVisible()
 
   await page.goto('/app/home')
-  await expect(page.getByRole('heading', { name: 'Here’s what needs your attention.' })).toBeVisible()
-  await expect(page.getByRole('heading', { name: 'What needs your attention', exact: true })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'What needs action.' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'What needs action.', exact: true })).toBeVisible()
   await page.goto('/app/opportunities')
-  await expect(page.getByRole('heading', { name: 'What I would fix first.' })).toBeVisible()
-  await expect(page.getByText('A practical starting point')).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Your next best actions.' })).toBeVisible()
+  await expect(page.getByText('Ranked by impact and effort')).toBeVisible()
   await page.getByRole('button', { name: 'Investigate' }).first().click()
 
   await expect(page.getByRole('heading', { name: 'Why this is happening' })).toBeVisible()
@@ -35,7 +35,7 @@ test('Northstar synthetic diagnosis to measured ROI', async ({ page }) => {
   await page.getByRole('button', { name: 'See the fix' }).click()
 
   await expect(page.getByRole('heading', { name: 'The fix' })).toBeVisible()
-  await expect(page.getByText('Approval required before deployment')).toBeVisible()
+  await expect(page.getByText('Approval before deployment')).toBeVisible()
   await page.getByRole('button', { name: /Review & start/i }).click()
 
   await expect(page.getByRole('button', { name: 'Propose deployment' })).toBeVisible()
@@ -90,8 +90,8 @@ test('no-ROI outcome explains why attribution is unavailable', async ({ page, re
   await page.goto('/app/insights')
 
   await expect(page.getByText('No measurable ROI is available')).toBeVisible()
-  await expect(page.getByText(/could not attribute a reliable business result/i)).toBeVisible()
-  await expect(page.getByText('ROI methodology will appear once a measurable outcome exists.')).toBeVisible()
+  await expect(page.getByText('Measurement completed, but attribution is unavailable.')).toBeVisible()
+  await expect(page.getByText('ROI appears when results can be measured.')).toBeVisible()
 })
 
 test('conflicting evidence lowers confidence instead of forcing a conclusion', async ({ page, request }) => {
